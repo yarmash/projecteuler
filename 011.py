@@ -24,9 +24,10 @@
 #    20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 #    01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 
-#The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
+# The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
-#What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+# What is the greatest product of four adjacent numbers in the same direction
+# (up, down, left, right, or diagonally) in the 20×20 grid?
 
 
 grid = map(int, """
@@ -55,10 +56,10 @@ grid = map(int, """
 max = 0
 for i in range(len(grid)):
     checks = (
-        lambda: grid[i+3]  * grid[i+2]  * grid[i+1]  * grid[i],
-        lambda: grid[i+63] * grid[i+42] * grid[i+21] * grid[i],
-        lambda: grid[i+60] * grid[i+40] * grid[i+20] * grid[i],
-        lambda: grid[i+57] * grid[i+38] * grid[i+19] * grid[i],
+        lambda: grid[i+3]  * grid[i+2]  * grid[i+1]  * grid[i], # -
+        lambda: grid[i+63] * grid[i+42] * grid[i+21] * grid[i], # \
+        lambda: grid[i+60] * grid[i+40] * grid[i+20] * grid[i], # |
+        lambda: grid[i+57] * grid[i+38] * grid[i+19] * grid[i], # /
     )
 
     for c in checks:
@@ -70,4 +71,3 @@ for i in range(len(grid)):
             pass
 
 print max
-

@@ -1,16 +1,9 @@
 #!/usr/bin/python2
 
 from math import log, sqrt
+from projecteuler import is_prime
 
 def get_primes(limit):
-
-    def is_prime(n):
-        limit = int(sqrt(n))
-        for k in range(2, limit+1):
-            if n % k == 0:
-                return False
-        return True
-
     primes = []
 
     for n in range(2, limit+1):

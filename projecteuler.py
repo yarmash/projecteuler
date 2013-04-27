@@ -25,3 +25,19 @@ def is_prime(n):
             k += 6
 
         return True
+
+
+def primes(n): # implements The Sieve of Eratosthenes
+    bound = (n-1)/2 # last index of sieve
+
+    sieve = [True]*(bound+1)
+
+    for i in xrange(1, int(sqrt(n)/2)+1):
+        if sieve[i]: # 2*i+1 is prime, mark multiples
+        for j in xrange(2*i*(i+1), bound+1, 2*i+1):
+            sieve[j] = False
+    primes = [2]
+    for i in xrange(1, bound+1):
+        if sieve[i]:
+        primes.append(2*i+1)
+    return primes

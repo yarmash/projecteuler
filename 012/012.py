@@ -1,22 +1,28 @@
 #!/usr/bin/python2
 
-# TODO: use the 'number of divisors' formula
-step = 0
-triangle = 0
+from projecteuler import primes
 
-while True:
-    step += 1
-    triangle += step
+p = primes(65500)
+t = 1
+s = 1
+cnt = 0
 
-    cnt = 0
+while cnt <= 500:
+    cnt = 1
+    s += 1
+    t += s
+    tt = t
 
-    lim = int(triangle**0.5)
-    if triangle == lim*lim:
-        cnt -= 1
-
-    for i in xrange(1, lim + 1):
-        if triangle % i == 0:
-            cnt += 2
-            if cnt > 500:
-                print triangle
-                exit()
+    for i in p:
+        if i**2 > tt:
+            cnt *= 2
+            break
+        exponent = 1
+        while tt % i == 0:
+            exponent += 1
+            tt /= i
+        if exponent > 1:
+            cnt *= exponent
+        if tt == 1:
+            break
+print t

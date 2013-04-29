@@ -18,14 +18,6 @@ nums = map(int, """
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """.split())
 
-triangle = []
-offset = 0
-
-for i in range(1, 16):
-    triangle.append(nums[offset:offset+i])
-    offset += i
-
-
 cache = {}
 
 def calc_total(rownum, idx):
@@ -34,9 +26,11 @@ def calc_total(rownum, idx):
     if k in cache:
         return cache[k]
 
-    n = triangle[rownum][idx]
-    v = n if rownum == 14 else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
+    # the index is calculated using the formula for the sum of the members of an arithmetic progression
+    n = nums[ ((1 + (rownum-1))*(rownum-1))/2 + idx ]
+
+    v = n if rownum == 15 else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
     cache[k] = v
     return v
 
-print calc_total(0, 0)
+print calc_total(1, 0)

@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-from projecteuler import memoize
+from projecteuler import calc_max_total
 
 nums = map(int, """
 75
@@ -20,11 +20,4 @@ nums = map(int, """
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """.split())
 
-@memoize
-def calc_total(rownum, idx):
-    # the index is calculated using the formula for the sum of the members of an arithmetic progression
-    n = nums[ ((1 + (rownum-1))*(rownum-1))/2 + idx ]
-
-    return n if rownum == 15 else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
-
-print calc_total(1, 0)
+print calc_max_total(nums)

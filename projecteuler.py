@@ -41,3 +41,14 @@ def primes(n): # implements The Sieve of Eratosthenes
         if sieve[i]:
             primes.append(2*i+1)
     return primes
+
+
+def memoize(fn):
+    cache = {}
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        result = fn(*args)
+        cache[args] = result
+        return result
+    return wrapper

@@ -1,6 +1,7 @@
 #!/usr/bin/python2
 
 from math import sqrt
+from projecteuler import memoize
 
 def factor(n):
     factors = set()
@@ -10,16 +11,6 @@ def factor(n):
             factors.add(i)
             factors.add(n//i)
     return factors
-
-def memoize(fn):
-    cache = [None]*10000
-
-    def memoized(n):
-        if not cache[n]:
-            cache[n] = fn(n)
-        return cache[n]
-
-    return memoized
 
 @memoize
 def sum_proper_divisors(n):

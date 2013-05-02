@@ -20,6 +20,4 @@ for i in xrange(2, 1000000):
         longest = length
         num = i
 
-    i += 1
-
 print num

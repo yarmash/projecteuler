@@ -1,16 +1,6 @@
 #!/usr/bin/python2
 
-from math import sqrt
-from projecteuler import memoize
-
-def factor(n):
-    factors = set()
-
-    for i in range(1, int(sqrt(n))+1):
-        if n % i == 0:
-            factors.add(i)
-            factors.add(n//i)
-    return factors
+from projecteuler import factor, memoize
 
 @memoize
 def sum_proper_divisors(n):

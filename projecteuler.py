@@ -27,7 +27,9 @@ def is_prime(n):
         return True
 
 
-def primes(n): # implements The Sieve of Eratosthenes
+# returns the prime numbers <= limit
+# implements The Sieve of Eratosthenes
+def primes(n):
     bound = (n-1)/2 # last index of the sieve
 
     sieve = [True]*(bound+1)

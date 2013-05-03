@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-from projecteuler import primes
+from projecteuler import prime_sieve
 
 n = 2000000
-print sum(primes(n))
+print sum(prime_sieve(n))

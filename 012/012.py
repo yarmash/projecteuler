@@ -1,8 +1,8 @@
 #!/usr/bin/python2
 
-from projecteuler import primes
+from projecteuler import prime_sieve
 
-p = primes(65500)
+p = prime_sieve(65500)
 t = 1
 s = 1
 cnt = 0

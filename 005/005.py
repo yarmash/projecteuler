@@ -1,11 +1,11 @@
 #!/usr/bin/python2
 
 from math import log, sqrt
-from projecteuler import primes
+from projecteuler import prime_sieve
 
 n = 20
 
-primes = primes(n) # prime numbers <= N
+primes = prime_sieve(n) # prime numbers <= N
 
 limit = sqrt(n)
 result = 1

@@ -1,39 +1,22 @@
 #!/usr/bin/python2
 
-from projecteuler import factor
+from projecteuler import sum_of_proper_divisors
 
+MAX = 28123
+a_numbers = [ i for i in xrange(12, MAX+1) if sum_of_proper_divisors(i) > i ]
+a_numbers_set = frozenset(a_numbers)
 
-def get_abundant_numbers(limit):
-    an = []
+def not_sum(n):
+    lim = n/2
 
-    for i in xrange(1, limit+1):
-        if sum(factor(i)) - i > i:
-            an.append(i)
-    return an
-
-def is_sum_of_an(n, an, an_dict):
-
-    for a in an:
-        if a >= n:
+    for a in a_numbers:
+        if a > lim:
             break
-        a2 = n - a
 
-        if a2 in an_dict:
-            return True
+        if n - a in a_numbers_set:
+            return False
 
-    return False
+    return True
 
 
-max = 28123
-an = get_abundant_numbers(max)
-an_dict = {}
-for n in an:
-    an_dict[n] = True
-
-s = 0
-
-for i in xrange(max, 0, -1):
-    if not is_sum_of_an(i, an, an_dict):
-        s += i
-
-print s
+print sum(filter(not_sum, xrange(MAX, 0, -1)))

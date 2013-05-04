@@ -3,6 +3,16 @@
 
 from math import sqrt
 
+def memoize(fn):
+    cache = {}
+    def wrapper(*args):
+        if args in cache:
+            return cache[args]
+        result = fn(*args)
+        cache[args] = result
+        return result
+    return wrapper
+
 def is_prime(n):
     if n == 1:
         return False
@@ -30,8 +40,10 @@ def is_prime(n):
 # returns the prime numbers <= limit
 # implements The Sieve of Eratosthenes
 def prime_sieve(n):
-    bound = (n-1)/2 # last index of the sieve
+    if n <= 1:
+        return []
 
+    bound = (n-1)/2 # last index of the sieve
     sieve = [True]*(bound+1)
 
     for i in xrange(1, int(sqrt(n)/2)+1):
@@ -43,6 +55,39 @@ def prime_sieve(n):
         if sieve[i]:
             primes.append(2*i+1)
     return primes
+
+
+# returns prime factors of an integer
+def prime_factors(n):
+    if n == 1:
+        return [(1, 1)]
+
+    primes = prime_sieve(int(sqrt(n)))
+    prime_factors = []
+
+    for p in primes:
+        if p*p > n:
+            break
+
+        e = 0
+        while n % p == 0:
+            e += 1
+            n //= p
+
+        if e > 0:
+            prime_factors.append((p, e))
+
+    if n > 1:
+        prime_factors.append((n, 1))
+
+    return prime_factors
+
+# http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
+def sum_of_divisors(n):
+    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)/(y[0]-1), prime_factors(n), 1)
+
+def sum_of_proper_divisors(n):
+    return sum_of_divisors(n) - n
 
 
 # returns the factors of an integer
@@ -62,17 +107,6 @@ def factor(n):
     if n > 1:
         r += [i * n for i in r]
     return r
-
-
-def memoize(fn):
-    cache = {}
-    def wrapper(*args):
-        if args in cache:
-            return cache[args]
-        result = fn(*args)
-        cache[args] = result
-        return result
-    return wrapper
 
 
 # The function used for the problems 18 & 67

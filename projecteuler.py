@@ -59,9 +59,6 @@ def prime_sieve(n):
 
 # returns prime factors of an integer
 def prime_factors(n):
-    if n == 1:
-        return [(1, 1)]
-
     primes = prime_sieve(int(sqrt(n)))
     prime_factors = []
 
@@ -82,8 +79,10 @@ def prime_factors(n):
 
     return prime_factors
 
-# http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
 def sum_of_divisors(n):
+    if n == 1:
+        return 1
+    # http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
     return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)/(y[0]-1), prime_factors(n), 1)
 
 def sum_of_proper_divisors(n):

@@ -1,10 +1,11 @@
 #!/usr/bin/python2
 
-import itertools
+from math import factorial
 
-cnt = 0
-for p in itertools.permutations(range(10)):
-    cnt += 1
-    if cnt == 1000000:
-        print "".join(map(str, p))
-        break
+def nthPerm(s, n):
+    if len(s) < 2:
+        return s
+    quot, n = divmod(n, factorial(len(s)-1))
+    return s[quot] + nthPerm(s[:quot] + s[quot+1:], n)
+
+print nthPerm('0123456789', 999999)

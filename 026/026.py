@@ -12,7 +12,7 @@ def is_primitive_root(k, n):
     return True
 
 
-for n in xrange(1000, 1, -1):
+for n in xrange(999, 1, -2):
     if is_prime(n) and is_primitive_root(10, n):
-        print n
         break
+print n

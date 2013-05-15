@@ -12,22 +12,17 @@ def is_pandigital(n):
 
     return res == 511
 
-digits = "123456789"
 products = set()
 
-def check(x, y):
-    for a in range(1, 10**x):
-        for b in range(1, 10**y):
+# the solutions must either be 1x4 or 2x3 digits
+for r in (((2, 10), (1234, 9877)), ((12, 82), (123, 988))):
+    for a in range(*r[0]):
+        if not a % 5: continue
+        for b in range(*r[1]):
+            if not b % 5: continue
             p = a*b
             if p > 9876: break
-
-            s = str(a)+str(b)+str(p)
-
-            if is_pandigital(int(s)):
+            if is_pandigital(int(str(a)+str(b)+str(p))):
                 products.add(p)
-
-# the solutions must either be 1x4 or 2x3 digits
-check(1, 4)
-check(2, 3)
 
 print sum(products)

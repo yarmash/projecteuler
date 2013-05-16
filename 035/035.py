@@ -2,21 +2,19 @@
 
 from projecteuler import prime_sieve
 
-def rotations(p):
-    if p < 10:
-        yield p
+def rotations(n):
+    if n < 10:
+        yield n
     else:
-        m = 0
-        t = p
-        while t / 10:
-            m += 1
-            t /= 10
+        k = 5 if 100000 < n < 1000000 else \
+            4 if 10000 < n < 100000 else \
+            3 if 1000 < n < 10000 else \
+            2 if 100 < n < 1000 else \
+            1
 
-        yield p
-
-        for i in range(m):
-            p = (10**m)*(p % 10) + p/10
-            yield p
+        for i in range(k+1):
+            n = 10**k*(n % 10) + n/10
+            yield n
 
 primes = prime_sieve(1000000)
 primes_set = set(primes)

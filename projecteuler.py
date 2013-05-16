@@ -89,25 +89,6 @@ def sum_of_proper_divisors(n):
     return sum_of_divisors(n) - n
 
 
-# returns the factors of an integer
-def factor(n):
-    a, r = 1, [1]
-    while a * a < n:
-        a += 1
-        if n % a:
-            continue
-        b, f = 1, []
-        while n % a == 0:
-            n //= a
-            b *= a
-            f += [i * b for i in r]
-        r += f
-
-    if n > 1:
-        r += [i * n for i in r]
-    return r
-
-
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas
 # for the sum of the members of an arithmetic progression

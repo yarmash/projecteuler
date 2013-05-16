@@ -88,6 +88,12 @@ def sum_of_divisors(n):
 def sum_of_proper_divisors(n):
     return sum_of_divisors(n) - n
 
+# returns the Greatest Common Divisor of a and b (Euclidean algorithm)
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
 
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas

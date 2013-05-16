@@ -3,18 +3,16 @@
 from projecteuler import prime_sieve
 
 def rotations(n):
-    if n < 10:
-        yield n
-    else:
-        k = 5 if 100000 < n < 1000000 else \
-            4 if 10000 < n < 100000 else \
-            3 if 1000 < n < 10000 else \
-            2 if 100 < n < 1000 else \
-            1
+    k = 5 if 100000 < n < 1000000 else \
+        4 if 10000 < n < 100000 else \
+        3 if 1000 < n < 10000 else \
+        2 if 100 < n < 1000 else \
+        1 if 10 < n < 100 else \
+        0
 
-        for i in range(k+1):
-            n = 10**k*(n % 10) + n/10
-            yield n
+    for i in range(k+1):
+        n = 10**k*(n % 10) + n/10
+        yield n
 
 primes = prime_sieve(1000000)
 primes_set = set(primes)

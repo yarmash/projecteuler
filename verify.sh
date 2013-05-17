@@ -2,14 +2,13 @@
 
 for d in *; do
 	if [ -d $d ]; then
-		cd $d
-		read answer < answer
+		read answer < $d/answer
+		echo -n "$d  "
 
-		if [ $(./$d.py) = $answer ]; then
-			echo "$d [OK]"
+		if [ "$($d/$d.py)" = $answer ]; then
+			echo OK
 		else
-			echo "$d [FAIL]"
+			echo FAIL
 		fi
-		cd - > /dev/null
 	fi
 done

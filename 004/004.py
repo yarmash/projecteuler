@@ -1,20 +1,14 @@
 #!/usr/bin/python2
 
-def reverse(n):
-    r = 0
-    while n > 0:
-        r = r * 10 + n % 10
-        n /= 10
-    return r
+from projecteuler import is_palindrome
 
 n = 0
 
-for x in range(999, 99, -1):
-    for y in range(999, 99, -1):
+for x in xrange(999, 99, -1):
+    for y in xrange(x, 99, -1):
         k = x*y
         if k <= n:
             break
-
-        if n < k and k == reverse(k):
+        if is_palindrome(k, 10):
             n = k
-print(n)
+print n

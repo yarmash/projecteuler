@@ -94,6 +94,15 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+# checks if the number is palindromic in the given base
+def is_palindrome(n, base):
+    r = 0
+    t = n
+    while t > 0:
+        r = r * base + t % base
+        t /= base
+    return r == n
+
 
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas

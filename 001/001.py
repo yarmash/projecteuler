@@ -1,10 +1,8 @@
 #!/usr/bin/python2
 
-def SumDivisibleBy(n, limit):
+def sum_divisible_by(n, limit=1000):
     k = (limit - 1) / n
-    sum = (n*(1+k)*k)/2
-    return sum
+    s = (n*(1+k)*k)/2
+    return s
 
-limit = 1000
-
-print( SumDivisibleBy(5, limit) + SumDivisibleBy(3, limit) - SumDivisibleBy(15, limit) )
+print sum_divisible_by(5) + sum_divisible_by(3) - sum_divisible_by(15)

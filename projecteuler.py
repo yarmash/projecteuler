@@ -94,7 +94,7 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
-# checks if the number is palindromic in the given base
+# checks if a number is palindromic in the given base
 def is_palindrome(n, base):
     r = 0
     t = n
@@ -102,6 +102,19 @@ def is_palindrome(n, base):
         r = r * base + t % base
         t /= base
     return r == n
+
+# checks if a number is 1 to 9 pandigital
+def is_pandigital(n):
+    res = 0
+
+    while n > 0:
+        k = n % 10
+        if k == 0:
+            return False
+        res |= (1 << k-1)
+        n /= 10
+
+    return res == 0x1ff
 
 
 # The function used for the problems 18 & 67

@@ -1,16 +1,6 @@
 #!/usr/bin/python2
 
-def is_pandigital(n):
-    res = 0
-
-    while n > 0:
-        k = n % 10
-        if k == 0:
-            return False
-        res |= (1 << k-1)
-        n /= 10
-
-    return res == 511
+from projecteuler import is_pandigital
 
 products = set()
 

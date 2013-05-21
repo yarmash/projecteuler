@@ -103,8 +103,8 @@ def is_palindrome(n, base):
         t /= base
     return r == n
 
-# checks if a number is 1 to 9 pandigital
-def is_pandigital(n):
+# checks if a number is 1 to N pandigital
+def is_pandigital(n, d=9):
     res = 0
 
     while n > 0:
@@ -114,7 +114,7 @@ def is_pandigital(n):
         res |= (1 << k-1)
         n /= 10
 
-    return res == 0x1ff
+    return res == 2**d - 1
 
 # returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
 # http://projecteuler.net/overview=009

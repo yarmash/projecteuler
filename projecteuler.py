@@ -116,6 +116,27 @@ def is_pandigital(n):
 
     return res == 0x1ff
 
+# returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
+# http://projecteuler.net/overview=009
+def pythagorean_triplets(p):
+    p >>= 1
+
+    for m in range(2, int(sqrt(p)+1)):
+        if p % m == 0:
+            pm = p / m
+            while not pm&1: # reduce the search space by removing all factors 2
+                pm >>= 1
+            k = m + 2 if m&1 else m + 1
+
+            while k < 2*m and k <= pm:
+                if pm % k == 0 and gcd(k, m) == 1:
+                    d = p/(k*m)
+                    n = k - m
+                    a = d*(m*m - n*n)
+                    b = 2*d*m*n
+                    c = d*(m*m + n*n)
+                    yield (a, b, c)
+                k += 2
 
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas

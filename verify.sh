@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+cd "$(dirname $0)"
+
 for d in *; do
 	if [ -d $d ]; then
 		read answer < $d/answer

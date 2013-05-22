@@ -4,18 +4,17 @@ from itertools import permutations
 
 s = 0
 
-for p in permutations("1234567890"):
-    p = "".join(p)
-    if p[0] == "0":
-        continue
+for p in permutations((9,8,7,6,5,4,3,2,1,0)):
+    if p[0] == 0:
+        break
 
-    if int(p[1:4]) % 2 == 0 and \
-       int(p[2:5]) % 3 == 0 and \
-       int(p[3:6]) % 5 == 0 and \
-       int(p[4:7]) % 7 == 0 and \
-       int(p[5:8]) % 11 == 0 and \
-       int(p[6:9]) % 13 == 0 and \
-       int(p[7:10]) % 17 == 0:
-        s += int(p)
+    if (p[7]*100+p[8]*10+p[9]) % 17 == 0 and \
+       (p[6]*100+p[7]*10+p[8]) % 13 == 0 and \
+       (p[5]*100+p[6]*10+p[7]) % 11 == 0 and \
+       (p[4]*100+p[5]*10+p[6]) % 7 == 0 and \
+       (p[5] == 0 or p[5] == 5) and \
+       (p[2]+p[3]+p[4]) % 3 == 0 and \
+       (not p[3] & 1):
+        s += int("".join(map(str, p)))
 print s
 

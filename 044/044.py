@@ -1,20 +1,31 @@
-#!/usr/bin/python2
+from math import sqrt
 
-def pentagonal_numbers(n=1):
-    while True:
-        j = n*(3*n-1)/2
-        yield j
+
+def is_pentagonal(n):
+	k = (sqrt(24*n+1)+1)/6
+	return k == int(k)
+
+def nth_p(n): # calculate the nth pentagonal number
+	return n*(3*n - 1)/2
+
+
+def min_difference():
+    diffs = []
+
+    mindiff, diff, n = 0, 1, 1
+
+    while mindiff < diff:
         n += 1
+        diff += 3 # the difference increases by 3
 
-def find_pair():
-    pnumbers = set()
+        diffs.append(0)
 
-    for p in pentagonal_numbers():
-        pnumbers.add(p)
+        for i in range(len(diffs)):
+            diffs[i] += diff
 
-        for p2 in pnumbers:
-            if p - p2 in pnumbers and abs(2*p2 - p) in pnumbers:
-                # I'm feeling lucky
-                return abs(2*p2 - p)
+            if n != (i+1) and is_pentagonal(diffs[i]):
+                if is_pentagonal(nth_p(i+1) + nth_p(n)):
+                    mindiff = min(mindiff, diffs[i]) if mindiff else diffs[i]
+    return mindiff
 
-print find_pair()
+print min_difference()

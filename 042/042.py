@@ -9,7 +9,7 @@ words = eval("["+open(datafile).read()+"]")
 # if the positive triangular root n of x is an integer, then x is the nth triangular number
 def is_triangular_number(n):
     r = (sqrt(8*n +1) - 1)/2
-    return r == int(r)
+    return r.is_integer()
 
 cnt = 0
 

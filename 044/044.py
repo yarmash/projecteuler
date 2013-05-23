@@ -3,7 +3,7 @@ from math import sqrt
 
 def is_pentagonal(n):
 	k = (sqrt(24*n+1)+1)/6
-	return k == int(k)
+	return k.is_integer()
 
 def nth_p(n): # calculate the nth pentagonal number
 	return n*(3*n - 1)/2

@@ -1,20 +1,22 @@
 #!/usr/bin/python2
 
-from itertools import permutations
 
-s = 0
+def sum_pandigitals(digits, num):
+    if len(digits) == 7 and num % 17 or \
+        len(digits) == 6 and (num/10) % 13 or \
+        len(digits) == 5 and (num/100) % 11 or \
+        len(digits) == 4 and (num/1000) % 7 or \
+        len(digits) == 3 and (num/10000) % 5 or \
+        len(digits) == 2 and (num/100000) % 3 or \
+        len(digits) == 1 and (num/1000000) % 2:
+        return 0
+    if len(digits) == 0:
+        return num
 
-for p in permutations((9,8,7,6,5,4,3,2,1,0)):
-    if p[0] == 0:
-        break
+    s = 0
+    for i, d in enumerate(digits):
+        t = digits[0:i]+digits[i+1:]
+        s += sum_pandigitals(t, (10**(10-len(t)-1))*d+num)
+    return s
 
-    if (p[7]*100+p[8]*10+p[9]) % 17 == 0 and \
-       (p[6]*100+p[7]*10+p[8]) % 13 == 0 and \
-       (p[5]*100+p[6]*10+p[7]) % 11 == 0 and \
-       (p[4]*100+p[5]*10+p[6]) % 7 == 0 and \
-       (p[5] == 0 or p[5] == 5) and \
-       (p[2]+p[3]+p[4]) % 3 == 0 and \
-       (not p[3] & 1):
-        s += int("".join(map(str, p)))
-print s
-
+print sum_pandigitals((0,1,2,3,4,5,6,7,8,9), 0)

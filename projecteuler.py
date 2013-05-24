@@ -114,6 +114,10 @@ def is_pandigital(n, end=9, start=1):
 
     return res == (2**(end-start+1) - 1) << start
 
+def is_pentagonal(n):
+	k = (sqrt(24*n+1)+1)/6
+	return k.is_integer()
+
 # returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
 # http://projecteuler.net/overview=009
 def pythagorean_triplets(p):

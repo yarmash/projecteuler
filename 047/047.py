@@ -1,16 +1,16 @@
 #!/usr/bin/python2
 
-from projecteuler import prime_factors
+from math import sqrt
 
-n, count = 2*3*5*7, 0
+lim = 1000000
+sieve = [0]*lim
 
-while count < 4:
-    factors = prime_factors(n)
+for i in range(2, int(sqrt(lim))+1):
+    if not sieve[i]: # prime
+        for k in range(i+i, lim-lim%i, i):
+            sieve[k] += 1
 
-    if len(factors) == 4:
-        count += 1
-    else:
-        count = 0
-    n += 1
-
-print n - count
+for i in range(2, len(sieve)-5):
+    if sieve[i:i+4] == [4,4,4,4]:
+        print i
+        break

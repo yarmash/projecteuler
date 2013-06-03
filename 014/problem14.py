@@ -6,12 +6,13 @@ def main():
     num = 0
 
     def get_chain_length(n):
-        if n == 1:
-            return 1
         if n in cache:
             return cache[n]
 
-        cache[n] = length = 1 + get_chain_length(3*n+1 if n&1 else n>>1)
+        if n == 1:
+            cache[n] = length = 1
+        else:
+            cache[n] = length = 1 + get_chain_length(3*n+1 if n&1 else n>>1)
         return length
 
     for i in xrange(2, 1000000):

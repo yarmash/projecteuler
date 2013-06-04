@@ -140,6 +140,13 @@ def pythagorean_triplets(p):
                     yield (a, b, c)
                 k += 2
 
+# generates a lookup table of factorials for numbers <= n
+def factorials_table(n):
+    f = []
+    for i in xrange(n+1):
+        f.append(1 if i < 2 else i*f[i-1])
+    return f
+
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas
 # for the sum of the members of an arithmetic progression

@@ -1,11 +1,10 @@
 #!/usr/bin/python2
 
-def main():
-    # precompute factorials
-    f = []
-    for i in range(10):
-        f.append(1 if i < 2 else i*f[i-1])
+from projecteuler import factorials_table
 
+def main():
+    # precalculate factorials
+    f = factorials_table(9)
     res = 0
 
     for n in xrange(3, 40586): # For the proper upper bound see http://en.wikipedia.org/wiki/Factorion#Upper_bound

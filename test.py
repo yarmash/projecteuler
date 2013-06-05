@@ -3,6 +3,7 @@
 import os
 import re
 import sys
+import time
 
 bindir = os.path.dirname(__file__)
 
@@ -13,8 +14,9 @@ for d in dirs:
     mod =  __import__("problem"+str(int(d)))
     answer = open(os.path.join(bindir, d, "answer")).read().rstrip()
     print d+" ",
+    start = time.clock()
     if answer == str(mod.main()):
-        print "OK"
+        print "OK (%.2fs)" % (time.clock() - start)
     else:
         print "FAIL"
     sys.path.pop(0)

@@ -1,8 +1,8 @@
 #!/usr/bin/python2
 
-from math import factorial
 from projecteuler import factorials_table
 
+# TODO: refactor using the formula for Pascal's triangle
 def main():
     cnt = 0
     f = factorials_table(100)

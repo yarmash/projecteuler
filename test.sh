@@ -7,11 +7,7 @@ for d in *; do
 		read answer < $d/answer
 		echo -n "$d  "
 
-		if [ -e $d/$d.py ]; then
-			bin=$d/$d.py
-		else
-			bin=$d/problem$((10#$d)).py
-		fi
+		bin=$d/problem$((10#$d)).py
 
 		if [ "$($bin)" = $answer ]; then
 			echo OK

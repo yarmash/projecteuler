@@ -142,9 +142,9 @@ def pythagorean_triplets(p):
 
 # generates a lookup table of factorials for numbers <= n
 def factorials_table(n):
-    f = []
-    for i in xrange(n+1):
-        f.append(1 if i < 2 else i*f[i-1])
+    f = [1, 1]
+    for i in xrange(2, n+1):
+        f.append(i * f[i-1])
     return f
 
 # The function used for the problems 18 & 67

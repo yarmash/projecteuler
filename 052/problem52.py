@@ -9,10 +9,7 @@ def main():
         for i in xrange(10**e + 2, 10**e * 2, 3):
             s = sorted(str(i))
 
-            for k in xrange(2, 7):
-                if sorted(str(i*k)) != s:
-                    break
-            else:
+            if all(sorted(str(i*k)) == s for k in xrange(2, 7)):
                 return i
         e += 1
 

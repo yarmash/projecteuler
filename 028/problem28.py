@@ -12,7 +12,7 @@ def main():
         cnt += 1
         n += step
 
-        if not cnt % 4:
+        if not cnt & 3: # layer done
             step += 2
 
     return result

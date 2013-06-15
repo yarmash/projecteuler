@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 # coding=utf-8
 
-from math import sqrt
+from math import sqrt, factorial
 
 def memoize(fn):
     cache = {}
@@ -146,6 +146,11 @@ def factorials_table(n):
     for i in xrange(2, n+1):
         f.append(i * f[i-1])
     return f
+
+# returns the number of k-combinations of a set of n elements
+def number_of_combinations(n, k):
+    return factorial(n) / (factorial(k) * factorial(n - k))
+
 
 # The function used for the problems 18 & 67
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas

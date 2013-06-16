@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-from projecteuler import is_prime
+from miller_rabin import miller_rabin as is_prime
 
 def main():
     number = 1

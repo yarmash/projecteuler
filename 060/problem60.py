@@ -1,6 +1,7 @@
 #!/usr/bin/python2
 
-from projecteuler import is_prime, prime_sieve
+from projecteuler import prime_sieve
+from miller_rabin import miller_rabin as is_prime
 
 def main():
     lim = 8500

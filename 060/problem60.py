@@ -1,34 +1,34 @@
 #!/usr/bin/python2
 
-from projecteuler import is_prime, prime_sieve, memoize
+from projecteuler import is_prime, prime_sieve
 
 def main():
-    lim = 9000
-
+    lim = 8500
     primes = prime_sieve(lim)
 
-    @memoize
-    def chk(i, j):
-        p1, p2 = primes[i], primes[j]
-        return is_prime(int(str(p1)+str(p2))) and is_prime(int(str(p2)+str(p1)))
+    # store possible pairs for each prime
+    candidates = [None]*len(primes)
+    for i in xrange(1, len(primes)):
+        candidates[i] = set(j for j in xrange(i+1, len(primes)) if is_prime(int(str(primes[i])+str(primes[j]))) and is_prime(int(str(primes[j])+str(primes[i]))))
 
-    candidates = []
+    quintuplets = []
 
-    def find_candidates(p):
+    def find_quints(p):
         if len(p) == 5:
-            candidates.append(sum(primes[i] for i in p))
-        else:
-            for i in xrange(p[-1], len(primes)):
-                for j in p:
-                    if not chk(j, i):
-                        break
-                else:
-                    find_candidates(p+[i])
+            quintuplets.append(sum(primes[i] for i in p))
+            return
+
+        for i in xrange(p[-1]+1, len(primes)):
+            for j in p:
+                if not i in candidates[j]:
+                    break
+            else:
+                find_quints(p+[i])
 
     for i in xrange(1, len(primes)-4):
-        find_candidates([i])
+        find_quints([i])
 
-    return min(candidates)
+    return min(quintuplets)
 
 if __name__ == "__main__":
     print main()

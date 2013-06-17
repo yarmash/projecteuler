@@ -1,29 +1,31 @@
 #!/usr/bin/python2
 
-from projecteuler import prime_sieve
+from projecteuler import prime_sieve, memoize
 from miller_rabin import miller_rabin as is_prime
 
 def main():
-    lim = 8400
-    primes = prime_sieve(lim)
-    del primes[2] # delete 5 and 2
-    del primes[0]
+    primes = prime_sieve(8500)
 
-    # store possible pairs for each prime
-    candidates = [ set(j for j in xrange(i+1, len(primes)) if is_prime(int(str(primes[i])+str(primes[j]))) and is_prime(int(str(primes[j])+str(primes[i]))))
-        for i in xrange(len(primes)) ]
+    @memoize
+    def check(p1, p2):
+        return is_prime(int(str(p1)+str(p2))) and is_prime(int(str(p2)+str(p1)))
 
-    res = float("Inf")
+    def candidates(p):
+        if len(p) == 5:
+            yield p
 
-    for i in xrange(len(primes)-4):
-        for j in candidates[i]:
-            for k in candidates[i] & candidates[j]:
-                for l in candidates[i] & candidates[j] & candidates[k]:
-                    for m in candidates[i] & candidates[j] & candidates[k] & candidates[l]:
-                        s = sum(primes[x] for x in (i, j, k, l, m))
-                        if s < res:
-                            res = s
-    return res
+        for i in xrange(p[-1]+1, len(primes)):
+            if all(check(primes[i], primes[j]) for j in p):
+                for c in candidates(p+[i]):
+                    yield c
+
+    for i in xrange(len(primes)):
+        try:
+            quint = candidates([i]).next()
+            return sum(primes[x] for x in quint)
+        except StopIteration:
+            pass
+
 
 if __name__ == "__main__":
     print main()

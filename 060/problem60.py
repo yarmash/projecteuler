@@ -11,13 +11,13 @@ def main():
         return is_prime(int(str(p1)+str(p2))) and is_prime(int(str(p2)+str(p1)))
 
     def candidates(p):
-        if len(p) == 5:
-            yield p
-
         for i in xrange(p[-1]+1, len(primes)):
             if all(check(primes[i], primes[j]) for j in p):
-                for c in candidates(p+[i]):
-                    yield c
+                if len(p) == 4:
+                    yield p+[i]
+                else:
+                    for c in candidates(p+[i]):
+                        yield c
 
     for i in xrange(len(primes)):
         try:

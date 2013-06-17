@@ -13,8 +13,9 @@ for d in dirs:
     sys.path.insert(0, os.path.join(bindir, d))
     mod =  __import__("problem"+str(int(d)))
     answer = open(os.path.join(bindir, d, "answer")).read().rstrip()
-    print d+" ",
     start = time.clock()
+    sys.stdout.write(d+"  ")
+    sys.stdout.flush()
     if answer == str(mod.main()):
         print "OK (%.2fs)" % (time.clock() - start)
     else:

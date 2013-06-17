@@ -4,12 +4,12 @@
 from math import sqrt, factorial
 
 def memoize(fn):
-    cache = {}
+    memo = {}
     def wrapper(*args):
-        if args in cache:
-            return cache[args]
+        if args in memo:
+            return memo[args]
         result = fn(*args)
-        cache[args] = result
+        memo[args] = result
         return result
     return wrapper
 

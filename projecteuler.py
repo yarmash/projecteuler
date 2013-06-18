@@ -14,7 +14,7 @@ def memoize(fn):
     return wrapper
 
 def is_prime(n):
-    if n == 1:
+    if n <= 1:
         return False
     elif n < 4:
         return True # 2 and 3 are prime

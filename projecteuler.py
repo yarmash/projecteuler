@@ -57,6 +57,23 @@ def prime_sieve(n):
     return primes
 
 
+# http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
+def prime_sieve_lazy():
+    yield 2
+    n = 3
+    composites = {}
+
+    while True:
+        if n not in composites:
+            yield n
+            composites[n*n] = [n]
+        else:
+            for prime in composites[n]:
+                composites.setdefault(prime*2 + n, []).append(prime)
+            del composites[n]
+        n += 2
+
+
 # returns prime factors of an integer
 def prime_factors(n):
     primes = prime_sieve(int(sqrt(n)))

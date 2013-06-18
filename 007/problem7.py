@@ -1,17 +1,13 @@
 #!/usr/bin/python2
 
-from projecteuler import is_prime
+from projecteuler import prime_sieve_lazy
 
 def main():
-    num = 3
-    count = 2
-
-    while count < 10001:
-        num += 2 # loop through odd numbers
-        if is_prime(num):
-            count += 1
-
-    return num
+    count = 0
+    for prime in prime_sieve_lazy():
+        count += 1
+        if count == 10001:
+            return prime
 
 if __name__ == "__main__":
     print main()

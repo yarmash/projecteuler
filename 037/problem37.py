@@ -1,26 +1,26 @@
 #!/usr/bin/python2
 
 from projecteuler import is_prime
+from math import log10
+
 
 def is_truncatable(p): # check if the prime is right-/left-truncatable
-    t = p
-    k = 0
-    t /= 10
+    t = p/10
 
     while t > 0:
         if not is_prime(t):
             return False
-        k += 1
         t /= 10
 
 
-    p %= 10**k
+    k = int(log10(p))
+    t = p % 10**k
 
-    while p > 0:
-        if not is_prime(p):
+    while t > 0:
+        if not is_prime(t):
             return False
         k -= 1
-        p %= 10**k
+        t %= 10**k
 
     return True
 

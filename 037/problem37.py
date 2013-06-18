@@ -4,18 +4,23 @@ from projecteuler import is_prime
 
 def is_truncatable(p): # check if the prime is right-/left-truncatable
     t = p
-    k = -1
+    k = 0
+    t /= 10
+
     while t > 0:
-        t /= 10
         if not is_prime(t):
             return False
         k += 1
+        t /= 10
+
+
+    p %= 10**k
 
     while p > 0:
-        p %= 10**k
         if not is_prime(p):
             return False
         k -= 1
+        p %= 10**k
 
     return True
 

@@ -3,11 +3,11 @@
 from projecteuler import is_pentagonal
 
 def hexagonal_numbers():
-    t = 1
+    h = 1
     d = 5
     while True:
-        yield t
-        t += d
+        yield h
+        h += d
         d += 4
 
 def main():

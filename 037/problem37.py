@@ -1,10 +1,11 @@
 #!/usr/bin/python2
 
-from projecteuler import is_prime
+from projecteuler import prime_sieve_lazy, is_prime
 from math import log10
 
 
 def is_truncatable(p): # check if the prime is right-/left-truncatable
+    if p < 10: return False
     t = p/10
 
     while t > 0:
@@ -25,17 +26,15 @@ def is_truncatable(p): # check if the prime is right-/left-truncatable
     return True
 
 def main():
-    n = 23
-    s = 0
-    cnt = 0
+    res = cnt = 0
 
-    while cnt < 11:
-        if is_prime(n) and is_truncatable(n):
-            s += n
+    for p in prime_sieve_lazy():
+        if is_truncatable(p):
+            res += p
             cnt += 1
-        n += 2
 
-    return s
+            if cnt == 11:
+                return res
 
 if __name__ == "__main__":
     print main()

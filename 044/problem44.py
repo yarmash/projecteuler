@@ -1,10 +1,6 @@
 #!/usr/bin/python2
 
-from projecteuler import is_pentagonal
-
-def nth_p(n): # calculate the nth pentagonal number
-	return n*(3*n - 1)/2
-
+from projecteuler import is_pentagonal, nth_pentagonal
 
 def main():
     diffs = []
@@ -21,7 +17,7 @@ def main():
             diffs[i] += diff
 
             if n != (i+1) and is_pentagonal(diffs[i]):
-                if is_pentagonal(nth_p(i+1) + nth_p(n)):
+                if is_pentagonal(nth_pentagonal(i+1) + nth_pentagonal(n)):
                     mindiff = min(mindiff, diffs[i]) if mindiff else diffs[i]
     return mindiff
 

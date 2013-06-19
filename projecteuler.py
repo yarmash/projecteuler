@@ -131,6 +131,28 @@ def is_pandigital(n, end=9, start=1):
 
     return res == (2**(end-start+1) - 1) << start
 
+
+# functions for calculating polygonal numbers
+def nth_triangle(n):
+    return n*(n+1)/2
+
+def nth_square(n):
+    return n*n
+
+def nth_pentagonal(n):
+    return n*(3*n - 1)/2
+
+def nth_hexagonal(n):
+    return n*(2*n-1)
+
+def nth_heptagonal(n):
+    return n*(5*n-3)/2
+
+def nth_octagonal(n):
+    return n*(3*n - 2)
+
+
+
 def is_pentagonal(n):
 	k = (sqrt(24*n+1)+1)/6
 	return k.is_integer()

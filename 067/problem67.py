@@ -1,13 +1,22 @@
 #!/usr/bin/python2
 
-import os
-from projecteuler import calc_max_total
+import sys
+from os.path import join, dirname
+
+# This is a more difficult version of Problem 18 and uses the same function.
+try:
+    import problem18
+except ImportError:
+    sys.path.insert(0, join(dirname(__file__), "..", "018"))
+    import problem18
+    sys.path.pop(0)
+
 
 def main():
-    datafile = os.path.join(os.path.dirname(__file__), "triangle.txt")
+    datafile = join(dirname(__file__), "triangle.txt")
     nums = map(int, open(datafile).read().split())
 
-    return calc_max_total(nums)
+    return problem18.calc_max_total(nums)
 
 if __name__ == "__main__":
     print main()

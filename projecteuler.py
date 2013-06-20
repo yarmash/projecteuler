@@ -189,17 +189,3 @@ def factorials_table(n):
 # returns the number of k-combinations of a set of n elements
 def number_of_combinations(n, k):
     return factorial(n) / (factorial(k) * factorial(n - k))
-
-
-# The function used for the problems 18 & 67
-# the number of rows in the triangle and the number's index in the array are calculated using the formulas
-# for the sum of the members of an arithmetic progression
-def calc_max_total(nums):
-    nrows = (-1 + sqrt(1+4*2*len(nums))) / 2
-
-    @memoize
-    def calc_total(rownum, idx):
-        n = nums[ ((1 + (rownum-1))*(rownum-1))/2 + idx ]
-        return n if rownum == nrows else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
-
-    return calc_total(1, 0)

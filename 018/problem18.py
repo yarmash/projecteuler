@@ -1,6 +1,19 @@
 #!/usr/bin/python2
 
-from projecteuler import calc_max_total
+from projecteuler import memoize
+from math import sqrt
+
+# the number of rows in the triangle and the number's index in the array are calculated using the formulas
+# for the sum of the members of an arithmetic progression
+def calc_max_total(nums):
+    nrows = (-1 + sqrt(1+4*2*len(nums))) / 2
+
+    @memoize
+    def calc_total(rownum, idx):
+        n = nums[ ((1 + (rownum-1))*(rownum-1))/2 + idx ]
+        return n if rownum == nrows else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
+
+    return calc_total(1, 0)
 
 def main():
     nums = map(int, """

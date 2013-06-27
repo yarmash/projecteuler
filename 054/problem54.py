@@ -12,7 +12,7 @@ def hands():
 
 class Card():
     values = dict(zip(("23456789TJQKA"), range(2, 15)))
-    suits = dict(map(lambda s: (s[0], s), ("Clubs", "Diamonds", "Hearts", "Spades")))
+    suits = { s[0] : s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
 
     def __init__(self, data):
         self.kind = data[0]

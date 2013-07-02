@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 8: Largest product in a series"""
+
 def main():
     num = (
         "73167176531330624919225119674426574742355349194934"

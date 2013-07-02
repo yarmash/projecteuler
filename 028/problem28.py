@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 28: Number spiral diagonals"""
+
 def main():
     size = 1001
     n = 1

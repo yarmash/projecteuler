@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 17: Number letter counts"""
+
 def main():
     units = ("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
     tens = ("ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")

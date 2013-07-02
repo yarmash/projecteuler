@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 27: Quadratic primes"""
+
 from projecteuler import prime_sieve
 
 def main():

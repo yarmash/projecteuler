@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 34: Digit factorials"""
+
 from projecteuler import factorials_table
 
 def main():

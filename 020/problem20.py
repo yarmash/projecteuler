@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 20: Factorial digit sum"""
+
 from math import factorial
 
 def main():

@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 58: Spiral primes"""
+
 from miller_rabin import miller_rabin as is_prime
 
 def main():

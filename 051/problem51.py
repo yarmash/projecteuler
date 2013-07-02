@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 51: Prime digit replacements"""
+
 from projecteuler import is_prime
 
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 35: Circular primes"""
+
 from projecteuler import prime_sieve
 
 def rotations(n):

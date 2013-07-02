@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 18: Maximum path sum I"""
+
 from projecteuler import memoize
 from math import sqrt
 

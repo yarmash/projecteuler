@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 38: Pandigital multiples"""
+
 from projecteuler import is_pandigital
 from itertools import permutations
 

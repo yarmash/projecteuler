@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 2: Even Fibonacci numbers"""
+
 def main():
     x, y = 1, 2
     limit = 4000000

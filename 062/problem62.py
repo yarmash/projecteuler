@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 62: Cubic permutations"""
+
 def main(N=5):
     num, bound = 1, 10
     cubes = {}

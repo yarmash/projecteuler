@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 52: Permuted multiples"""
+
 def main():
     e = 1
 

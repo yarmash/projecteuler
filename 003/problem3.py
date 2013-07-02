@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 3: Largest prime factor"""
+
 def main():
     num = 600851475143
     f = 3

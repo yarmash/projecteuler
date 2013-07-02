@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 9: Special Pythagorean triplet"""
+
 from projecteuler import pythagorean_triplets
 
 def main():

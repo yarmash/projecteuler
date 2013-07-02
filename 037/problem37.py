@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 37: Truncatable primes"""
+
 from projecteuler import prime_sieve_lazy, is_prime
 from math import log10
 

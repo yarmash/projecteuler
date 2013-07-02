@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 50: Consecutive prime sum"""
+
 from projecteuler import prime_sieve
 
 def main():

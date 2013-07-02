@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 31: Coin sums"""
+
 from projecteuler import memoize
 
 def main():

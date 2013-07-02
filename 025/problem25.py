@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 25: 1000-digit Fibonacci number"""
+
 def main():
     a, b, c, term = 1, 1, 2, 3
 

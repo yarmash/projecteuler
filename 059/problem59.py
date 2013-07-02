@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 59: XOR decryption"""
+
 import os
 
 def main():

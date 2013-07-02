@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 47: Distinct primes factors"""
+
 from math import sqrt
 
 def main():

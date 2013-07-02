@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 21: Amicable numbers"""
+
 from projecteuler import sum_of_proper_divisors
 
 def main():

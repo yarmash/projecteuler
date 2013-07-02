@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 42: Coded triangle numbers"""
+
 import os
 from math import sqrt
 

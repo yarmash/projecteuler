@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 46: Goldbach's other conjecture"""
+
 from projecteuler import is_prime
 from math import sqrt
 

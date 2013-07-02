@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 36: Double-base palindromes"""
+
 from projecteuler import is_palindrome
 
 # generate a palindrome in base 2

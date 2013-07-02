@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 60: Prime pair sets"""
+
 from projecteuler import prime_sieve, memoize
 from miller_rabin import miller_rabin as is_prime
 

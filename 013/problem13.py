@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 13: Large sum"""
+
 def main():
     numbers = map(lambda s: int(s[0:11]), """
         37107287533902102798797998220837590246510135740250

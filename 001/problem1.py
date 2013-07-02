@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 1: Multiples of 3 and 5"""
+
 def sum_divisible_by(n, limit=1000):
     k = (limit - 1) / n
     s = (n*(1+k)*k)/2

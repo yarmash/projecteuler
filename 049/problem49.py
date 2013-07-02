@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 49: Prime permutations"""
+
 from projecteuler import prime_sieve
 
 def is_permutation(a, b):

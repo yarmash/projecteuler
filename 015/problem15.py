@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 15: Lattice paths"""
+
 from math import factorial
 
 def main():

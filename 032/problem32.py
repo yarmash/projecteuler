@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 32: Pandigital products"""
+
 from projecteuler import is_pandigital
 
 def main():

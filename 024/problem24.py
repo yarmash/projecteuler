@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 24: Lexicographic permutations"""
+
 from math import factorial
 
 def main():

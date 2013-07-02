@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 12: Highly divisible triangular number"""
+
 from projecteuler import prime_sieve
 
 def triangular_numbers():

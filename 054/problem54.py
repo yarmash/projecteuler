@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 54: Poker hands"""
+
 import os
 
 def hands():

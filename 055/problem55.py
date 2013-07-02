@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 55: Lychrel numbers"""
+
 from projecteuler import memoize
 
 @memoize

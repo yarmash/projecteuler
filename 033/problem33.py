@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 33: Digit cancelling fractions"""
+
 from projecteuler import gcd
 
 def main():

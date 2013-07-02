@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 39: Integer right triangles"""
+
 from projecteuler import pythagorean_triplets
 
 def main():

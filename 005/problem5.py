@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 5: Smallest multiple"""
+
 from math import log, sqrt
 from projecteuler import prime_sieve
 

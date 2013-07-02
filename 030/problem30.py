@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 30: Digit fifth powers"""
+
 def main():
     s = 0
 

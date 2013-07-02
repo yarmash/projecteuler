@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 22: Names scores"""
+
 import os
 
 def main():

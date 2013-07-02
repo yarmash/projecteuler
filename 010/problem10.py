@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 10: Summation of primes"""
+
 from projecteuler import prime_sieve
 
 def main():

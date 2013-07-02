@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 41: Pandigital prime"""
+
 from itertools import permutations
 from projecteuler import is_prime, is_pandigital
 

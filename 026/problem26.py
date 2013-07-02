@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 26: Reciprocal cycles"""
+
 from projecteuler import prime_factors, is_prime
 
 def is_primitive_root(k, n):

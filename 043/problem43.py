@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 43: Sub-string divisibility"""
+
 
 def main():
     def sum_pandigitals(digits, num):

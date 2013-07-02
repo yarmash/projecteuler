@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 23: Non-abundant sums"""
+
 from projecteuler import sum_of_proper_divisors
 
 def main():

@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 14: Longest Collatz sequence"""
+
 def main():
     cache = {}
     longest = 0

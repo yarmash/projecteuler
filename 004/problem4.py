@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 4: Largest palindrome product"""
+
 from projecteuler import is_palindrome
 
 def main():

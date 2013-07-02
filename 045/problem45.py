@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 45: Triangular, pentagonal, and hexagonal"""
+
 from projecteuler import is_pentagonal
 
 def hexagonal_numbers():

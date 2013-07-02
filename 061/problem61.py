@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 61: Cyclical figurate numbers"""
+
 from projecteuler import nth_triangle, nth_square, nth_pentagonal, nth_hexagonal, nth_heptagonal, nth_octagonal
 from operator import itemgetter
 

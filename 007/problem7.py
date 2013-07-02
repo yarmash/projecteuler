@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 7: 10001st prime"""
+
 from projecteuler import prime_sieve_lazy
 
 def main():

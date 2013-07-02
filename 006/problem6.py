@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 6: Sum square difference"""
+
 def main():
     lim = 100
     square_of_sum = (lim*(lim+1)/2) ** 2 # arithmetic progression

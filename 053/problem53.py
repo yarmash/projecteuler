@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 53: Combinatoric selections"""
+
 from projecteuler import factorials_table
 
 # TODO: refactor using the formula for Pascal's triangle

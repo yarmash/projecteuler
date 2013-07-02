@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 56: Powerful digit sum"""
+
 def main():
     res = 0
 

@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 44: Pentagon numbers"""
+
 from projecteuler import is_pentagonal, nth_pentagonal
 
 def main():

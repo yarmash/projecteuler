@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 57: Square root convergents"""
+
 from math import log10
 
 def main():

@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 40: Champernowne's constant"""
+
 def main():
     index = 0
     n = 1

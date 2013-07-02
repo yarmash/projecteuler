@@ -1,5 +1,7 @@
 #!/usr/bin/python2
 
+"""Problem 67: Maximum path sum II"""
+
 import sys
 from os.path import join, dirname
 

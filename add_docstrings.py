@@ -15,12 +15,11 @@ for num in count(1):
     docstring = '"""%s: %s"""\n' % (problem_number, problem_title)
     filepath = "%03d/problem%d.py" % (num, num)
 
-    f = open(filepath, "r+")
-    contents = f.readlines()
+    with open(filepath, "r+") as f:
+        contents = f.readlines()
 
-    if contents[2] != docstring:
-        contents.insert(2, docstring+"\n")
-        f.seek(0)
-        f.truncate()
-        f.write("".join(contents))
-    f.close()
+        if contents[2] != docstring:
+            contents.insert(2, docstring+"\n")
+            f.seek(0)
+            f.truncate()
+            f.write("".join(contents))

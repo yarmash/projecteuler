@@ -152,7 +152,6 @@ def nth_octagonal(n):
     return n*(3*n - 2)
 
 
-
 def is_pentagonal(n):
 	k = (sqrt(24*n+1)+1)/6
 	return k.is_integer()
@@ -189,3 +188,30 @@ def factorials_table(n):
 # returns the number of k-combinations of a set of n elements
 def number_of_combinations(n, k):
     return factorial(n) / (factorial(k) * factorial(n - k))
+
+# returns continued fraction expansion of a square root, e.g. sqrt(6) -> [2, 2, 4]
+# http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion
+def sqrt_fraction_expansion(num):
+    m = 0
+    d = 1
+    a0 = a = int(sqrt(num))
+
+    expansion = [a0]
+
+    while a != 2*a0:
+        m = d*a - m
+        d = (num - m*m)/d
+        a = (a0 + m)/d
+        expansion.append(a)
+
+    return expansion
+
+# get convergent fractions resulting from the quotients
+# http://en.wikipedia.org/wiki/Continued_fraction#Continued_fraction_expansions_of_.CF.80
+def convergent_fractions(quotients):
+    num, den, prev_num, prev_den = quotients.next(), 1, 1, 0
+
+    while True:
+        yield num, den
+        q = quotients.next()
+        prev_num, num, prev_den, den = num, prev_num + num*q, den, prev_den + den*q

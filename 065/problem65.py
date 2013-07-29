@@ -2,10 +2,14 @@
 
 """Convergents of e"""
 
+from projecteuler import convergent_fractions
+
 
 def main():
     # e = [2; 1,2,1, 1,4,1, 1,6,1, ...]
     def quotients():
+        yield 2
+
         k = 2
         while True:
             yield 1
@@ -13,15 +17,10 @@ def main():
             yield 1
             k += 2
 
-    # http://en.wikipedia.org/wiki/Continued_fraction#Continued_fraction_expansions_of_.CF.80
-    num, den, prev_num, prev_den = 2, 1, 1, 0
-    quotient = quotients()
-    cnt = 2
+    convergents = convergent_fractions(quotients())
 
-    while cnt <= 100:
-        q = quotient.next()
-        prev_num, num, prev_den, den = num, prev_num + num*q, den, prev_den + den*q
-        cnt += 1
+    for i in xrange(100):
+        num = convergents.next()[0]
 
     return sum(map(int, str(num)))
 

@@ -2,31 +2,36 @@
 
 """Magic 5-gon ring"""
 
-from itertools import permutations
 from operator import itemgetter
 
-
 def main():
-    def rings():
-        seen = set()
-        getters = map(lambda i: itemgetter(*i), ((0, 1, 2), (3, 2, 4), (5, 4, 6), (7, 6, 8), (9, 8, 1)))
+    numbers = set(xrange(1, 11))
+    sides = [0, 1, 2, 3, 2, 4, 5, 4, 6, 7, 6, 8, 9, 8, 1]
+    rotations = map(lambda i: itemgetter(*sides[i:] + sides[:i]), xrange(0, len(sides), 3))
+    solutions = []
 
-        for perm in permutations(range(1, 10)):
-            # 10 must be in one of the outer nodes since the answer is 16-digit
-            perm = (10,) + perm
+    def search(ring):
+        node = len(ring) - 1
 
-            lines = tuple(map(lambda getter: tuple(getter(perm)), getters))
+        # check sums
+        if node == 4 and ring[0] + ring[1] != ring[3] + ring[4] \
+            or node == 6 and ring[2] + ring[3] != ring[5] + ring[6] \
+            or node == 8 and ring[4] + ring[5] != ring[7] + ring[8] \
+            or node == 9 and ring[6] + ring[7] != ring[1] + ring[9]:
+            return
 
-            if all(sum(l) == sum(lines[0]) for l in lines[1:]):
-                lowest = min(lines, key=itemgetter(0))
-                idx = lines.index(lowest)
-                ring = lines[idx:] + lines[:idx]
+        candidates = numbers - set(ring)
 
-                if not ring in seen:
-                    yield ring
-                    seen.add(ring)
+        if candidates:
+            for c in candidates:
+                search(ring + [c])
+        else:
+            solutions.append(min(map(lambda rotation: rotation(ring), rotations)))
 
-    return max(map(int, map(lambda ring: "".join(map(lambda line: "".join(map(str, line)), ring)), rings())))
+    # 10 must be an outer node since the answer is 16-digit
+    search([10])
+
+    return "".join(map(str, max(solutions)))
 
 
 if __name__ == "__main__":

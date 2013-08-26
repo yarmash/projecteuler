@@ -12,8 +12,8 @@ def main(N=5):
         key = "".join(sorted(str(cube)))
 
         if cube > bound: # safe to return a candidate
-            if candidates and filter(lambda k: len(cubes[k]) == N, candidates):
-                return min(map(min, map(lambda k: cubes[k], candidates)))
+            if candidates and [ c for c in candidates if len(cubes[c]) == N ]:
+                return min(map(min, [ cubes[c] for c in candidates ]))
             bound *= 10
 
         if key in cubes:

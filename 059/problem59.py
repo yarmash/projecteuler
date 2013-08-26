@@ -14,7 +14,7 @@ def main():
         frequency[i%3][code] = frequency[i%3].get(code, 0) + 1
 
     # In English, the space (32) is the most frequent character
-    key = map(lambda f: 32^max(f.keys(), key=lambda x: f[x]), frequency)
+    key = [ 32^max(f.keys(), key=lambda x: f[x]) for f in frequency ]
 
     return sum((k^key[i])*v for i, f in enumerate(frequency) for k, v in f.iteritems())
 

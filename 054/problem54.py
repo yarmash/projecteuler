@@ -22,7 +22,7 @@ class Card():
         self.value = Card.values[data[0]]
 
     def __repr__(self):
-         return "%s%s" % (self.kind, Card.suits[self.suit])
+        return "%s%s" % (self.kind, Card.suits[self.suit])
 
 
 class Hand():
@@ -84,7 +84,7 @@ class Hand():
             yield 1
             yield occurrences.index(3)
             for card in cards:
-                if occurencies[card.value] != 3:
+                if occurrences[card.value] != 3:
                     yield card.value
         else:
             yield 0

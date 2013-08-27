@@ -22,7 +22,5 @@ def main():
                 return 1+step
             step += 2
 
-    return result
-
 if __name__ == "__main__":
     print main()

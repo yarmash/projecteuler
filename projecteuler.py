@@ -77,7 +77,7 @@ def prime_sieve_lazy():
 # returns prime factors of an integer
 def prime_factors(n):
     primes = prime_sieve(int(sqrt(n)))
-    prime_factors = []
+    factors = []
 
     for p in primes:
         if p*p > n:
@@ -89,12 +89,12 @@ def prime_factors(n):
             n //= p
 
         if e > 0:
-            prime_factors.append((p, e))
+            factors.append((p, e))
 
     if n > 1:
-        prime_factors.append((n, 1))
+        factors.append((n, 1))
 
-    return prime_factors
+    return factors
 
 def sum_of_divisors(n):
     if n == 1:
@@ -153,8 +153,8 @@ def nth_octagonal(n):
 
 
 def is_pentagonal(n):
-	k = (sqrt(24*n+1)+1)/6
-	return k.is_integer()
+    k = (sqrt(24*n+1)+1)/6
+    return k.is_integer()
 
 # returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
 # http://projecteuler.net/overview=009

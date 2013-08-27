@@ -12,7 +12,7 @@ def rotations(n):
         1 if 10 < n else \
         0
 
-    for i in range(k+1):
+    for _ in xrange(k+1):
         n = 10**k*(n % 10) + n/10
         yield n
 

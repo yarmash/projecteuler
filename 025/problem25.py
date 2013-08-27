@@ -3,12 +3,12 @@
 """Problem 25: 1000-digit Fibonacci number"""
 
 def main():
-    a, b, c, term = 1, 1, 2, 3
+    a, b, cnt = 1, 2, 3
 
-    while c < 10**999:
-        a, b, c, term = b, c, b+c, term+1
+    while b < 10**999:
+        a, b, cnt = b, a+b, cnt+1
 
-    return term
+    return cnt
 
 if __name__ == "__main__":
     print main()

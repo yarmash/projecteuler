@@ -19,7 +19,7 @@ def main():
 
     convergents = convergent_fractions(quotients())
 
-    for i in xrange(100):
+    for _ in xrange(100):
         num = convergents.next()[0]
 
     return sum(map(int, str(num)))

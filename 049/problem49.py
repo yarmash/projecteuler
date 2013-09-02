@@ -2,10 +2,7 @@
 
 """Problem 49: Prime permutations"""
 
-from projecteuler import prime_sieve
-
-def is_permutation(a, b):
-    return sorted(str(a)) == sorted(str(b))
+from projecteuler import is_permutation, prime_sieve
 
 def main():
     primes = [ x for x in prime_sieve(10000) if x > 1000 and x != 1487 and x != 4817 and x != 8147 ]

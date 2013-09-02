@@ -131,6 +131,12 @@ def is_pandigital(n, end=9, start=1):
 
     return res == (2**(end-start+1) - 1) << start
 
+# checks if an integer is a permutation of another
+def is_permutation(a, b):
+    if (a - b) % 9: # the difference must be a multiple of 9.
+        return False
+    return sorted(str(a)) == sorted(str(b))
+
 
 # functions for calculating polygonal numbers
 def nth_triangle(n):

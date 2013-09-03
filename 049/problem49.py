@@ -8,16 +8,14 @@ def main():
     primes = [ x for x in prime_sieve(10000) if x > 1000 and x != 1487 and x != 4817 and x != 8147 ]
     primes_set = frozenset(primes)
 
-    for i, p in enumerate(primes):
+    for i in xrange(len(primes)-1, 1, -1):
+        for j in xrange(i-1):
+            c = primes[i]
+            a = primes[j]
+            b = (c + a) >> 1
 
-        for q in primes[i+1:]:
-            r = 2*q-p
-
-            if r > primes[-1]:
-                break
-
-            if r in primes_set and is_permutation(p, q) and is_permutation(q, r):
-                return "%d%d%d" % (p, q, r)
+            if b in primes_set and is_permutation(a, b) and is_permutation(b, c):
+                return str(a)+str(b)+str(c)
 
 if __name__ == "__main__":
     print main()

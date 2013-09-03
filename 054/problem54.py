@@ -13,13 +13,12 @@ def hands():
 
 
 class Card():
-    values = dict(zip(("23456789TJQKA"), range(2, 15)))
-    suits = { s[0] : s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
+    values = dict(zip(("23456789TJQKA"), xrange(2, 15)))
+    suits = { s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
 
     def __init__(self, data):
-        self.kind = data[0]
-        self.suit = data[1]
-        self.value = Card.values[data[0]]
+        self.kind, self.suit = data # example: 9C JD
+        self.value = Card.values[self.kind]
 
     def __repr__(self):
         return "%s%s" % (self.kind, Card.suits[self.suit])
@@ -30,8 +29,8 @@ class Hand():
         cards.sort(key=lambda card: card.value, reverse=True)
 
         self.cards = cards
-        self.same_suit = all(card.suit == cards[0].suit for card in cards[1:])
-        self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in range(4))
+        self.same_suit = all(cards[i].suit == cards[0].suit for i in xrange(1, 5))
+        self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in xrange(4))
 
     def evaluate(self):
         cards = self.cards

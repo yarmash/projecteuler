@@ -13,13 +13,9 @@ def main():
     primes = prime_sieve(5000)
 
     def gen_product(start):
-        i = len(primes) - 1
-
-        while primes[start]*primes[i] > lim:
-            i -= 1
-
-        for j in xrange(i, start, -1):
-            yield (primes[start], primes[j])
+        for i in xrange(len(primes)-1, start, -1):
+            if primes[start]*primes[i] <= lim:
+                yield primes[start], primes[i]
 
 
     def n_by_phi(p1, p2):

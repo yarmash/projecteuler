@@ -2,31 +2,18 @@
 
 """Counting fractions"""
 
-from projecteuler import prime_sieve
-
-
-
+# http://en.wikipedia.org/wiki/Farey_sequence
 def main():
-    # http://en.wikipedia.org/wiki/Farey_sequence
+    lim = 1000000
 
-    n = 1000000
-    primes = prime_sieve(int(n**.5))
+    phis = list(float(i) for i in xrange(lim+1))
 
-    def phi(n):
-        res = float(n)
+    for i in xrange(2, lim+1):
+        if phis[i] == i:
+            for j in xrange(i, lim+1, i):
+                phis[j] -= phis[j]/i
 
-        for p in primes:
-            if p*p > n: break
-
-            if n % p == 0:
-                res -= res/p
-                while n % p == 0:
-                    n /= p
-        if n > 1:
-            res -= res/n
-        return res
-
-    return int(sum(phi(m) for m in xrange(2, n+1)))
+    return int(sum(phis)) - 1
 
 
 if __name__ == "__main__":

@@ -6,14 +6,14 @@
 def main():
     lim = 1000000
 
-    phis = list(float(i) for i in xrange(lim+1))
+    phis = range(lim+1)
 
     for i in xrange(2, lim+1):
-        if phis[i] == i:
+        if phis[i] == i: # i is a prime
             for j in xrange(i, lim+1, i):
                 phis[j] -= phis[j]/i
 
-    return int(sum(phis)) - 1
+    return sum(phis) - 1
 
 
 if __name__ == "__main__":

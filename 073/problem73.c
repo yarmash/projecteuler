@@ -1,13 +1,35 @@
 #include <stdio.h>
 
-int count(int n, int left, int right) {
-	int med = left + right;
-	if (med > n)
-		return 0;
-	return 1 + count(n, left, med) + count(n, med, right);
-}
-
 int main(void) {
-	printf("%d\n", count(12000, 3, 2));
-	return 0;
+    int limit = 12000,
+        count = 0,
+        top = 0,
+        stack[4000],
+        left = 3,
+        right = 2,
+        med;
+
+    for (;;) {
+        med = left + right;
+        if (med > limit) {
+            if (top > 0) {
+                left = right;
+                --top;
+                right = stack[top];
+            }
+            else {
+                break;
+            }
+        }
+        else {
+            ++count;
+            stack[top] = right;
+            ++top;
+            right = med;
+        }
+    }
+
+    printf("%d\n", count);
+
+    return 0;
 }

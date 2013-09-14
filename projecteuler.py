@@ -28,9 +28,7 @@ def is_prime(n):
         limit = int(sqrt(n))
         k = 5
         while k <= limit: # check through all the numbers of the form 6k ± 1
-            if n % k == 0:
-                return False
-            if n % (k+2) == 0:
+            if n % k == 0 or n % (k+2) == 0:
                 return False
             k += 6
 

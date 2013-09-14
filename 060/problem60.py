@@ -3,7 +3,7 @@
 """Problem 60: Prime pair sets"""
 
 from projecteuler import prime_sieve, memoize
-from miller_rabin import miller_rabin as is_prime
+from euler import is_prime
 
 def main():
     primes = prime_sieve(8500)

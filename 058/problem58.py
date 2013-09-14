@@ -2,7 +2,7 @@
 
 """Problem 58: Spiral primes"""
 
-from miller_rabin import miller_rabin as is_prime
+from euler import is_prime
 
 def main():
     number = 1

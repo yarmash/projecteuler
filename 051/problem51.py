@@ -2,7 +2,7 @@
 
 """Problem 51: Prime digit replacements"""
 
-from projecteuler import is_prime
+from euler import is_prime
 
 
 def main():

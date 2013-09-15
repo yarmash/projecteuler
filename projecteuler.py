@@ -161,11 +161,12 @@ def is_pentagonal(n):
     return k.is_integer()
 
 # returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
+# p is always even
 # http://projecteuler.net/overview=009
 def pythagorean_triplets(p):
     p >>= 1
 
-    for m in range(2, int(sqrt(p)+1)):
+    for m in xrange(2, int(sqrt(p)+1)):
         if p % m == 0:
             pm = p / m
             while not pm&1: # reduce the search space by removing all factors 2

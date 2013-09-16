@@ -183,13 +183,6 @@ def pythagorean_triplets(p):
                     yield (a, b, c)
                 k += 2
 
-# generates a lookup table of factorials for numbers <= n
-def factorials_table(n):
-    f = [1, 1]
-    for i in xrange(2, n+1):
-        f.append(i * f[i-1])
-    return f
-
 # returns the number of k-combinations of a set of n elements
 def number_of_combinations(n, k):
     return factorial(n) / (factorial(k) * factorial(n - k))

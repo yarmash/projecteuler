@@ -27,7 +27,7 @@ def main():
     .split())
 
     res = 0
-    for i in range(len(grid)):
+    for i in xrange(len(grid)):
         checks = (
             lambda: grid[i+3]  * grid[i+2]  * grid[i+1]  * grid[i], # -
             lambda: grid[i+63] * grid[i+42] * grid[i+21] * grid[i], # \

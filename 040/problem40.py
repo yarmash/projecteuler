@@ -6,7 +6,7 @@ def main():
     index = 0
     n = 1
     res = 1
-    indexes = frozenset([ 10**x for x in range(7) ])
+    indexes = frozenset(10**x for x in xrange(7))
 
     while index <= 1000000:
         for c in str(n):

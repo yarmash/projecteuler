@@ -7,8 +7,8 @@ from projecteuler import gcd
 def main():
     fractions = []
 
-    for a in range(10, 99):
-        for b in range(a+1, 100):
+    for a in xrange(10, 99):
+        for b in xrange(a+1, 100):
             if not a % 10 or not b % 10:
                 continue
 

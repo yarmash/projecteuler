@@ -4,17 +4,10 @@
 
 import os
 
-def hands():
-    datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
-
-    for line in open(datafile):
-        cards = map(Card, line.split())
-        yield Hand(cards[:5]).evaluate(), Hand(cards[5:]).evaluate()
-
-
-class Card():
-    values = dict(zip(("23456789TJQKA"), xrange(2, 15)))
+class Card(object):
+    values = dict(zip("23456789TJQKA", xrange(2, 15)))
     suits = { s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
+    __slots__ = ("kind", "value", "suit")
 
     def __init__(self, data):
         self.kind, self.suit = data # example: 9C JD
@@ -24,7 +17,9 @@ class Card():
         return "%s%s" % (self.kind, Card.suits[self.suit])
 
 
-class Hand():
+class Hand(object):
+    __slots__ = ("cards", "same_suit", "consecutive_values")
+
     def __init__(self, cards):
         cards.sort(key=lambda card: card.value, reverse=True)
 
@@ -115,6 +110,13 @@ class Hand():
 
 
 def main():
+    def hands():
+        datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
+
+        for line in open(datafile):
+            cards = map(Card, line.split())
+            yield Hand(cards[:5]).evaluate(), Hand(cards[5:]).evaluate()
+
     cnt = 0
 
     for it1, it2 in hands():

@@ -3,6 +3,7 @@
 """Problem 54: Poker hands"""
 
 import os
+from itertools import izip
 
 class Card(object):
     values = dict(zip("23456789TJQKA", xrange(2, 15)))
@@ -21,10 +22,10 @@ class Hand(object):
     __slots__ = ("cards", "same_suit", "consecutive_values")
 
     def __init__(self, cards):
-        cards.sort(key=lambda card: card.value, reverse=True)
+        cards = sorted(cards, key=lambda card: card.value, reverse=True)
 
         self.cards = cards
-        self.same_suit = all(cards[i].suit == cards[0].suit for i in xrange(1, 5))
+        self.same_suit = all(cards[i].suit == cards[4].suit for i in xrange(4))
         self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in xrange(4))
 
     def evaluate(self):
@@ -110,24 +111,20 @@ class Hand(object):
 
 
 def main():
-    def hands():
-        datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
+    datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
 
-        for line in open(datafile):
-            cards = map(Card, line.split())
-            yield Hand(cards[:5]).evaluate(), Hand(cards[5:]).evaluate()
+    cards = (Card(card) for card in open(datafile).read().split())
+    hands = (Hand(hand) for hand in izip(*[iter(cards)]*5))
 
     cnt = 0
 
-    for it1, it2 in hands():
-        v1 = v2 = 0
-
-        while v1 == v2:
-            v1 = it1.next()
-            v2 = it2.next()
-
-        if v1 > v2:
-            cnt += 1
+    for first, second in izip(*[iter(hands)]*2):
+        for a, b in izip(first.evaluate(), second.evaluate()):
+            if a == b:
+                continue
+            if a > b:
+                cnt += 1
+            break
     return cnt
 
 

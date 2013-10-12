@@ -2,25 +2,18 @@
 
 """Problem 31: Coin sums"""
 
-from projecteuler import memoize
-
 def main():
-    coins = [200, 100, 50, 20, 10, 5, 2, 1]
 
-    @memoize
-    def ways(amount, coin):
+    coins = [1, 2, 5, 10, 20, 50, 100, 200]
+    amount = 200
 
-        if coin == 7 or amount == 0:
-            return 1
+    ways = [0]*(amount+1)
+    ways[0] = 1
 
-        count = 0
-
-        while amount >= 0:
-            count += ways(amount, coin+1)
-            amount -= coins[coin]
-        return count
-
-    return ways(200, 0)
+    for coin in coins:
+        for i in xrange(coin, amount+1):
+            ways[i] += ways[i-coin]
+    return ways[amount]
 
 if __name__ == "__main__":
     print main()

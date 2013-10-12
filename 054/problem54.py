@@ -41,42 +41,36 @@ class Hand(object):
 
         # Straight Flush: All cards are consecutive values of same suit.
         if self.consecutive_values and self.same_suit:
-            yield 1
             yield cards[0].value
         else:
             yield 0
 
         # Four of a Kind: Four cards of the same value.
         if 4 in occurrences:
-            yield 1
             yield occurrences.index(4)
         else:
             yield 0
 
         # Full House: Three of a kind and a pair.
         if 3 in occurrences and 2 in occurrences:
-            yield 1
             yield occurrences.index(3)
         else:
             yield 0
 
         # Flush: All cards of the same suit.
         if self.same_suit:
-            yield 1
             yield cards[0].value
         else:
             yield 0
 
         # Straight: All cards are consecutive values.
         if self.consecutive_values:
-            yield 1
             yield cards[0].value
         else:
             yield 0
 
         # Three of a Kind: Three cards of the same value.
         if 3 in occurrences:
-            yield 1
             yield occurrences.index(3)
             for card in cards:
                 if occurrences[card.value] != 3:
@@ -86,7 +80,6 @@ class Hand(object):
 
         # Two Pairs: Two different pairs.
         if occurrences.count(2) == 2:
-            yield 1
             for card in cards:
                 if occurrences[card.value] == 2:
                     yield card.value
@@ -98,7 +91,6 @@ class Hand(object):
 
         # One Pair: Two cards of the same value.
         if 2 in occurrences:
-            yield 1
             yield occurrences.index(2)
             for card in cards:
                 if occurrences[card.value] != 2:

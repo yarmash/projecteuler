@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Prime summations"""
 
@@ -16,7 +16,7 @@ def main():
             if p > num:
                 break
 
-            for i in xrange(p, num+1):
+            for i in range(p, num+1):
                 ways[i] += ways[i-p]
 
         if ways[num] > nways:
@@ -24,4 +24,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

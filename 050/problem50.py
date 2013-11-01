@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 50: Consecutive prime sum"""
 
@@ -11,10 +11,10 @@ def main():
 
     cnt, res = 21, 953
 
-    for i in xrange(len(primes)-21):
+    for i in range(len(primes)-21):
         s = primes[i]
 
-        for k in xrange(i+1, len(primes)):
+        for k in range(i+1, len(primes)):
             s += primes[k]
 
             if s > lim: break
@@ -26,4 +26,4 @@ def main():
     return res
 
 if __name__ == "__main__":
-    print main()
+    print(main())

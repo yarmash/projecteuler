@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 12: Highly divisible triangular number"""
 
@@ -26,7 +26,7 @@ def main():
             exponent = 1
             while tt % p == 0:
                 exponent += 1
-                tt /= p
+                tt //= p
             cnt *= exponent
 
             if tt == 1:
@@ -36,4 +36,4 @@ def main():
             return t
 
 if __name__ == "__main__":
-    print main()
+    print(main())

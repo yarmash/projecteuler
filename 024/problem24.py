@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 24: Lexicographic permutations"""
 
@@ -14,4 +14,4 @@ def main():
     return nthPerm('0123456789', 999999)
 
 if __name__ == "__main__":
-    print main()
+    print(main())

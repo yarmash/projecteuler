@@ -1,13 +1,13 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Magic 5-gon ring"""
 
 from operator import itemgetter
 
 def main():
-    numbers = set(xrange(1, 11))
+    numbers = set(range(1, 11))
     sides = [0, 1, 2, 3, 2, 4, 5, 4, 6, 7, 6, 8, 9, 8, 1]
-    rotations = [ itemgetter(*sides[i:] + sides[:i]) for i in xrange(0, len(sides), 3) ]
+    rotations = [ itemgetter(*sides[i:] + sides[:i]) for i in range(0, len(sides), 3) ]
     solutions = []
     search = [[10]]
 
@@ -33,4 +33,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

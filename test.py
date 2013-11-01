@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/python
 
 import os
 import sys
@@ -20,8 +20,8 @@ for d in dirs:
     sys.stdout.flush()
     begin = time.clock()
     if answer == str(mod.main()):
-        print "OK (%.2fs)" % (time.clock() - begin)
+        print("OK ({0:.2f}s)".format(time.clock() - begin))
     else:
-        print "FAIL"
+        print("FAIL")
 
-print "Total: %d problems in %.2fs" % (cnt, time.clock()-start)
+print("Total: {0} problems in {1:.2f}s".format(cnt, time.clock()-start))

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 45: Triangular, pentagonal, and hexagonal"""
 
@@ -22,4 +22,4 @@ def main():
                 return h
 
 if __name__ == "__main__":
-    print main()
+    print(main())

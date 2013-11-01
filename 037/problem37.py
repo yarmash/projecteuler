@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 37: Truncatable primes"""
 
@@ -8,12 +8,12 @@ from math import log10
 
 def is_truncatable(p): # check if the prime is right-/left-truncatable
     if p < 10: return False
-    t = p/10
+    t = p//10
 
     while t > 0:
         if not is_prime(t):
             return False
-        t /= 10
+        t //= 10
 
 
     k = int(log10(p))
@@ -39,4 +39,4 @@ def main():
                 return res
 
 if __name__ == "__main__":
-    print main()
+    print(main())

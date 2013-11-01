@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Ordered fractions"""
 
@@ -7,11 +7,11 @@ def main():
     a, b, c, d = 0, 1000000, 3, 7
 
     while True:
-        a = (b*c-1)/d
+        a = (b*c-1)//d
         if b*c - a*d == 1:
             return a
         b -= 1
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

@@ -1,14 +1,12 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 19: Counting Sundays"""
 
 def is_leap_year(y):
-    if y % 4 == 0 and y % 100 != 0 or y % 400 == 0:
-        return True
-    return False
+    return y % 4 == 0 and y % 100 != 0 or y % 400 == 0
 
 def main():
-    numdays = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
+    numdays = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
     year, month, wday = 1901, 1, 2
     cnt = 0
@@ -29,4 +27,4 @@ def main():
     return cnt
 
 if __name__ == "__main__":
-    print main()
+    print(main())

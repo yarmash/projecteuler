@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Digit factorial chains"""
 
@@ -32,7 +32,7 @@ def main():
 
             while n:
                 fsum += factorials[n % 10]
-                n /= 10
+                n //= 10
 
             if cache[fsum]:
                 length = cache[fsum] + len(chain)
@@ -53,8 +53,8 @@ def main():
             chain.append(fsum)
             n = fsum
 
-    return sum(1 for i in xrange(lim) if get_chain_len(i) == 60)
+    return sum(1 for i in range(lim) if get_chain_len(i) == 60)
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

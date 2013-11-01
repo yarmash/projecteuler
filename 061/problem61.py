@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 61: Cyclical figurate numbers"""
 
@@ -7,18 +7,17 @@ from operator import itemgetter
 
 
 def is_cyclic(m, n):
-    return m % 100 == n / 100
+    return m % 100 == n // 100
 
 def main():
     numbers = [ # the ranges can be figured out using the respective formulas
-        map(nth_triangle, xrange(45, 141)), # 4-digit triangle numbers
-        map(nth_square, xrange(31, 100)), # 4-digit square numbers
-        map(nth_pentagonal, xrange(25, 82)),
-        map(nth_hexagonal, xrange(22, 71)),
-        map(nth_heptagonal, xrange(20, 64)),
-        map(nth_octagonal, xrange(18, 59))
+        [ nth_triangle(i)   for i in range(45, 141) ], # 4-digit triangle numbers
+        [ nth_square(i)     for i in range(31, 100) ], # 4-digit square numbers
+        [ nth_pentagonal(i) for i in range(25, 82) ],
+        [ nth_hexagonal(i)  for i in range(22, 71) ],
+        [ nth_heptagonal(i) for i in range(20, 64) ],
+        [ nth_octagonal(i)  for i in range(18, 59) ]
     ]
-
 
     def get_number(n):
         return numbers[n[0]][n[1]]
@@ -37,15 +36,15 @@ def main():
         this_num = get_number(n[-1])
 
         for u in unused_types:
-            for k in xrange(len(numbers[u])):
+            for k in range(len(numbers[u])):
                 if is_cyclic(this_num, numbers[u][k]):
                     s = search(n+[(u, k)])
                     if s: return s
 
-    for i in xrange(len(numbers[5])): # start from the octagonal numbers
+    for i in range(len(numbers[5])): # start from the octagonal numbers
         s = search([(5, i)])
         if s: return sum(map(get_number, s))
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

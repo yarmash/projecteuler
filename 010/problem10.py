@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 10: Summation of primes"""
 
@@ -9,4 +9,4 @@ def main():
     return sum(prime_sieve(lim))
 
 if __name__ == "__main__":
-    print main()
+    print(main())

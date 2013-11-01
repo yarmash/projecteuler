@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 17: Number letter counts"""
 
@@ -11,12 +11,12 @@ def main():
         words = []
 
         if n >= 1000:
-            words.extend((units[n/1000-1], "thousand"))
-            n = n % 1000
+            words.extend((units[n//1000-1], "thousand"))
+            n %= 1000
 
         if n >= 100:
-            words.extend((units[n/1000-1], "hundred"))
-            n = n % 100
+            words.extend((units[n//1000-1], "hundred"))
+            n %= 100
             if n:
                 words.append("and")
 
@@ -24,15 +24,14 @@ def main():
             words.append(teens[n-10-1])
         else:
             if n >= 10:
-                words.append(tens[n/10-1])
-                n = n % 10
+                words.append(tens[n//10-1])
+                n %= 10
             if n >= 1:
                 words.append(units[n-1])
 
-        #print words
         return sum(map(len, words))
 
-    return sum(count_letters(i) for i in xrange(1, 1001))
+    return sum(count_letters(i) for i in range(1, 1001))
 
 if __name__ == "__main__":
-    print main()
+    print(main())

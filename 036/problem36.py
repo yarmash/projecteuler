@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 36: Double-base palindromes"""
 
@@ -27,4 +27,4 @@ def main():
     return sum(p for p in palindromes(True)) + sum(p for p in palindromes(False))
 
 if __name__ == "__main__":
-    print main()
+    print(main())

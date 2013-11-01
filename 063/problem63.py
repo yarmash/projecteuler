@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 63: Powerful digit counts"""
 
@@ -6,7 +6,7 @@ def main():
     cnt = 0
 
     # if num >= 10, num^n has more than n digits for each n
-    for num in xrange(1, 10):
+    for num in range(1, 10):
         power = 1
 
         # if num^n has less than n digits, then num^k has less than k digits for each k > n
@@ -18,4 +18,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

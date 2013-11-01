@@ -1,20 +1,21 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 2: Even Fibonacci numbers"""
 
+
 def main():
-    x, y = 1, 2
     limit = 4000000
-    s = 0
+    a, b, c, sum_ = 1, 1, 2, 0
 
-    while y <= limit:
-        if not y&1: # even
-            s += y
+    # every third Fibonacci number is even
+    while c <= limit:
+        sum_ += c
+        a = b + c
+        b = c + a
+        c = a + b
 
-        x, y = y, x + y
-
-    return s
+    return sum_
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 7: 10001st prime"""
 
@@ -12,4 +12,4 @@ def main():
             return prime
 
 if __name__ == "__main__":
-    print main()
+    print(main())

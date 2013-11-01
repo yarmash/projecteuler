@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 22: Names scores"""
 
@@ -18,4 +18,4 @@ def main():
     return s
 
 if __name__ == "__main__":
-    print main()
+    print(main())

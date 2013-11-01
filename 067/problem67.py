@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 67: Maximum path sum II"""
 
@@ -16,9 +16,9 @@ except ImportError:
 
 def main():
     datafile = join(dirname(__file__), "triangle.txt")
-    nums = map(int, open(datafile).read().split())
+    nums = [ int(d) for d in open(datafile).read().split() ]
 
     return problem18.calc_max_total(nums)
 
 if __name__ == "__main__":
-    print main()
+    print(main())

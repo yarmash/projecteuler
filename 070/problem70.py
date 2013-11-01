@@ -1,10 +1,10 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Totient permutation"""
 
 from projecteuler import prime_sieve, is_permutation
 from bisect import bisect_left
-from Queue import PriorityQueue
+from queue import PriorityQueue
 
 def main():
     # n cannot be prime^k (k = [1, 2, ...]) because prime^k and phi(prime^k)
@@ -17,7 +17,7 @@ def main():
     middle_idx = bisect_left(primes, 3137)
 
     def candidate_primes(low_idx):
-        for high_idx in xrange(last_idx, low_idx, -1):
+        for high_idx in range(last_idx, low_idx, -1):
             if primes[low_idx]*primes[high_idx] <= lim:
                 yield high_idx
 
@@ -28,7 +28,7 @@ def main():
             self.low_idx = low_idx
             self.gen = gen
             low = primes[self.low_idx]
-            high = primes[self.gen.next()]
+            high = primes[next(self.gen)]
             self.number = low*high
             self.phi = (low-1)*(high-1)
 
@@ -37,7 +37,7 @@ def main():
 
     queue = PriorityQueue()
 
-    for low_idx in xrange(middle_idx, -1, -1):
+    for low_idx in range(middle_idx, -1, -1):
         gen = candidate_primes(low_idx)
         queue.put(Number(low_idx, gen))
 
@@ -53,4 +53,4 @@ def main():
             pass
 
 if __name__ == "__main__":
-    print main()
+    print(main())

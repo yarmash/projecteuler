@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Totient maximum"""
 
@@ -16,4 +16,4 @@ def main():
     return res
 
 if __name__ == "__main__":
-    print main()
+    print(main())

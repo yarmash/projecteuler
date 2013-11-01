@@ -1,6 +1,8 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 8: Largest product in a series"""
+
+from functools import reduce
 
 def main():
     num = (
@@ -28,7 +30,7 @@ def main():
 
     res = 0
 
-    for i in xrange(len(num) - 4):
+    for i in range(len(num) - 4):
         digits = num[i:i+5]
         product = reduce(lambda x, y: x*int(y), digits, 1)
 
@@ -38,4 +40,4 @@ def main():
     return res
 
 if __name__ == "__main__":
-    print main()
+    print(main())

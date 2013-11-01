@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Counting fractions"""
 
@@ -6,15 +6,15 @@
 def main():
     lim = 1000000
 
-    phis = range(lim+1)
+    phis = list(range(lim+1))
 
-    for i in xrange(2, lim+1):
+    for i in range(2, lim+1):
         if phis[i] == i: # i is a prime
-            for j in xrange(i, lim+1, i):
-                phis[j] -= phis[j]/i
+            for j in range(i, lim+1, i):
+                phis[j] -= phis[j]//i
 
     return sum(phis) - 1
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

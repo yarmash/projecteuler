@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 26: Reciprocal cycles"""
 
@@ -8,15 +8,15 @@ def is_primitive_root(k, n):
     factors = prime_factors(n-1)
 
     for f in factors:
-        if k**((n-1)/f[0]) % n <= 1:
+        if k**((n-1)//f[0]) % n <= 1:
             return False
 
     return True
 
 def main():
-    for n in xrange(999, 1, -2):
+    for n in range(999, 1, -2):
         if is_prime(n) and is_primitive_root(10, n):
             return n
 
 if __name__ == "__main__":
-    print main()
+    print(main())

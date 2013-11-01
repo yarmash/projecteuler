@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Counting summations"""
 
@@ -18,4 +18,4 @@ def main():
     return count(1, 100) - 1
 
 if __name__ == "__main__":
-    print main()
+    print(main())

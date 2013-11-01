@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 3: Largest prime factor"""
 
@@ -16,4 +16,4 @@ def main():
     return f2
 
 if __name__ == "__main__":
-    print main()
+    print(main())

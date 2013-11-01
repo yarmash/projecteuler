@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 35: Circular primes"""
 
@@ -12,8 +12,8 @@ def rotations(n):
         1 if 10 < n else \
         0
 
-    for _ in xrange(k+1):
-        n = 10**k*(n % 10) + n/10
+    for _ in range(k+1):
+        n = 10**k*(n % 10) + n//10
         yield n
 
 def main():
@@ -32,4 +32,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 31: Coin sums"""
 
@@ -11,9 +11,9 @@ def main():
     ways[0] = 1
 
     for coin in coins:
-        for i in xrange(coin, amount+1):
+        for i in range(coin, amount+1):
             ways[i] += ways[i-coin]
     return ways[amount]
 
 if __name__ == "__main__":
-    print main()
+    print(main())

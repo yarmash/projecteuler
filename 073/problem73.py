@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Counting fractions in a range"""
 
@@ -16,4 +16,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

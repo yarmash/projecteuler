@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 20: Factorial digit sum"""
 
@@ -8,4 +8,4 @@ def main():
     return sum(int(d) for d in str(factorial(100)))
 
 if __name__ == "__main__":
-    print main()
+    print(main())

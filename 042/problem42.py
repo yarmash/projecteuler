@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 42: Coded triangle numbers"""
 
@@ -23,4 +23,4 @@ def main():
     return cnt
 
 if __name__ == "__main__":
-    print main()
+    print(main())

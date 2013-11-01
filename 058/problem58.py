@@ -1,8 +1,8 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 58: Spiral primes"""
 
-from euler import is_prime
+from projecteuler import is_prime
 
 def main():
     number = 1
@@ -18,9 +18,9 @@ def main():
             primes_cnt += is_prime(number)
         else:
             # layer done
-            if primes_cnt/(2*step+1.0) < .1: # ratio below 10%
+            if primes_cnt/(2*step+1) < .1: # ratio below 10%
                 return 1+step
             step += 2
 
 if __name__ == "__main__":
-    print main()
+    print(main())

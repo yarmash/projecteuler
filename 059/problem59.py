@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 59: XOR decryption"""
 
@@ -10,7 +10,7 @@ def main():
     codes = eval(open(datafile).read())
 
     # code frequency for each character of the key
-    frequency = [ defaultdict(int) for i in xrange(3) ]
+    frequency = [ defaultdict(int) for i in range(3) ]
 
     for i, code in enumerate(codes):
         frequency[i % 3][code] += 1
@@ -18,7 +18,7 @@ def main():
     # In English, the space (32) is the most frequent character
     key = [ 32^max(f.keys(), key=f.get) for f in frequency ]
 
-    return sum((k^key[i])*v for i, f in enumerate(frequency) for k, v in f.iteritems())
+    return sum((k^key[i])*v for i, f in enumerate(frequency) for k, v in f.items())
 
 if __name__ == "__main__":
-    print main()
+    print(main())

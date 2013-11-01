@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 18: Maximum path sum I"""
 
@@ -8,17 +8,17 @@ from math import sqrt
 # the number of rows in the triangle and the number's index in the array are calculated using the formulas
 # for the sum of the members of an arithmetic progression
 def calc_max_total(nums):
-    nrows = (-1 + sqrt(1+4*2*len(nums))) / 2
+    nrows = (-1 + sqrt(1+4*2*len(nums))) // 2
 
     @memoize
     def calc_total(rownum, idx):
-        n = nums[ ((1 + (rownum-1))*(rownum-1))/2 + idx ]
+        n = nums[ ((1 + (rownum-1))*(rownum-1))//2 + idx ]
         return n if rownum == nrows else n + max(calc_total(rownum+1, idx), calc_total(rownum+1, idx+1))
 
     return calc_total(1, 0)
 
 def main():
-    nums = map(int, """
+    nums = [ int(d) for d in """
     75
     95 64
     17 47 82
@@ -34,9 +34,9 @@ def main():
     91 71 52 38 17 14 91 43 58 50 27 29 48
     63 66 04 68 89 53 67 30 73 16 69 87 40 31
     04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
-    """.split())
+    """.split() ]
 
     return calc_max_total(nums)
 
 if __name__ == "__main__":
-    print main()
+    print(main())

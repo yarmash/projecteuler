@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 5: Smallest multiple"""
 
@@ -20,4 +20,4 @@ def main():
     return result
 
 if __name__ == "__main__":
-    print main()
+    print(main())

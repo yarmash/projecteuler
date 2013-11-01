@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Convergents of e"""
 
@@ -19,11 +19,11 @@ def main():
 
     convergents = convergent_fractions(quotients())
 
-    for _ in xrange(100):
-        num = convergents.next()[0]
+    for _ in range(100):
+        num = next(convergents)[0]
 
     return sum(map(int, str(num)))
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

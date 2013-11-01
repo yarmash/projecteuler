@@ -1,9 +1,8 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 51: Prime digit replacements"""
 
-from euler import is_prime
-
+from projecteuler import is_prime
 
 def main():
     num = 1009 # 1st 4-digit prime
@@ -21,7 +20,7 @@ def main():
                 if count and count % 3 == 0 and not (c == "1" and s[-1] == "1"):
                     cnt = 1
 
-                    for i in xrange(int(c)+1, 10):
+                    for i in range(int(c)+1, 10):
                         if 10-i < 8-cnt: break
 
                         if is_prime(int(s.replace(c, str(i)))):
@@ -29,4 +28,4 @@ def main():
                             if cnt == 8:
                                 return num
 if __name__ == '__main__':
-    print main()
+    print(main())

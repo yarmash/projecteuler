@@ -1,12 +1,11 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 54: Poker hands"""
 
 import os
-from itertools import izip
 
-class Card(object):
-    values = dict(zip("23456789TJQKA", xrange(2, 15)))
+class Card():
+    values = dict(zip("23456789TJQKA", range(2, 15)))
     suits = { s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
     __slots__ = ("kind", "value", "suit")
 
@@ -18,15 +17,15 @@ class Card(object):
         return "%s%s" % (self.kind, Card.suits[self.suit])
 
 
-class Hand(object):
+class Hand():
     __slots__ = ("cards", "same_suit", "consecutive_values")
 
     def __init__(self, cards):
         cards = sorted(cards, key=lambda card: card.value, reverse=True)
 
         self.cards = cards
-        self.same_suit = all(cards[i].suit == cards[4].suit for i in xrange(4))
-        self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in xrange(4))
+        self.same_suit = all(cards[i].suit == cards[4].suit for i in range(4))
+        self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in range(4))
 
     def evaluate(self):
         cards = self.cards
@@ -106,12 +105,12 @@ def main():
     datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
 
     cards = (Card(card) for card in open(datafile).read().split())
-    hands = (Hand(hand) for hand in izip(*[iter(cards)]*5))
+    hands = (Hand(hand) for hand in zip(*[iter(cards)]*5))
 
     cnt = 0
 
-    for first, second in izip(*[iter(hands)]*2):
-        for a, b in izip(first.evaluate(), second.evaluate()):
+    for first, second in zip(*[iter(hands)]*2):
+        for a, b in zip(first.evaluate(), second.evaluate()):
             if a == b:
                 continue
             if a > b:
@@ -121,4 +120,4 @@ def main():
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

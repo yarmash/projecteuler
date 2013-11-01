@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 38: Pandigital multiples"""
 
@@ -7,7 +7,7 @@ from itertools import permutations
 
 def main():
     # the number can have 4 digits max since the concatenated product has the length 9
-    for i in xrange(4, 0, -1):
+    for i in range(4, 0, -1):
         for p in permutations("987654321", i):
             p = "".join(p)
             k = int(p) << 1   # initial product (number*2)
@@ -20,4 +20,4 @@ def main():
                 c += str(k)
 
 if __name__ == "__main__":
-    print main()
+    print(main())

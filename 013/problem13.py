@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 13: Large sum"""
 
@@ -109,4 +109,4 @@ def main():
     return str(sum(numbers))[0:10]
 
 if __name__ == "__main__":
-    print main()
+    print(main())

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 46: Goldbach's other conjecture"""
 
@@ -19,4 +19,4 @@ def main():
         n += 2
 
 if __name__ == "__main__":
-    print main()
+    print(main())

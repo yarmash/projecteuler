@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 62: Cubic permutations"""
 
@@ -27,4 +27,4 @@ def main(N=5):
 
 
 if __name__ == "__main__":
-    print main()
+    print(main())

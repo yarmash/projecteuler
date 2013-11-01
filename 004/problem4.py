@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 4: Largest palindrome product"""
 
@@ -7,8 +7,8 @@ from projecteuler import is_palindrome
 def main():
     n = 0
 
-    for x in xrange(999, 99, -1):
-        for y in xrange(x, 99, -1):
+    for x in range(999, 99, -1):
+        for y in range(x, 99, -1):
             k = x*y
             if k <= n:
                 break
@@ -17,4 +17,4 @@ def main():
     return n
 
 if __name__ == "__main__":
-    print main()
+    print(main())

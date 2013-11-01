@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 47: Distinct primes factors"""
 
@@ -8,14 +8,14 @@ def main():
     lim = 1000000
     sieve = [0]*lim
 
-    for i in xrange(2, int(sqrt(lim))+1):
+    for i in range(2, int(sqrt(lim))+1):
         if not sieve[i]: # prime
-            for k in xrange(i+i, lim, i):
+            for k in range(i+i, lim, i):
                 sieve[k] += 1
     l = [4]*4
-    for i in xrange(2, len(sieve)-4):
+    for i in range(2, len(sieve)-4):
         if sieve[i:i+4] == l:
             return i
 
 if __name__ == "__main__":
-    print main()
+    print(main())

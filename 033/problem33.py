@@ -1,14 +1,15 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 33: Digit cancelling fractions"""
 
 from projecteuler import gcd
+from functools import reduce
 
 def main():
     fractions = []
 
-    for a in xrange(10, 99):
-        for b in xrange(a+1, 100):
+    for a in range(10, 99):
+        for b in range(a+1, 100):
             if not a % 10 or not b % 10:
                 continue
 
@@ -18,7 +19,7 @@ def main():
 
     f = reduce(lambda x, y: (x[0]*y[0], x[1]*y[1]), fractions)
 
-    return f[1]/gcd(*f)
+    return f[1]//gcd(*f)
 
 if __name__ == "__main__":
-    print main()
+    print(main())

@@ -1,15 +1,15 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # coding=utf-8
 
 from math import sqrt, factorial
+from functools import reduce
 
 def memoize(fn):
     memo = {}
     def wrapper(*args):
         if args in memo:
             return memo[args]
-        result = fn(*args)
-        memo[args] = result
+        memo[args] = result = fn(*args)
         return result
     return wrapper
 
@@ -41,15 +41,15 @@ def prime_sieve(n):
     if n <= 1:
         return []
 
-    bound = (n-1)/2 # last index of the sieve
+    bound = (n-1) // 2 # last index of the sieve
     sieve = [True]*(bound+1)
 
-    for i in xrange(1, int(sqrt(n)/2)+1):
+    for i in range(1, int(sqrt(n)//2)+1):
         if sieve[i]: # 2*i+1 is a prime, mark multiples
-            for j in xrange(2*i*(i+1), bound+1, 2*i+1):
+            for j in range(2*i*(i+1), bound+1, 2*i+1):
                 sieve[j] = False
     primes = [2]
-    for i in xrange(1, bound+1):
+    for i in range(1, bound+1):
         if sieve[i]:
             primes.append(2*i+1)
     return primes
@@ -98,7 +98,7 @@ def sum_of_divisors(n):
     if n == 1:
         return 1
     # http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
-    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)/(y[0]-1), prime_factors(n), 1)
+    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)//(y[0]-1), prime_factors(n), 1)
 
 def sum_of_proper_divisors(n):
     return sum_of_divisors(n) - n
@@ -115,7 +115,7 @@ def is_palindrome(n, base):
     t = n
     while t > 0:
         r = r * base + t % base
-        t /= base
+        t //= base
     return r == n
 
 # checks if a number is x to y pandigital
@@ -125,7 +125,7 @@ def is_pandigital(n, end=9, start=1):
 
     while n > 0:
         res |= (1 << n % 10)
-        n /= 10
+        n //= 10
 
     return res == (2**(end-start+1) - 1) << start
 
@@ -138,19 +138,19 @@ def is_permutation(a, b):
 
 # functions for calculating polygonal numbers
 def nth_triangle(n):
-    return n*(n+1)/2
+    return n*(n+1)//2
 
 def nth_square(n):
     return n*n
 
 def nth_pentagonal(n):
-    return n*(3*n - 1)/2
+    return n*(3*n - 1)//2
 
 def nth_hexagonal(n):
     return n*(2*n-1)
 
 def nth_heptagonal(n):
-    return n*(5*n-3)/2
+    return n*(5*n-3)//2
 
 def nth_octagonal(n):
     return n*(3*n - 2)
@@ -166,16 +166,16 @@ def is_pentagonal(n):
 def pythagorean_triplets(p):
     p >>= 1
 
-    for m in xrange(2, int(sqrt(p)+1)):
+    for m in range(2, int(sqrt(p)+1)):
         if p % m == 0:
-            pm = p / m
+            pm = p // m
             while not pm&1: # reduce the search space by removing all factors 2
                 pm >>= 1
             k = m + 2 if m&1 else m + 1
 
             while k < 2*m and k <= pm:
                 if pm % k == 0 and gcd(k, m) == 1:
-                    d = p/(k*m)
+                    d = p//(k*m)
                     n = k - m
                     a = d*(m*m - n*n)
                     b = 2*d*m*n
@@ -198,8 +198,8 @@ def sqrt_fraction_expansion(num):
 
     while a != 2*a0:
         m = d*a - m
-        d = (num - m*m)/d
-        a = (a0 + m)/d
+        d = (num - m*m)//d
+        a = (a0 + m)//d
         expansion.append(a)
 
     return expansion
@@ -207,9 +207,9 @@ def sqrt_fraction_expansion(num):
 # get convergent fractions resulting from the quotients
 # http://en.wikipedia.org/wiki/Continued_fraction#Continued_fraction_expansions_of_.CF.80
 def convergent_fractions(quotients):
-    num, den, prev_num, prev_den = quotients.next(), 1, 1, 0
+    num, den, prev_num, prev_den = next(quotients), 1, 1, 0
 
     while True:
         yield num, den
-        q = quotients.next()
+        q = next(quotients)
         prev_num, num, prev_den, den = num, prev_num + num*q, den, prev_den + den*q

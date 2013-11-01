@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 27: Quadratic primes"""
 
@@ -27,4 +27,4 @@ def main():
     return product
 
 if __name__ == "__main__":
-    print main()
+    print(main())

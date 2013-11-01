@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 14: Longest Collatz sequence"""
 
@@ -15,7 +15,7 @@ def main():
             cache[n] = 2 + get_chain_length((3*n+1) >> 1) if n&1 else 1 + get_chain_length(n>>1)
         return cache[n]
 
-    for i in xrange(2, 1000000):
+    for i in range(2, 1000000):
         length = get_chain_length(i)
 
         if length > longest:
@@ -25,4 +25,4 @@ def main():
     return num
 
 if __name__ == "__main__":
-    print main()
+    print(main())

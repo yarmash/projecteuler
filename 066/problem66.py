@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Diophantine equation"""
 
@@ -22,7 +22,7 @@ def quotients(n):
 def main():
     res, max_x = 0, 0
 
-    for d in xrange(2, 1001):
+    for d in range(2, 1001):
         if sqrt(d).is_integer():
             continue
 
@@ -35,4 +35,4 @@ def main():
     return res
 
 if __name__ == "__main__":
-    print main()
+    print(main())

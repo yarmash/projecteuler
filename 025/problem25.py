@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 25: 1000-digit Fibonacci number"""
 
@@ -11,4 +11,4 @@ def main():
     return cnt
 
 if __name__ == "__main__":
-    print main()
+    print(main())

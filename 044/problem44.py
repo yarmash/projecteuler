@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 """Problem 44: Pentagon numbers"""
 
@@ -15,7 +15,7 @@ def main():
 
         diffs.append(0)
 
-        for i in xrange(len(diffs)):
+        for i in range(len(diffs)):
             diffs[i] += diff
 
             if n != (i+1) and is_pentagonal(diffs[i]):
@@ -24,4 +24,4 @@ def main():
     return mindiff
 
 if __name__ == "__main__":
-    print main()
+    print(main())

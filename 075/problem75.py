@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Singular integer right triangles"""
+"""Problem 75: Singular integer right triangles"""
 
 from projecteuler import gcd
 from math import sqrt

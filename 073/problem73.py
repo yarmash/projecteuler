@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Counting fractions in a range"""
+"""Problem 73: Counting fractions in a range"""
 
 import sys
 sys.setrecursionlimit(10000)

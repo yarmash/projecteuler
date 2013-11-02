@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Counting summations"""
+"""Problem 76: Counting summations"""
 
 from projecteuler import memoize
 

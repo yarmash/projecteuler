@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Digit factorial chains"""
+"""Problem 74: Digit factorial chains"""
 
 def main():
     lim = 1000000

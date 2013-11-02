@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Ordered fractions"""
+"""Problem 71: Ordered fractions"""
 
 def main():
     # http://en.wikipedia.org/wiki/Farey_sequence

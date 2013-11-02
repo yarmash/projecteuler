@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Counting fractions"""
+"""Problem 72: Counting fractions"""
 
 # http://en.wikipedia.org/wiki/Farey_sequence
 def main():

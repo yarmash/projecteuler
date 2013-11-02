@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Magic 5-gon ring"""
+"""Problem 68: Magic 5-gon ring"""
 
 from operator import itemgetter
 

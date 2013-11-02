@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Prime summations"""
+"""Problem 77: Prime summations"""
 
 from projecteuler import prime_sieve_lazy
 from itertools import count

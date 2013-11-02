@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Diophantine equation"""
+"""Problem 66: Diophantine equation"""
 
 # http://mathworld.wolfram.com/PellEquation.html
 # http://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions

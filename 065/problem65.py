@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Convergents of e"""
+"""Problem 65: Convergents of e"""
 
 from projecteuler import convergent_fractions
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Totient permutation"""
+"""Problem 70: Totient permutation"""
 
 from projecteuler import prime_sieve, is_permutation
 from bisect import bisect_left

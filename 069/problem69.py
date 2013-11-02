@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"""Totient maximum"""
+"""Problem 69: Totient maximum"""
 
 from projecteuler import prime_sieve_lazy
 

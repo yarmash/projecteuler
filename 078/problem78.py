@@ -2,41 +2,34 @@
 
 """Problem 78: Coin partitions"""
 
-from itertools import count
+def gen_p():
+    plist = [1]
+    yield 1
+
+    n = 1
+
+    while True:
+        t = 1
+        k = 1
+        p = 0
+
+        while t > 0:
+            sign = 1 if k & 1 else -1
+            t = n - (k*(3*k+1) >> 1)
+            if t >= 0:
+                p += sign*plist[t]
+            t = n - (k*(3*k-1) >> 1)
+            if t >= 0:
+                p += sign*plist[t]
+            k +=1
+        n += 1
+        plist.append(p)
+        yield p
 
 def main():
-
-    def pentagonal_numbers():
-        #yield 0
-        for n in count(1):
-            yield n*(3*n-1) >> 1
-            yield (-n)*(3*(-n)-1) >> 1
-
-
-    memo = { 0: 1, 1: 1 }
-
-    def p(n):
-        if n in memo:
-            return memo[n]
-
-        partition = 0
-
-        for i, pent in enumerate(pentagonal_numbers()):
-
-            if pent > n:
-                break
-
-            sign = 1 if ((i+2) >> 1) & 1 else -1
-
-            partition += sign*p(n-pent)
-
-        memo[n] = partition
-        return partition
-
-    for i in count():
-        if not p(i) % 1000000:
-            return i
-
+    for n, p in enumerate(gen_p()):
+        if p % 1000000 == 0:
+            return n
 
 if __name__ == "__main__":
     print(main())

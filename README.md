@@ -80,3 +80,4 @@ Problem 74: Digit factorial chains
 Problem 75: Singular integer right triangles  
 Problem 76: Counting summations  
 Problem 77: Prime summations  
+Problem 78: Coin partitions  

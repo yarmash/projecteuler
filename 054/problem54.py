@@ -2,7 +2,7 @@
 
 """Problem 54: Poker hands"""
 
-import os
+from projecteuler import open_data_file
 
 class Card():
     values = dict(zip("23456789TJQKA", range(2, 15)))
@@ -102,9 +102,7 @@ class Hand():
 
 
 def main():
-    datafile = os.path.join(os.path.dirname(__file__), "poker.txt")
-
-    cards = (Card(card) for card in open(datafile).read().split())
+    cards = (Card(card) for card in open_data_file("poker.txt").read().split())
     hands = (Hand(hand) for hand in zip(*[iter(cards)]*5))
 
     cnt = 0

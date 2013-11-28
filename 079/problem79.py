@@ -2,14 +2,12 @@
 
 """Problem 79: Passcode derivation"""
 
-import os
 import re
 from itertools import permutations
-
+from projecteuler import open_data_file
 
 def main():
-    datafile = os.path.join(os.path.dirname(__file__), "keylog.txt")
-    passcodes = open(datafile).read().split()
+    passcodes = open_data_file("keylog.txt").read().splitlines()
 
     all_chars = set()
     res = []

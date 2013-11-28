@@ -2,12 +2,11 @@
 
 """Problem 59: XOR decryption"""
 
-import os
 from collections import defaultdict
+from projecteuler import open_data_file
 
 def main():
-    datafile = os.path.join(os.path.dirname(__file__), "cipher1.txt")
-    codes = eval(open(datafile).read())
+    codes = eval(open_data_file("cipher1.txt").read())
 
     # code frequency for each character of the key
     frequency = [ defaultdict(int) for i in range(3) ]

@@ -1,8 +1,14 @@
 #!/usr/bin/python
 # coding=utf-8
 
+import os
 from math import sqrt, factorial
 from functools import reduce
+
+def open_data_file(filename):
+    f = open(os.path.join(os.path.dirname(__file__), "data", filename))
+    return f
+
 
 def memoize(fn):
     memo = {}

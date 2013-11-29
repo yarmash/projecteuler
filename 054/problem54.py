@@ -4,7 +4,7 @@
 
 from projecteuler import open_data_file
 
-class Card():
+class Card(object):
     values = dict(zip("23456789TJQKA", range(2, 15)))
     suits = { s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
     __slots__ = ("kind", "value", "suit")
@@ -17,7 +17,7 @@ class Card():
         return "%s%s" % (self.kind, Card.suits[self.suit])
 
 
-class Hand():
+class Hand(object):
     __slots__ = ("cards", "same_suit", "consecutive_values")
 
     def __init__(self, cards):

@@ -2,34 +2,20 @@
 
 """Problem 79: Passcode derivation"""
 
-import re
-from itertools import permutations
 from projecteuler import open_data_file
 
 def main():
-    passcodes = open_data_file("keylog.txt").read().splitlines()
+    keys = open_data_file("keylog.txt").read().splitlines()
 
-    all_chars = set()
-    res = []
+    # dict storing numbers that appear before a given number
+    preceding = { c: set() for c in { x for key in keys for x in key } }
 
-    for passcode in passcodes:
-        chars = []
+    for key in keys:
+        preceding[key[1]].add(key[0])
+        preceding[key[2]].add(key[1])
+        preceding[key[2]].add(key[0])
 
-        for char in passcode:
-            chars.append(char)
-            all_chars.add(char)
-
-        res.append(".*".join(chars))
-
-
-    for candidate in permutations(all_chars):
-        passcode = "".join(candidate)
-
-        for r in res:
-            if not re.search(r, passcode):
-                break
-        else:
-            return passcode
+    return "".join(sorted(preceding, key=preceding.get))
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ def main():
             if primes[low_idx]*primes[high_idx] <= lim:
                 yield high_idx
 
-    class Number():
+    class Number(object):
         """Number which is the product of two primes"""
 
         def __init__(self, low_idx, gen):

@@ -16,7 +16,8 @@ except ImportError:
 
 
 def main():
-    nums = [ int(d) for d in open_data_file("triangle.txt").read().split() ]
+    nums = [[int(d) for d in line.split()]
+        for line in open_data_file("triangle.txt")]
 
     return problem18.calc_max_total(nums)
 

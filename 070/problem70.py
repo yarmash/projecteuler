@@ -4,7 +4,7 @@
 
 from projecteuler import prime_sieve, is_permutation
 from bisect import bisect_left
-from queue import PriorityQueue
+from heapq import heappush, heappop
 
 def main():
     # n cannot be prime^k (k = [1, 2, ...]) because prime^k and phi(prime^k)
@@ -27,28 +27,27 @@ def main():
         def __init__(self, low_idx, gen):
             self.low_idx = low_idx
             self.gen = gen
-            low = primes[self.low_idx]
-            high = primes[next(self.gen)]
+            low = primes[low_idx]
+            high = primes[next(gen)]
             self.number = low*high
             self.phi = (low-1)*(high-1)
 
         def __lt__(self, other):
             return self.number*other.phi < other.number*self.phi
 
-    queue = PriorityQueue()
+    queue = []
 
     for low_idx in range(middle_idx, -1, -1):
-        gen = candidate_primes(low_idx)
-        queue.put(Number(low_idx, gen))
+        heappush(queue, Number(low_idx, candidate_primes(low_idx)))
 
-    while not queue.empty():
-        number = queue.get()
+    while queue:
+        number = heappop(queue)
 
         if is_permutation(number.number, number.phi):
             return number.number
 
         try:
-            queue.put(Number(number.low_idx, number.gen))
+            heappush(queue, Number(number.low_idx, number.gen))
         except StopIteration:
             pass
 

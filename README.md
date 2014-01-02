@@ -85,3 +85,4 @@ Problem 79: Passcode derivation
 Problem 80: Square root digital expansion  
 Problem 81: Path sum: two ways  
 Problem 82: Path sum: three ways  
+Problem 83: Path sum: four ways  

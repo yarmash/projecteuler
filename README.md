@@ -84,3 +84,4 @@ Problem 78: Coin partitions
 Problem 79: Passcode derivation  
 Problem 80: Square root digital expansion  
 Problem 81: Path sum: two ways  
+Problem 82: Path sum: three ways  

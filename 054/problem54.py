@@ -3,6 +3,7 @@
 """Problem 54: Poker hands"""
 
 from projecteuler import open_data_file
+from operator import attrgetter
 
 class Card(object):
     values = dict(zip("23456789TJQKA", range(2, 15)))
@@ -21,14 +22,23 @@ class Hand(object):
     __slots__ = ("cards", "same_suit", "consecutive_values")
 
     def __init__(self, cards):
-        cards = sorted(cards, key=lambda card: card.value, reverse=True)
+        cards.sort(key=attrgetter("value"), reverse=True)
 
         self.cards = cards
-        self.same_suit = all(cards[i].suit == cards[4].suit for i in range(4))
-        self.consecutive_values = all(cards[i].value - cards[i+1].value == 1 for i in range(4))
 
-    def evaluate(self):
-        cards = self.cards
+        self.same_suit = cards[0].suit == cards[1].suit == cards[2].suit == \
+            cards[3].suit == cards[4].suit
+
+        self.consecutive_values = cards[0].value == cards[1].value + 1 == \
+            cards[2].value + 2 == cards[3].value + 3 == cards[4].value + 4
+
+
+class Evaluator(object):
+    @staticmethod
+    def terms(hand):
+        """Generate terms for hands' comparison"""
+
+        cards = hand.cards
 
         # save the number of occurrences for each value
         occurrences = [0]*15
@@ -39,7 +49,7 @@ class Hand(object):
         # Is a case of the straight flush.
 
         # Straight Flush: All cards are consecutive values of same suit.
-        if self.consecutive_values and self.same_suit:
+        if hand.consecutive_values and hand.same_suit:
             yield cards[0].value
         else:
             yield 0
@@ -57,13 +67,13 @@ class Hand(object):
             yield 0
 
         # Flush: All cards of the same suit.
-        if self.same_suit:
+        if hand.same_suit:
             yield cards[0].value
         else:
             yield 0
 
         # Straight: All cards are consecutive values.
-        if self.consecutive_values:
+        if hand.consecutive_values:
             yield cards[0].value
         else:
             yield 0
@@ -82,9 +92,9 @@ class Hand(object):
             for card in cards:
                 if occurrences[card.value] == 2:
                     yield card.value
-            for card in cards:
-                if occurrences[card.value] != 2:
-                    yield card.value
+                else:
+                    unpaired = card.value
+            yield unpaired
         else:
             yield 0
 
@@ -100,20 +110,23 @@ class Hand(object):
         # High Card: Highest value card.
         yield cards[0].value
 
+    def compare(self, hand1, hand2):
+        for term1, term2 in zip(self.terms(hand1), self.terms(hand2)):
+            if term1 == term2:
+                continue
+            if term1 > term2:
+                return 1
+            return -1
 
 def main():
-    cards = (Card(card) for card in open_data_file("poker.txt").read().split())
-    hands = (Hand(hand) for hand in zip(*[iter(cards)]*5))
-
     cnt = 0
+    evaluator = Evaluator()
 
-    for first, second in zip(*[iter(hands)]*2):
-        for a, b in zip(first.evaluate(), second.evaluate()):
-            if a == b:
-                continue
-            if a > b:
-                cnt += 1
-            break
+    for line in open_data_file("poker.txt"):
+        cards = [Card(c) for c in line.split()]
+        if evaluator.compare(Hand(cards[:5]), Hand(cards[5:])) > 0:
+            cnt += 1
+
     return cnt
 
 

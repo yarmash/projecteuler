@@ -10,14 +10,15 @@ def open_data_file(filename):
     return f
 
 
-def memoize(fn):
+def memoize(func):
     memo = {}
     def wrapper(*args):
         if args in memo:
             return memo[args]
-        memo[args] = result = fn(*args)
+        memo[args] = result = func(*args)
         return result
     return wrapper
+
 
 def is_prime(n):
     if n <= 1:

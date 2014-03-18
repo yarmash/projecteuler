@@ -2,34 +2,32 @@
 
 """Problem 78: Coin partitions"""
 
-def gen_p():
-    plist = [1]
-    yield 1
-
+def main():
+    partitions = [1]
     n = 1
 
     while True:
         t = 1
         k = 1
         p = 0
+        sign = 1
 
         while t > 0:
-            sign = 1 if k & 1 else -1
             t = n - (k*(3*k+1) >> 1)
             if t >= 0:
-                p += sign*plist[t]
+                p += sign*partitions[t]
             t = n - (k*(3*k-1) >> 1)
             if t >= 0:
-                p += sign*plist[t]
-            k +=1
-        n += 1
-        plist.append(p)
-        yield p
+                p += sign*partitions[t]
+            k += 1
+            sign = -sign
 
-def main():
-    for n, p in enumerate(gen_p()):
-        if p % 1000000 == 0:
+        if not p % 1000000:
             return n
+
+        n += 1
+        partitions.append(p)
+
 
 if __name__ == "__main__":
     print(main())

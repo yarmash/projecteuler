@@ -1,5 +1,4 @@
 #!/usr/bin/python
-# coding=utf-8
 
 import os
 from math import sqrt, factorial
@@ -25,20 +24,25 @@ def is_prime(n):
 
     if n < 2:
         return False
-    if n == 2 or n == 3:
+    if (n == 2 or n == 3 or n == 5 or n == 7 or n == 11 or n == 13 or
+            n == 17 or n == 19 or n == 23 or n == 29):
         return True
-    if n % 2 == 0 or n % 3 == 0:
+    if not (n % 2 and n % 3 and n % 5 and n % 7 and n % 11 and n % 13 and
+            n % 17 and n % 19 and n % 23 and n % 29):
         return False
 
-    max_divisor = int(sqrt(n))
+    # all primes are of the form c#k + i for i < c# and i coprime to c#
+    # let c = 6, c# = 2*3*5 = 30
 
-    # all primes are of the form 6k ± 1, with the exception of 2 and 3
-    divisor = 5
+    max_divisor = int(sqrt(n))
+    divisor = 30
 
     while divisor <= max_divisor:
-        if n % divisor == 0 or n % (divisor+2) == 0:
+        if not (n % (divisor + 1) and n % (divisor + 7) and n % (divisor + 11) and
+                n % (divisor + 13) and n % (divisor + 17) and n % (divisor + 19) and
+                n % (divisor + 23) and n % (divisor + 29)):
             return False
-        divisor += 6
+        divisor += 30
 
     return True
 

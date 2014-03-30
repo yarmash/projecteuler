@@ -22,11 +22,11 @@ for d in dirs:
         t = time.clock() - begin
         total_time += t
         runs[d] = t
-        print("OK ({0:.2f}s)".format(t))
+        print("OK ({0:.4f}s)".format(t))
     else:
         print("FAIL")
 
-print("Total: {0} problems in {1:.2f}s".format(len(dirs), total_time))
+print("Total: {0} problems in {1:.3f}s".format(len(dirs), total_time))
 
 slowpokes = sorted(((v, k) for k, v in runs.items()), reverse=True)[0:5]
 

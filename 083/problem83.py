@@ -3,7 +3,7 @@
 """Problem 83: Path sum: four ways"""
 
 from projecteuler import open_data_file
-import heapq
+from heapq import heappush, heappop
 
 
 def main():
@@ -15,11 +15,11 @@ def main():
     distances = [ [float("inf")]*size for i in range(size) ]
 
     heap = []
-    heapq.heappush(heap, (matrix[0][0], 0, 0)) # distance, row, col
+    heappush(heap, (matrix[0][0], 0, 0)) # distance, row, col
 
     # Dijkstra's algorithm, simplified
     while heap:
-        distance, row, col = heapq.heappop(heap)
+        distance, row, col = heappop(heap)
         neighbors = []
 
         if row > 0:
@@ -33,7 +33,7 @@ def main():
 
         for node in neighbors:
             if node[0] < distances[node[1]][node[2]]:
-                heapq.heappush(heap, node)
+                heappush(heap, node)
                 distances[node[1]][node[2]] = node[0]
 
         if row == col == size-1:

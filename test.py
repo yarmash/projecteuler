@@ -13,8 +13,7 @@ for d in dirs:
     sys.path.append(os.path.join(bindir, d))
     mod = __import__("problem"+str(int(d)))
     sys.path.pop()
-    sys.stdout.write(d+"  ")
-    sys.stdout.flush()
+    print(d, " ", end="", flush=True)
     begin = time.clock()
     answer = str(mod.main())
     t = time.clock() - begin

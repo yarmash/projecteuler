@@ -2,25 +2,14 @@
 
 """Problem 74: Digit factorial chains"""
 
+
 def main():
     lim = 1000000
-
-    factorials = [
-        1,
-        1,
-        2,
-        6,
-        24,
-        120,
-        720,
-        5040,
-        40320,
-        362880,
-    ]
-
+    factorials = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
     cache = [0]*(factorials[9]*6 + 1)
 
     def get_chain_len(n):
+        """Return chain length for a given number"""
 
         if cache[n]:
             return cache[n]

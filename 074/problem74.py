@@ -6,10 +6,10 @@
 def main():
     lim = 1000000
     factorials = [1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880]
-    cache = [0]*(factorials[9]*6 + 1)
+    cache = [False]*(factorials[9]*6 + 1)
     cache[0] = 2
 
-    def get_chain_len(n):
+    def get_chain_len(n, factorials=factorials, cache=cache):
         """Return chain length for a given number"""
 
         if cache[n]:

@@ -3,12 +3,12 @@
 import os
 import sys
 import time
-from heapq import heappush, heappop
+from heapq import nlargest
 
 bindir = os.path.dirname(__file__)
 dirs = sorted(d for d in os.listdir(bindir) if d.isdigit())
 total_time = 0
-results = []
+results = {}
 
 for d in dirs:
     sys.path.append(os.path.join(bindir, d))
@@ -22,7 +22,7 @@ for d in dirs:
     if answer == open(os.path.join(bindir, d, "answer")).read().rstrip():
         print("OK ({0:.4f}s)".format(t))
         total_time += t
-        heappush(results, (-t, d))
+        results[d] = t
     else:
         print("FAIL")
         break
@@ -30,6 +30,5 @@ else:
     print("Total: {0} problems in {1:.3f}s".format(len(dirs), total_time))
     print("\nSlowest solutions:")
 
-    for i in range(5):
-        result, problem = heappop(results)
-        print("{}  {:.2f}s".format(problem, -result))
+    for problem in nlargest(5, results, results.get):
+        print("{}  {:.2f}s".format(problem, results[problem]))

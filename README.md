@@ -88,4 +88,5 @@ Problem 82: Path sum: three ways
 Problem 83: Path sum: four ways  
 Problem 84: Monopoly odds  
 Problem 85: Counting rectangles  
-Problem 86: Cuboid route
+Problem 86: Cuboid route  
+Problem 87: Prime power triples  

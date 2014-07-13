@@ -47,9 +47,9 @@ def is_prime(n):
     return True
 
 
-# returns the prime numbers <= limit
-# implements The Sieve of Eratosthenes
 def prime_sieve(n):
+    """Return all prime numbers <= n. Implements The Sieve of Eratosthenes"""
+
     if n <= 1:
         return []
 
@@ -84,34 +84,39 @@ def prime_sieve_lazy():
         n += 2
 
 
-def prime_factors(n):
-    """Return prime factors of an integer"""
+def prime_factors(n, primes=None):
+    """Return prime factors of an integer. 'primes' should be None or a list
+    of primes up to sqrt(n)"""
 
-    primes = prime_sieve(int(sqrt(n)))
+    if primes is None:
+        primes = prime_sieve(int(sqrt(n)))
+
     factors = []
 
     for prime in primes:
-        exponent = 0
-        while n % prime == 0:
-            exponent += 1
+        if prime*prime > n:
+            break
+
+        if n % prime == 0:
             n //= prime
-
-        if exponent:
+            exponent = 1
+            while n % prime == 0:
+                n //= prime
+                exponent += 1
             factors.append((prime, exponent))
-
     if n > 1:
         factors.append((n, 1))
 
     return factors
 
-def sum_of_divisors(n):
+def sum_of_divisors(n, primes=None):
     if n == 1:
         return 1
     # http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
-    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)//(y[0]-1), prime_factors(n), 1)
+    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)//(y[0]-1), prime_factors(n, primes), 1)
 
-def sum_of_proper_divisors(n):
-    return sum_of_divisors(n) - n
+def sum_of_proper_divisors(n, primes=None):
+    return sum_of_divisors(n, primes) - n
 
 # returns the Greatest Common Divisor of a and b (Euclidean algorithm)
 def gcd(a, b):

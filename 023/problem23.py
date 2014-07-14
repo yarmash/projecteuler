@@ -2,11 +2,13 @@
 
 """Problem 23: Non-abundant sums"""
 
-from projecteuler import sum_of_proper_divisors
+from projecteuler import prime_sieve, sum_of_proper_divisors
+
 
 def main():
-    MAX = 28123
-    a_numbers = [ i for i in range(12, MAX+1) if sum_of_proper_divisors(i) > i ]
+    LIMIT = 28123
+    primes = prime_sieve(int(LIMIT**.5))
+    a_numbers = [i for i in range(12, LIMIT+1) if sum_of_proper_divisors(i, primes) > i]
     a_numbers_set = frozenset(a_numbers)
 
     def not_sum(n):
@@ -21,7 +23,7 @@ def main():
 
         return True
 
-    return sum(filter(not_sum, range(MAX, 0, -1)))
+    return sum(filter(not_sum, range(LIMIT, 0, -1)))
 
 if __name__ == "__main__":
     print(main())

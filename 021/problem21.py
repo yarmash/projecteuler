@@ -2,16 +2,18 @@
 
 """Problem 21: Amicable numbers"""
 
-from projecteuler import sum_of_proper_divisors
+from projecteuler import prime_sieve, sum_of_proper_divisors
+
 
 def main():
+    LIMIT = 10000
+    primes = prime_sieve(int(LIMIT**.5))
     s = 0
 
-    for a in range(2, 10000):
-        b = sum_of_proper_divisors(a)
-        if a < b < 9999 and sum_of_proper_divisors(b) == a:
+    for a in range(2, LIMIT):
+        b = sum_of_proper_divisors(a, primes)
+        if a < b < LIMIT and sum_of_proper_divisors(b, primes) == a:
             s += a + b
-
     return s
 
 if __name__ == "__main__":

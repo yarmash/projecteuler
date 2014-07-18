@@ -90,3 +90,4 @@ Problem 84: Monopoly odds
 Problem 85: Counting rectangles  
 Problem 86: Cuboid route  
 Problem 87: Prime power triples  
+Problem 88: Product-sum numbers  

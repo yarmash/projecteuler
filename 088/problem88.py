@@ -4,42 +4,32 @@
 
 from functools import reduce
 from operator import mul
-from itertools import product
-from projecteuler import prime_factors
-
-
-def generate_factorizations(exponents, start):
-    if sum(exponents) == 0:
-        yield []
-    else:
-        for p in product(*(range(e+1) for e in exponents)):
-            if p >= start:
-                remainder = [x - y for x, y in zip(exponents, p)]
-                for f in generate_factorizations(remainder, p):
-                    yield [p] + f
-
-
-def factorizations(n):
-    factors = prime_factors(n)
-    primes = [x[0] for x in factors]
-    exponents = [x[1] for x in factors]
-
-    for f in generate_factorizations(exponents, (0,)*(len(exponents)-1) + (1,)):
-        yield [reduce(mul, [p**e for p, e in zip(primes, x)]) for x in f]
+from itertools import count
+from math import ceil, sqrt
 
 
 def main():
-    K = [float("inf")]*12001
-    K[0:2] = 0, 0
-
     # the minimal product-sum for some k is between k and 2k
-    for n in range(4, 24001):
-        for f in factorizations(n):
-            k = (n-sum(f)) + len(f)
-            if k < 12001 and K[k] > n:
-                K[k] = n
 
-    return sum(set(K))
+    min_product_sums = [float("inf")]*12001
+    min_product_sums[0:2] = 0, 0
+
+    factors = [[i] for i in range(2, ceil(sqrt(24000)))]
+
+    # generate combinations of factors in nondecreasing order
+    while factors:
+        f = factors.pop()
+        product_sum = reduce(mul, f)
+        k = (product_sum-sum(f)) + len(f)
+        if k <= 12000 and product_sum < min_product_sums[k]:
+            min_product_sums[k] = product_sum
+
+        for i in count(f[-1]):
+            if product_sum*i > 24000:
+                break
+            factors.append(f + [i])
+
+    return sum(set(min_product_sums))
 
 
 if __name__ == "__main__":

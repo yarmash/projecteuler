@@ -18,9 +18,9 @@ def main():
     fourths = [pow(p, 4) for p in primes if p <= lim_fourth]
 
     numbers = set([
-        square + cube + fourth for square in squares
-            for cube in cubes if square + cube < lim
-            for fourth in fourths if square + cube + fourth < lim
+        square + cube + fourth for fourth in fourths
+            for cube in cubes if fourth + cube < lim
+            for square in squares if fourth + cube + square < lim
     ])
 
     return len(numbers)

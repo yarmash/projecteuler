@@ -12,7 +12,7 @@ try:
 except ImportError:
     sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "018"))
     import problem18
-    sys.path.pop(0)
+    del sys.path[0]
 
 
 def main():

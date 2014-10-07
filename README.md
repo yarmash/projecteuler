@@ -92,3 +92,4 @@ Problem 86: Cuboid route
 Problem 87: Prime power triples  
 Problem 88: Product-sum numbers  
 Problem 89: Roman numerals  
+Problem 90: Cube digit pairs  

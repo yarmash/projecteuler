@@ -2,25 +2,25 @@
 
 """Problem 91: Right triangles with integer coordinates"""
 
-from collections import namedtuple
-from itertools import combinations
-
+from projecteuler import gcd
 
 def main():
     N = 50
-    Point = namedtuple('Point', ['x', 'y'])
-    points = [Point(x, y) for x in range(N+1) for y in range(N+1) if x or y]
-    cnt = 0
+    triangles = 0
 
-    for p, q in combinations(points, 2):
-        a = p.x * p.x + p.y * p.y
-        b = q.x * q.x + q.y * q.y
-        c = (p.x - q.x) * (p.x - q.x) + (p.y - q.y) * (p.y - q.y)
+    for x in range(1, N+1):  # run
+        for y in range(1, N+1):  # rise
+            gcf = gcd(x, y)
 
-        if a + b == c or a + c == b or b + c == a:
-            cnt += 1
+            Δx = y//gcf
+            Δy = x//gcf
 
-    return cnt
+            triangles += min(y//Δy, (N-x)//Δx)
+
+    triangles *= 2  # account for the symmetry
+    triangles += N*N*3  # count triangles on the axes
+
+    return triangles
 
 if __name__ == "__main__":
     print(main())

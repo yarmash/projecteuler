@@ -118,11 +118,13 @@ def sum_of_divisors(n, primes=None):
 def sum_of_proper_divisors(n, primes=None):
     return sum_of_divisors(n, primes) - n
 
-# returns the Greatest Common Divisor of a and b (Euclidean algorithm)
+
 def gcd(a, b):
+    """Returns the Greatest Common Divisor of a and b (Euclidean algorithm)"""
     while b:
         a, b = b, a % b
     return a
+
 
 # checks if a number is palindromic in the given base
 def is_palindrome(n, base):

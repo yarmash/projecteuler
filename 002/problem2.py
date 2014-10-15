@@ -5,17 +5,16 @@
 
 def main():
     limit = 4000000
-    a, b, c, sum_ = 1, 1, 2, 0
+    a, b, c, Σ = 1, 1, 2, 0
 
     # every third Fibonacci number is even
     while c <= limit:
-        sum_ += c
+        Σ += c
         a = b + c
         b = c + a
         c = a + b
 
-    return sum_
-
+    return Σ
 
 if __name__ == "__main__":
     print(main())

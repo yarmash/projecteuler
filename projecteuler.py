@@ -10,12 +10,12 @@ def open_data_file(filename):
 
 
 def memoize(func):
-    memo = {}
-    def wrapper(*args):
-        if args in memo:
-            return memo[args]
-        memo[args] = result = func(*args)
-        return result
+    """A simple memoizing decorator"""
+    cache = {}
+    def wrapper(*args, cache=cache):
+        if not args in cache:
+            cache[args] = func(*args)
+        return cache[args]
     return wrapper
 
 

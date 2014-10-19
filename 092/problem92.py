@@ -15,16 +15,24 @@ def main():
         a, b, c = num // 100, (num % 100) // 10, num % 10
         return sum_squares(a*a + b*b + c*c)
 
+    # http://www.shaunspiller.com/happynumbers/
+    squares = [i*i for i in range(10)]
+    frequencies = [0]*(9**2 + 1)  # frequencies for 1-digit numbers
 
-    @memoize
-    def count_numbers(n, k):
-        """Calculate how many numbers have the sum of the squares equal to n"""
-        if n < 0: return 0
-        if n == k == 0: return 1
-        if k == 0: return 0
-        return sum([count_numbers(n - i*i, k - 1) for i in range(10)])
+    for square in squares:
+        frequencies[square] += 1
 
-    return sum([count_numbers(num, 7) for num in range(2, 9**2*7+1) if sum_squares(num) == 89])
+    for d in range(2, 8):  # compute frequences for 2..7-digit numbers iteratively
+        tmp = [0]*(9**2*d + 1)
+
+        for i, v in enumerate(frequencies):
+            for square in squares:
+                tmp[i + square] += v
+
+        frequencies = tmp
+
+    return sum([v for i, v in enumerate(frequencies) if i and sum_squares(i) == 89])
+
 
 if __name__ == "__main__":
     print(main())

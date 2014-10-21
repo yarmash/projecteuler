@@ -31,7 +31,7 @@ def main():
 
         frequencies = tmp
 
-    return sum([v for i, v in enumerate(frequencies) if i and sum_squares(i) == 89])
+    return sum([v for i, v in enumerate(frequencies[1:], 1) if sum_squares(i) == 89])
 
 
 if __name__ == "__main__":

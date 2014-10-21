@@ -6,13 +6,11 @@ from projecteuler import open_data_file
 
 def main():
     names = open_data_file("names.txt").read().split(",")
-
     names.sort()
-
     s = 0
 
-    for i, name in enumerate(names):
-        s += sum(ord(c) - 64 for c in name if c != '"') * (i+1)
+    for pos, name in enumerate(names, 1):
+        s += sum([ord(c) - 64 for c in name if c != '"']) * pos
 
     return s
 

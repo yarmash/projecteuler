@@ -8,7 +8,7 @@ def is_primitive_root(k, n):
     factors = prime_factors(n-1)
 
     for f in factors:
-        if k**((n-1)//f[0]) % n <= 1:
+        if pow(k, (n-1)//f[0], n) <= 1:
             return False
 
     return True

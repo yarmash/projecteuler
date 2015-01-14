@@ -17,8 +17,7 @@ def main():
                 if len(p) == 4:
                     yield p+[i]
                 else:
-                    for c in candidates(p+[i]):
-                        yield c
+                    yield from candidates(p+[i])
 
     for i in range(len(primes)):
         try:

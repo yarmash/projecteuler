@@ -1,10 +1,12 @@
-#!/usr/bin/python
+"""Helper functions for Project Euler problems"""
 
 import os
 from math import sqrt, factorial
 from functools import reduce
 
+
 def open_data_file(filename):
+    """Open a file from the 'data' directory"""
     f = open(os.path.join(os.path.dirname(__file__), "data", filename))
     return f
 
@@ -12,10 +14,12 @@ def open_data_file(filename):
 def memoize(func):
     """A simple memoizing decorator"""
     cache = {}
+
     def wrapper(*args, cache=cache):
-        if not args in cache:
+        if args not in cache:
             cache[args] = func(*args)
         return cache[args]
+
     return wrapper
 
 
@@ -48,16 +52,19 @@ def is_prime(n):
 
 
 def prime_sieve(n):
-    """Return all prime numbers <= n. Implements The Sieve of Eratosthenes"""
+    """
+    Return all prime numbers <= n.
+    Implements The Sieve of Eratosthenes
+    """
 
     if n <= 1:
         return []
 
-    bound = (n-1) // 2 # last index of the sieve
+    bound = (n-1) // 2  # last index of the sieve
     sieve = [True]*(bound+1)
 
     for i in range(1, int(sqrt(n)//2)+1):
-        if sieve[i]: # 2*i+1 is a prime, mark multiples
+        if sieve[i]:  # 2*i+1 is a prime, mark multiples
             for j in range(2*i*(i+1), bound+1, 2*i+1):
                 sieve[j] = False
     primes = [2]
@@ -67,8 +74,11 @@ def prime_sieve(n):
     return primes
 
 
-# http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 def prime_sieve_lazy():
+    """
+    The Sieve of Eratosthenes (lazy version)
+    http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
+    """
     yield 2
     n = 3
     composites = {}
@@ -85,8 +95,10 @@ def prime_sieve_lazy():
 
 
 def prime_factors(n, primes=None):
-    """Return prime factors of an integer. 'primes' should be None or a list
-    of primes up to sqrt(n)"""
+    """
+    Return prime factors of an integer.
+    'primes' should be None or a list of primes up to sqrt(n)
+    """
 
     if primes is None:
         primes = prime_sieve(int(sqrt(n)))
@@ -109,11 +121,13 @@ def prime_factors(n, primes=None):
 
     return factors
 
+
 def sum_of_divisors(n, primes=None):
     if n == 1:
         return 1
     # http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
     return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)//(y[0]-1), prime_factors(n, primes), 1)
+
 
 def sum_of_proper_divisors(n, primes=None):
     return sum_of_divisors(n, primes) - n
@@ -126,8 +140,8 @@ def gcd(a, b):
     return a
 
 
-# checks if a number is palindromic in the given base
 def is_palindrome(n, base):
+    """Checks if a number is palindromic in the given base"""
     r = 0
     t = n
     while t > 0:
@@ -135,9 +149,12 @@ def is_palindrome(n, base):
         t //= base
     return r == n
 
-# checks if a number is x to y pandigital
-# the function doesn't check for redundant digits
+
 def is_pandigital(n, end=9, start=1):
+    """
+    Check if a number is x to y pandigital
+    The function doesn't check for redundant digits
+    """
     res = 0
 
     while n > 0:
@@ -146,9 +163,10 @@ def is_pandigital(n, end=9, start=1):
 
     return res == (2**(end-start+1) - 1) << start
 
-# checks if an integer is a permutation of another
+
 def is_permutation(a, b):
-    if (a - b) % 9: # the difference must be a multiple of 9.
+    """Check if an integer is a permutation of another"""
+    if (a - b) % 9:  # the difference must be a multiple of 9.
         return False
     return sorted(str(a)) == sorted(str(b))
 
@@ -157,17 +175,22 @@ def is_permutation(a, b):
 def nth_triangle(n):
     return n*(n+1)//2
 
+
 def nth_square(n):
     return n*n
+
 
 def nth_pentagonal(n):
     return n*(3*n - 1)//2
 
+
 def nth_hexagonal(n):
     return n*(2*n-1)
 
+
 def nth_heptagonal(n):
     return n*(5*n-3)//2
+
 
 def nth_octagonal(n):
     return n*(3*n - 2)
@@ -177,18 +200,21 @@ def is_pentagonal(n):
     k = (sqrt(24*n+1)+1)/6
     return k.is_integer()
 
-# returns Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
-# p is always even
-# http://projecteuler.net/overview=009
+
 def pythagorean_triplets(p):
+    """
+    Return Pythagorean triplets with a+b+c=p using the formula a+b+c = 2*m*(m+n)*d
+    p is always even
+    http://projecteuler.net/overview=009
+    """
     p >>= 1
 
     for m in range(2, int(sqrt(p)+1)):
         if p % m == 0:
             pm = p // m
-            while not pm&1: # reduce the search space by removing all factors 2
+            while not pm & 1:  # reduce the search space by removing all factors 2
                 pm >>= 1
-            k = m + 2 if m&1 else m + 1
+            k = m + 2 if m & 1 else m + 1
 
             while k < 2*m and k <= pm:
                 if pm % k == 0 and gcd(k, m) == 1:
@@ -206,9 +232,11 @@ def n_choose_k(n, k):
     return factorial(n) / (factorial(k) * factorial(n - k))
 
 
-# returns continued fraction expansion of a square root, e.g. sqrt(6) -> [2, 2, 4]
-# http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion
 def sqrt_fraction_expansion(num):
+    """
+    Returns continued fraction expansion of a square root, e.g. sqrt(6) -> [2, 2, 4]
+    http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion
+    """
     m = 0
     d = 1
     a0 = a = int(sqrt(num))
@@ -223,9 +251,12 @@ def sqrt_fraction_expansion(num):
 
     return expansion
 
-# get convergent fractions resulting from the quotients
-# http://en.wikipedia.org/wiki/Continued_fraction#Continued_fraction_expansions_of_.CF.80
+
 def convergent_fractions(quotients):
+    """
+    Get convergent fractions resulting from the quotients
+    http://en.wikipedia.org/wiki/Continued_fraction#Continued_fraction_expansions_of_.CF.80
+    """
     num, den, prev_num, prev_den = next(quotients), 1, 1, 0
 
     while True:

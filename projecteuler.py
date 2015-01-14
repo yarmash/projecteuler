@@ -84,13 +84,13 @@ def prime_sieve_lazy():
     composites = {}
 
     while True:
-        if n not in composites:
+        factors = composites.pop(n, None)
+        if factors is None:
             yield n
             composites[n*n] = [n]
         else:
-            for prime in composites[n]:
-                composites.setdefault(prime*2 + n, []).append(prime)
-            del composites[n]
+            for prime in factors:
+                composites.setdefault(n + prime*2, []).append(prime)
         n += 2
 
 

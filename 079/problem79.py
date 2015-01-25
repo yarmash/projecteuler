@@ -2,13 +2,15 @@
 
 """Problem 79: Passcode derivation"""
 
-from projecteuler import open_data_file
+from projecteuler import data_file
+
 
 def main():
-    keys = open_data_file("keylog.txt").read().splitlines()
+    with open(data_file("keylog.txt")) as f:
+        keys = [line.rstrip() for line in f]
 
     # dict storing numbers that appear before a given number
-    preceding = { c: set() for c in { x for key in keys for x in key } }
+    preceding = {c: set() for c in {x for key in keys for x in key}}
 
     for key in keys:
         preceding[key[1]].add(key[0])

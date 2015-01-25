@@ -2,16 +2,17 @@
 
 """Problem 54: Poker hands"""
 
-from projecteuler import open_data_file
+from projecteuler import data_file
 from operator import attrgetter
+
 
 class Card(object):
     values = dict(zip("23456789TJQKA", range(2, 15)))
-    suits = { s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades") }
+    suits = {s[0]: s for s in ("Clubs", "Diamonds", "Hearts", "Spades")}
     __slots__ = ("kind", "value", "suit")
 
     def __init__(self, data):
-        self.kind, self.suit = data # example: 9C JD
+        self.kind, self.suit = data  # example: 9C JD
         self.value = Card.values[self.kind]
 
     def __repr__(self):
@@ -118,17 +119,18 @@ class Evaluator(object):
                 return 1
             return -1
 
+
 def main():
     cnt = 0
     evaluator = Evaluator()
 
-    for line in open_data_file("poker.txt"):
-        cards = [Card(c) for c in line.split()]
-        if evaluator.compare(Hand(cards[:5]), Hand(cards[5:])) > 0:
-            cnt += 1
+    with open(data_file("poker.txt")) as f:
+        for line in f:
+            cards = [Card(c) for c in line.split()]
+            if evaluator.compare(Hand(cards[:5]), Hand(cards[5:])) > 0:
+                cnt += 1
 
     return cnt
-
 
 if __name__ == "__main__":
     print(main())

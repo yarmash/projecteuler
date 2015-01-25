@@ -5,10 +5,9 @@ from math import sqrt, factorial
 from functools import reduce
 
 
-def open_data_file(filename):
-    """Open a file from the 'data' directory"""
-    f = open(os.path.join(os.path.dirname(__file__), "data", filename))
-    return f
+def data_file(filename):
+    """Construct the path to a data file"""
+    return os.path.join(os.path.dirname(__file__), "data", filename)
 
 
 def memoize(func):
@@ -194,6 +193,15 @@ def nth_heptagonal(n):
 
 def nth_octagonal(n):
     return n*(3*n - 2)
+
+
+def is_triangular_number(n):
+    """
+    Check if a number is triangular.
+    If the positive triangular root n of x is an integer, then x is the nth triangular number
+    """
+    r = (sqrt(8*n + 1) - 1)/2
+    return r.is_integer()
 
 
 def is_pentagonal(n):

@@ -19,13 +19,14 @@ for d in dirs:
     answer = str(mod.main())
     t = time.clock() - begin
 
-    if answer == open(os.path.join(bindir, d, "answer")).read().rstrip():
-        print("OK ({0:.4f}s)".format(t))
-        total_time += t
-        results[d] = t
-    else:
-        print("FAIL")
-        break
+    with open(os.path.join(bindir, d, "answer")) as answer_file:
+        if answer == answer_file.read().rstrip():
+            print("OK ({0:.4f}s)".format(t))
+            total_time += t
+            results[d] = t
+        else:
+            print("FAIL")
+            break
 else:
     print("Total: {0} problems in {1:.3f}s".format(len(dirs), total_time))
     print("\nSlowest solutions:")

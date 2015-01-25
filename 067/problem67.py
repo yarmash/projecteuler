@@ -4,7 +4,7 @@
 
 import sys
 import os
-from projecteuler import open_data_file
+from projecteuler import data_file
 
 # This is a more difficult version of Problem 18 and uses the same function.
 try:
@@ -16,8 +16,8 @@ except ImportError:
 
 
 def main():
-    nums = [[int(d) for d in line.split()]
-        for line in open_data_file("triangle.txt")]
+    with open(data_file("triangle.txt")) as f:
+        nums = [[int(d) for d in line.split()] for line in f]
 
     return problem18.calc_max_total(nums)
 

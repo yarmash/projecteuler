@@ -2,10 +2,12 @@
 
 """Problem 22: Names scores"""
 
-from projecteuler import open_data_file
+from projecteuler import data_file
+
 
 def main():
-    names = open_data_file("names.txt").read().split(",")
+    with open(data_file("names.txt")) as f:
+        names = f.read().split(",")
     names.sort()
     s = 0
 

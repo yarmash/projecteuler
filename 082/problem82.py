@@ -2,17 +2,18 @@
 
 """Problem 82: Path sum: three ways"""
 
-from projecteuler import open_data_file
+from projecteuler import data_file
+
 
 def main():
-    f = open_data_file("matrix.txt")
-    matrix = [ [int(x) for x in line.split(",")] for line in f ]
+    with open(data_file("matrix.txt")) as f:
+        matrix = [[int(x) for x in line.split(",")] for line in f]
 
     size = len(matrix)
-    best = [row[0] for row in matrix] # first column
+    best = [row[0] for row in matrix]  # first column
 
     for col in range(1, size):
-        column = [ matrix[row][col] + best[row] for row in range(size) ]
+        column = [matrix[row][col] + best[row] for row in range(size)]
 
         for row in range(1, size):
             if column[row-1] + matrix[row][col] < column[row]:
@@ -24,7 +25,6 @@ def main():
         best = column
 
     return min(best)
-
 
 if __name__ == "__main__":
     print(main())

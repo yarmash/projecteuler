@@ -2,21 +2,17 @@
 
 """Problem 42: Coded triangle numbers"""
 
-from math import sqrt
-from projecteuler import open_data_file
+from projecteuler import data_file, is_triangular_number
 
-# if the positive triangular root n of x is an integer, then x is the nth triangular number
-def is_triangular_number(n):
-    r = (sqrt(8*n +1) - 1)/2
-    return r.is_integer()
 
 def main():
-    words = eval("["+open_data_file("words.txt").read()+"]")
+    with open(data_file("words.txt")) as f:
+        words = eval("["+f.read()+"]")
 
     cnt = 0
 
     for word in words:
-        if is_triangular_number(sum([ ord(c)-64 for c in word ])):
+        if is_triangular_number(sum([ord(c)-64 for c in word])):
             cnt += 1
 
     return cnt

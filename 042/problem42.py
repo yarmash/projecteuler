@@ -9,13 +9,8 @@ def main():
     with open(data_file("words.txt")) as f:
         words = eval("["+f.read()+"]")
 
-    cnt = 0
-
-    for word in words:
-        if is_triangular_number(sum([ord(c)-64 for c in word])):
-            cnt += 1
-
-    return cnt
+    return sum([is_triangular_number(sum([ord(char)-64 for char in word]))
+                for word in words])
 
 if __name__ == "__main__":
     print(main())

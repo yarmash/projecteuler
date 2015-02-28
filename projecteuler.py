@@ -195,13 +195,12 @@ def nth_octagonal(n):
     return n*(3*n - 2)
 
 
-def is_triangular_number(n):
+def is_triangular_number(num):
     """
     Check if a number is triangular.
-    If the positive triangular root n of x is an integer, then x is the nth triangular number
+    An integer x is triangular if and only if 8x + 1 is a square.
     """
-    r = (sqrt(8*n + 1) - 1)/2
-    return r.is_integer()
+    return sqrt(8*num + 1).is_integer()
 
 
 def is_pentagonal(n):

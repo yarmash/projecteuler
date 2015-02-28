@@ -195,12 +195,25 @@ def nth_octagonal(n):
     return n*(3*n - 2)
 
 
+def isqrt(num):
+    """
+    Calculate the integer square root of a positive integer
+    using Newton's method.
+    """
+    x = num
+    y = (num + 1) >> 1
+    while abs(y - x) > 1:
+        x = y
+        y = (x + num // x) >> 1
+    return y
+
+
 def is_triangular_number(num):
     """
     Check if a number is triangular.
     An integer x is triangular if and only if 8x + 1 is a square.
     """
-    return sqrt(8*num + 1).is_integer()
+    return 8*num + 1 == isqrt(8*num+1)**2
 
 
 def is_pentagonal(n):

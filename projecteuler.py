@@ -37,16 +37,12 @@ def is_prime(n):
     # all primes are of the form c#k + i for i < c# and i coprime to c#
     # let c = 6, c# = 2*3*5 = 30
 
-    max_divisor = int(sqrt(n))
-    divisor = 30
-
-    while divisor <= max_divisor:
-        if not (n % (divisor + 1) and n % (divisor + 7) and n % (divisor + 11) and
-                n % (divisor + 13) and n % (divisor + 17) and n % (divisor + 19) and
+    for divisor in range(30, int(sqrt(n))+1, 30):
+        if not (n % (divisor + 1) and n % (divisor + 7) and
+                n % (divisor + 11) and n % (divisor + 13) and
+                n % (divisor + 17) and n % (divisor + 19) and
                 n % (divisor + 23) and n % (divisor + 29)):
             return False
-        divisor += 30
-
     return True
 
 

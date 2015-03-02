@@ -1,7 +1,7 @@
 projecteuler
 ============
 
-My solutions to the problems from projecteuler.net in Python 3.
+My solutions to the problems from projecteuler.net (mostly) in Python 3.
 
 Problem 1: Multiples of 3 and 5  
 Problem 2: Even Fibonacci numbers  

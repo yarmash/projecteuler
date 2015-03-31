@@ -14,7 +14,7 @@ def main():
         if is_prime(n):
             primes.append(n)
         else:
-            if all(not sqrt((n - p)/2).is_integer() for p in primes):
+            if all(not sqrt((n - p)//2).is_integer() for p in primes):
                 return n
         n += 2
 

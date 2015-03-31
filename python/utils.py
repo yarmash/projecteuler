@@ -246,7 +246,7 @@ def pythagorean_triplets(p):
 
 def n_choose_k(n, k):
     """Returns the number of k-combinations of a set of n elements"""
-    return factorial(n) / (factorial(k) * factorial(n - k))
+    return factorial(n) // (factorial(k) * factorial(n - k))
 
 
 def sqrt_fraction_expansion(num):

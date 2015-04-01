@@ -2,11 +2,12 @@
 
 """Problem 15: Lattice paths"""
 
-from math import factorial
+from utils import n_choose_k
+
 
 def main():
-    n = 20
-    return factorial(2*n)//(factorial(n)*factorial(n))
+    size = 20
+    return n_choose_k(size+size, size)
 
 if __name__ == "__main__":
     print(main())

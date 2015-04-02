@@ -280,3 +280,8 @@ def convergent_fractions(quotients):
         yield num, den
         q = next(quotients)
         prev_num, num, prev_den, den = num, prev_num + num*q, den, prev_den + den*q
+
+
+def triangle_exists(a, b, c):
+    """Check if a triangle with three given side lengths exists"""
+    return a + b > c and b + c > a and c + a > b

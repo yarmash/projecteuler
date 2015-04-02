@@ -96,3 +96,4 @@ Problem 90: Cube digit pairs
 Problem 91: Right triangles with integer coordinates  
 Problem 92: Square digit chains  
 Problem 93: Arithmetic expressions  
+Problem 94: Almost equilateral triangles  

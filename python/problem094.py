@@ -6,25 +6,21 @@
 def main():
     max_perimeter = 1000000000
     psum = 0
+    # By writing x = (3*a +- 1)/2 and y = h, we get the Pell equation:
+    # x^2 - 3*y^2 = 1.
 
-    triplets = [(3, 4, 5)]
+    # fundamental solution
+    x1, y1 = 2, 1
 
-    while triplets:
-        a, b, c = triplets.pop()
+    # the first solution
+    x, y = 7, 4
 
-        if 2*(c + a) > max_perimeter or 2*(c + b) > max_perimeter:
-            continue
+    sign = 1
 
-        if c - 2*a == 1 or c - 2*a == -1:
-            psum += 2*(c + a)
-
-        if c - 2*b == 1 or c - 2*b == -1:
-            psum += 2*(c + b)
-
-        triplets.extend([
-            (a - 2*b + 2*c, 2*a - b + 2*c, 2*a - 2*b + 3*c),
-            (a + 2*b + 2*c, 2*a + b + 2*c, 2*a + 2*b + 3*c),
-            (-a + 2*b + 2*c, -2*a + b + 2*c, -2*a + 2*b + 3*c)])
+    while 2*x <= max_perimeter:
+        a = (2*x + sign*1)//3
+        psum += 3*a + sign*1
+        x, y, sign = x1*x + 3*y1*y, x1*y + y1*x, -sign
 
     return psum
 

@@ -126,7 +126,21 @@ def sum_of_divisors(n, primes=None):
 
 
 def sum_of_proper_divisors(n, primes=None):
+    """Return the sum of the proper divisors of a number"""
     return sum_of_divisors(n, primes) - n
+
+
+def pdsums_sieve(limit):
+    """Return a list of proper divisors sums for numbers under limit"""
+    dsums = [1]*limit
+
+    for i in range(2, int(limit**.5)):
+        dsums[i*i] += i
+
+        for j in range(i+1, limit//i + 1 if limit % i else limit//i):
+            dsums[i*j] += i + j
+    dsums[0] = dsums[1] = 0
+    return dsums
 
 
 def gcd(a, b):

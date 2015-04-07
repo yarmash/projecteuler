@@ -2,19 +2,20 @@
 
 """Problem 21: Amicable numbers"""
 
-from utils import prime_sieve, sum_of_proper_divisors
+from utils import pdsums_sieve
 
 
 def main():
-    LIMIT = 10000
-    primes = prime_sieve(int(LIMIT**.5))
-    s = 0
+    limit = 10000
+    dsums = pdsums_sieve(limit)
+    asum = 0
 
-    for a in range(2, LIMIT):
-        b = sum_of_proper_divisors(a, primes)
-        if a < b < LIMIT and sum_of_proper_divisors(b, primes) == a:
-            s += a + b
-    return s
+    for i in range(2, limit):
+        if dsums[i] < limit and i != dsums[i] and i == dsums[dsums[i]]:
+            asum += i + dsums[i]
+
+            dsums[dsums[i]] = 0
+    return asum
 
 if __name__ == "__main__":
     print(main())

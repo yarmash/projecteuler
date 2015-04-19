@@ -2,36 +2,33 @@
 
 """Problem 17: Number letter counts"""
 
+
 def main():
-    units = ("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
-    tens = ("ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety")
-    teens = ("eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen")
+    # precalculated letter counts for some numbers
+    counts = {1: 3, 2: 3, 3: 5, 4: 4, 5: 4, 6: 3, 7: 5, 8: 5, 9: 4,
+              11: 6, 12: 6, 13: 8, 14: 8, 15: 7, 16: 7, 17: 9, 18: 8, 19: 8,
+              10: 3, 20: 6, 30: 6, 40: 5, 50: 5, 60: 5, 70: 7, 80: 6, 90: 6}
 
-    def count_letters(n):
-        words = []
+    def count_letters(num):
+        """Return the number of letters used by a number 0 < n < 1000"""
+        count = 0
 
-        if n >= 1000:
-            words.extend((units[n//1000-1], "thousand"))
-            n %= 1000
+        if num >= 100:
+            count += counts[num//100] + 7  # "hundred"
+            num %= 100
+            if num:
+                count += 3  # "and"
 
-        if n >= 100:
-            words.extend((units[n//1000-1], "hundred"))
-            n %= 100
-            if n:
-                words.append("and")
+        if num > 19:
+            count += counts[num//10*10]
+            num %= 10
 
-        if 11 <= n <= 19:
-            words.append(teens[n-10-1])
-        else:
-            if n >= 10:
-                words.append(tens[n//10-1])
-                n %= 10
-            if n >= 1:
-                words.append(units[n-1])
+        if num >= 1:
+            count += counts[num]
 
-        return sum(map(len, words))
+        return count
 
-    return sum(count_letters(i) for i in range(1, 1001))
+    return sum([count_letters(i) for i in range(1, 1000)], len("onethousand"))
 
 if __name__ == "__main__":
     print(main())

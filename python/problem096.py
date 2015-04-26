@@ -3,198 +3,118 @@
 """Problem 96: Su Doku"""
 
 from utils import open_data_file
-import copy
 from itertools import combinations, product
 from collections import defaultdict
 
-numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9"}
+numbers = set("123456789")
+
+peers = {}
+units = {}
+
+for row in range(9):
+    for col in range(9):
+
+        # Every square has 3 units and 20 peers
+        peers[(row, col)] = (
+            [(row, c) for c in range(9) if c != col] + \
+            [(r, col) for r in range(9) if r != row] + \
+            [(r, c) for r in range(row//3*3, row//3*3+3) for c in range(col//3*3, col//3*3+3) if r != row or c != col])
+
+        units[(row, col)] = (
+            [(row, c) for c in range(9) if c != col],
+            [(r, col) for r in range(9) if r != row],
+            [(r, c) for r in range(row//3*3, row//3*3+3) for c in range(col//3*3, col//3*3+3) if r != row or c != col])
 
 
-def get_candidates(grid):
-    candidates = [[set() for j in range(9)] for i in range(9)]
+def verify_grid(grid):
+    for (row, col), unts in units.items():
+        assert len(grid[row][col]) == 1
+        for u in unts:
+            assert set([x for r, c in u for x in grid[r][c]]) | set(grid[row][col]) == numbers
 
-    for min_row in range(0, 9, 3):
-        for min_col in range(0, 9, 3):
-            crosshatch_square(grid, min_row, min_col, pencilin=True, candidates=candidates)
 
-    tmp = copy.deepcopy(candidates)
+def eliminate(candidates, row, col, value):
 
-    while True:
-        # number claiming
+    if value not in candidates[row][col]:
+        return
 
-        # When a candidate number only appears in one row or column of a box, the box 'claims' that number within the entire row or column.
-        # When two squares in the same area (row, column or box) have identical two-number candidate lists, you can remove both numbers from other candidate lists in that area.
+    candidates[row][col].remove(value)
 
-        for min_row in range(0, 9, 3):
-            for min_col in range(0, 9, 3):
+    if len(candidates[row][col]) == 1:
+        for r, c in peers[(row, col)]:
+            # no easy way to get a value from a set w/o removing it
+            for v in candidates[row][col]:
+                eliminate(candidates, r, c, v)
 
-                for row in range(min_row, min_row+3):
-                    for col in range(min_col, min_col+3):
 
-                        # claim row
-                        for c in candidates[row][col]:
-                            if all(c not in candidates[r][coll] for r in list(range(min_row, row)) + list(range(row+1, min_row+3)) for coll in range(min_col, min_col+3)):
+def assign(candidates, row, col, value):
+    other_values = candidates[row][col] - {value}
 
-                                for colll in list(range(min_col)) + list(range(min_col+3, 9)):
-                                    candidates[row][colll] -= {c}
+    for v in other_values:
+        eliminate(candidates, row, col, v)
 
-                        # claim column
-                        for c in candidates[row][col]:
-                            if all(c not in r[coll] for r in candidates[min_row:min_row+3] for coll in [x for x in range(min_col, min_col+3) if x != col]):
 
-                                for r in list(range(min_row)) + list(range(min_row+3, 9)):
-                                    candidates[r][col] -= {c}
+def solve_puzzle(grid):
+    candidates = [[set(numbers) for j in range(9)] for i in range(9)]
 
-        for i in range(2, 5):
-            for row in range(9):
+    for row in range(9):
+        for col in range(9):
+            if grid[row][col] != "0":
+                assign(candidates, row, col, grid[row][col])
 
-                for cols in combinations(range(9), i):
-                    s = set()
+    while not all(len(x) == 1 for row in candidates for x in row):
 
-                    if all(1 <= len(candidates[row][c]) <= i for c in cols):
-                        for c in cols:
-                            s |= candidates[row][c]
+        # check single-square candidates within an area (row/column/box)
+        assigned = 1
+        while assigned:
+            assigned = 0
+            for (row, col), unts in units.items():
+                if len(candidates[row][col]) > 1:
+                    for v in candidates[row][col]:
+                        for u in unts:
+                            if all(v not in candidates[r][c] for r, c in u):
+                                assign(candidates, row, col, v)
+                                assigned += 1
+                                break
+                        else:
+                            continue
+                        break
 
-                    if len(s) == i:
+        # search for disjoint subsets, aka naked pairs/triples/etc.
+        # pairs
+        for row, col in product(range(9), repeat=2):
+            if len(candidates[row][col]) == 2:
+                for u in units[(row, col)]:
+                    if any(candidates[r][c] == candidates[row][col] for r, c in u):
+                        for r, c in u:
+                            if candidates[r][c] != candidates[row][col]:
+                                for v in set(candidates[row][col]):
+                                    eliminate(candidates, r, c, v)
+        # triples
+        for (row, col), unts in units.items():
+            # check if this square forms a 'disjoint subset' with others
+            for u in unts:
+                for others in combinations(u, 2):
+                    if all(len(candidates[r][c]) == 1 for r, c in others):
+                        continue
+                    s = set(candidates[row][col])
 
-                        for c in range(9):
-                            if c not in cols:
-                                candidates[row][c] -= s
+                    for r, c in others:
+                        s |= candidates[r][c]
+                        if len(s) > 3:
+                            break
+                    else:
+                        if len(s) == 3:
+                            for r, c in u:
+                                if not (r, c) in others:
+                                    for v in s:
+                                        eliminate(candidates, r, c, v)
 
-            for col in range(9):
-
-                for rows in combinations(range(9), i):
-                    s = set()
-
-                    if all(1 <= len(candidates[row][col]) <= i for row in rows):
-                        for row in rows:
-                            s |= candidates[row][col]
-
-                    if len(s) == i:
-                        for r in range(9):
-                            if r not in rows:
-                                candidates[r][col] -= s
-
-            for min_row in range(0, 9, 3):
-                for min_col in range(0, 9, 3):
-
-                    for points in combinations(product(range(min_row, min_row+3), range(min_col, min_col+3)), i):
-                        s = set()
-
-                        if all(1 <= len(candidates[r][c]) <= i for r, c in points):
-                            for r, c in points:
-                                s |= candidates[r][c]
-
-                        if len(s) == i:
-                            for r in range(min_row, min_row+3):
-                                for c in range(min_col, min_col+3):
-                                    if not (r, c) in points:
-                                        candidates[r][c] -= s
-
-        # excluded candidates
-        #Within an area (row, column or box), when a set of N candidate lists contain all occurrences of a set of N candidate numbers, other numbers can be removed from those lists
-        for i in range(3, 5):
-            for row in range(9):
-
-                for cols in combinations(range(9), i):
-                    s = set()
-
-                    for c in cols:
-                        s &= candidates[row][c]
-
-                    if len(s) == i:
-                        for c in cols:
-                            candidates[row][c] = set(s)
-
-            for col in range(9):
-                for rows in combinations(range(9), i):
-                    s = set()
-
-                    for row in rows:
-                        s &= candidates[row][col]
-
-                    if len(s) == i:
-                        for r in rows:
-                            candidates[r][col] = set(s)
-
-            for min_row in range(0, 9, 3):
-                for min_col in range(0, 9, 3):
-
-                    for points in combinations(product(range(min_row, min_row+3), range(min_col, min_col+3)), i):
-                        s = set()
-                        for r, c in points:
-                            s &= candidates[r][c]
-
-                    if len(s) == i:
-                        for r, c in points:
-                            candidates[r][c] = set(s)
-
-        # box line reduction
-        # If all occurrences of a candidate within a row or column fall inside the same box, then other occurrences of that candidate can be removed from that box
-
-        for min_row in range(0, 9, 3):
-            for row in range(min_row, min_row+3):
-
-                for c in numbers:
-                    indexes = []
-
-                    for col in range(9):
-                        if c in candidates[row][col]:
-                            indexes.append(col)
-
-                    if indexes:
-                        # 1st box
-                        if all(0 <= i <= 2 for i in indexes):
-                            for r in range(min_row, min_row+3):
-                                if r == row: continue
-                                for coll in range(3):
-                                    candidates[r][coll] -= {c}
-
-                        if all(3 <= i <= 5 for i in indexes):
-                            for r in range(min_row, min_row+3):
-                                if r == row: continue
-                                for coll in range(3, 6):
-                                    candidates[r][coll] -= {c}
-
-                        if all(6 <= i <= 8 for i in indexes):
-                            for r in range(min_row, min_row+3):
-                                if r == row: continue
-                                for coll in range(6, 9):
-                                    candidates[r][coll] -= {c}
-
-        for min_col in range(0, 9, 3):
-            for col in range(min_col, min_col+3):
-                for c in numbers:
-                    indexes = []
-
-                    for row in range(9):
-                        if c in candidates[row][col]:
-                            indexes.append(row)
-
-                    if indexes:
-                        if all(0 <= i <= 2 for i in indexes):
-                            for r in range(3):
-                                for coll in range(min_col, min_col+3):
-                                    if coll == col: continue
-                                    candidates[r][coll] -= {c}
-
-                        if all(3 <= i <= 5 for i in indexes):
-                            for r in range(3, 6):
-                                for coll in range(min_col, min_col+3):
-                                    if coll == col: continue
-                                    candidates[r][coll] -= {c}
-
-                        if all(6 <= i <= 8 for i in indexes):
-                            for r in range(6, 9):
-                                for coll in range(min_col, min_col+3):
-                                    if coll == col: continue
-                                    candidates[r][coll] -= {c}
-
+        # x-wings
         # When there are
-
-        #   only two possible cells for a value in each of two different rows,
-        #   and these candidates lie also in the same columns,
-        #     then all other candidates for this value in the columns can be eliminated.
+        # * only two possible cells for a value in each of two different rows,
+        # * and these candidates lie also in the same columns,
+        # then all other candidates for this value in the columns can be eliminated.
 
         wings = {c: defaultdict(list) for c in numbers}
 
@@ -211,174 +131,37 @@ def get_candidates(grid):
                     continue
 
                 for r in [x for x in range(9) if x not in v]:
-                    for coll in k:
-                        candidates[r][coll] -= {num}
+                    for col in k:
+                        eliminate(candidates, r, col, num)
 
-        if candidates == tmp:
-            break
-        tmp = copy.deepcopy(candidates)
+        # box line reduction
+        # If all occurrences of a candidate within a row or column fall inside
+        # the same box, then other occurrences of that candidate can be removed
+        # from that box
+        for row in range(9):
+            for num in numbers:
+                occurrences = {col for col in range(9) if num in candidates[row][col]}
 
-    return candidates
+                if len(occurrences) > 1:
+                    if occurrences < set(range(3)) or occurrences < set(range(3, 6)) or occurrences < set(range(6, 9)):
+                        others = {x for col in occurrences for x in units[(row, col)][2]} - set([(row, col) for col in occurrences])
+                        for r, c in others:
+                            eliminate(candidates, r, c, num)
+        for col in range(9):
+            for num in numbers:
+                occurrences = {row for row in range(9) if num in candidates[row][col]}
 
-
-def pencil_in(grid):
-
-    filled = 0
-    candidates = get_candidates(grid)
-
-    # check candidates
+                if len(occurrences) > 1:
+                    if occurrences < set(range(3)) or occurrences < set(range(3, 6)) or occurrences < set(range(6, 9)):
+                        others = {x for row in occurrences for x in units[(row, col)][2]} - set([(row, col) for row in occurrences])
+                        for r, c in others:
+                            eliminate(candidates, r, c, num)
 
     for row in range(9):
         for col in range(9):
-            # Single-candidate squares
-            if len(candidates[row][col]) == 1:
-                grid[row][col] = candidates[row][col].pop()
-                filled += 1
-
-    while sum([crosshatch_square(grid, min_row, min_col) for min_row in range(0, 9, 3) for min_col in range(0, 9, 3)]):
-        pass
-
-    candidates = get_candidates(grid)
-
-    # check candidates
-    for row in range(9):
-        for col in range(9):
-
-            # single-square candidates (rows)
-            single = None
-            for c in candidates[row][col]:
-                if all(c not in cc for cc in candidates[row][:col] + candidates[row][col+1:]):
-                    single = grid[row][col] = c
-                    filled += 1
-                    break
-            if single:
-                candidates[row][col].remove(single)
-
-
-    while sum([crosshatch_square(grid, min_row, min_col) for min_row in range(0, 9, 3) for min_col in range(0, 9, 3)]):
-        pass
-
-    candidates = get_candidates(grid)
-
-    # check candidates
-    for row in range(9):
-        for col in range(9):
-            # single-square candidates (column)
-            single = None
-            for c in candidates[row][col]:
-                if all(c not in cc for cc in [r[col] for r in candidates[:row]] + [r[col] for r in candidates[row+1:]]):
-                    single = grid[row][col] = c
-                    filled += 1
-                    break
-
-            if single:
-                candidates[row][col].remove(single)
-
-    while sum([crosshatch_square(grid, min_row, min_col) for min_row in range(0, 9, 3) for min_col in range(0, 9, 3)]):
-        pass
-
-    candidates = get_candidates(grid)
-
-    # check candidates
-    for min_row in range(0, 9, 3):
-        for min_col in range(0, 9, 3):
-
-            for row in range(min_row, min_row+3):
-                for col in range(min_col, min_col+3):
-
-                    # single-square candidates (box)
-                    single = None
-                    for c in candidates[row][col]:
-                        if all(c not in cc for cc in candidates[min_row][min_col:min_col+3] + candidates[min_row+1][min_col:min_col+3] + candidates[min_row+2][min_col:min_col+3]):
-                            single = grid[row][col] = c
-                            filled += 1
-                            break
-
-                    if single:
-                        candidates[row][col].remove(single)
-
-    while sum([crosshatch_square(grid, min_row, min_col) for min_row in range(0, 9, 3) for min_col in range(0, 9, 3)]):
-        pass
-    return filled
-
-
-def crosshatch_square(grid, min_row, min_col, pencilin=False, candidates=None):
-    max_row = min_row + 3
-    max_col = min_col + 3
-    used_numbers = {grid[row][col] for row in range(min_row, max_row)
-                    for col in range(min_col, max_col)}
-    unused_numbers = numbers - used_numbers
-
-    # "0" - empty, "X" - crosshatched
-
-    filled = 0
-
-    for num in unused_numbers:
-        for row in range(min_row, max_row):
-            if num in grid[row][:min_col] + grid[row][max_col:]:
-                for col in range(min_col, max_col):
-                    if grid[row][col] == "0":
-                        grid[row][col] = "X"
-
-        for col in range(min_col, max_col):
-            if num in [row[col] for row in grid[:min_row] + grid[max_row:]]:
-                for row in range(min_row, max_row):
-                    if grid[row][col] == "0":
-                        grid[row][col] = "X"
-
-        cnt = 0
-        for row in range(min_row, max_row):
-            for col in range(min_col, max_col):
-                if grid[row][col] == "0":
-                    cnt += 1
-
-        if cnt == 1:
-            for row in range(min_row, max_row):
-                for col in range(min_col, max_col):
-                    if grid[row][col] == "0":
-                        grid[row][col] = num
-                        filled = 1
-        elif pencilin:
-            for row in range(min_row, max_row):
-                for col in range(min_col, max_col):
-                    if grid[row][col] == "0":
-                        candidates[row][col].add(num)
-        # cleanup
-        for row in range(min_row, max_row):
-            for col in range(min_col, max_col):
-                if grid[row][col] == "X":
-                    grid[row][col] = "0"
-
-    return filled
-
-
-def solve_puzzle(grid):
-    """Solve a sudoku puzzle"""
-
-    # try crosshatching
-
-    while sum([crosshatch_square(grid, min_row, min_col) for min_row in range(0, 9, 3) for min_col in range(0, 9, 3)]):
-        pass
-
-    if all("0" not in line for line in grid):
-        return grid
-
-    while pencil_in(grid):
-        pass
+            grid[row][col] = candidates[row][col].pop()
 
     return grid
-
-
-def verify_grid(grid):
-    for row in grid:
-        assert set(row) == numbers
-
-    for col in range(9):
-        assert set([row[col] for row in grid]) == numbers
-
-    for row in range(0, 9, 3):
-        for col in range(0, 9, 3):
-            assert set(grid[row][col:col+3] + grid[row+1][col:col+3] + grid[row+2][col:col+3]) == numbers
 
 
 def main():
@@ -394,9 +177,9 @@ def main():
 
             if len(grid) == 9:
                 solve_puzzle(grid)
-                assert("0" not in line for line in grid)
+
                 s += int(grid[0][0]+grid[0][1]+grid[0][2])
-                grid = []
+                del grid[:]
     return s
 
 if __name__ == "__main__":

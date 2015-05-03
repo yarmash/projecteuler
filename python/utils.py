@@ -1,7 +1,7 @@
 """Helper functions for Project Euler problems"""
 
 import os
-from math import sqrt, factorial
+from math import ceil, factorial, sqrt
 from functools import reduce
 
 
@@ -137,7 +137,7 @@ def pdsums_sieve(limit):
     for i in range(2, int(limit**.5)):
         dsums[i*i] += i
 
-        for j in range(i+1, limit//i + 1 if limit % i else limit//i):
+        for j in range(i+1, ceil(limit/i)):
             dsums[i*j] += i + j
     dsums[0] = dsums[1] = 0
     return dsums

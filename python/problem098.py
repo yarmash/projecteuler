@@ -10,38 +10,47 @@ from utils import open_data_file
 
 def main():
     with open_data_file("words.txt") as data_file:
-        words = data_file.read().replace('"', "").split(",")
+        words = data_file.read().split('","')
+    words[0] = words[0][1:]
+    words[-1] = words[-1][:-1]
 
-    anagrams = defaultdict(lambda: defaultdict(list))
+    tmp = defaultdict(list)
 
     for word in words:
-        # skip palindromic words
-        if word != word[::-1]:
-            anagrams[len(word)]["".join(sorted(word))].append(word)
+        tmp["".join(sorted(word))].append(word)
 
-    answer = 0
+    anagrams = defaultdict(list)
+    for k, v in tmp.items():
+        if len(v) > 1:
+            anagrams[len(k)].append(v)
+
+    max_square = 0
 
     for length in sorted(anagrams, reverse=True):
 
-        if any(len(x) > 1 for x in anagrams[length].values()):
-            squares = {str(i*i) for i in range(ceil(sqrt(10**(length-1))),
-                                               ceil(sqrt(10**length)))}
-            for v in anagrams[length].values():
-                if len(v) > 1:
-                    for first, second in combinations(v, 2):
-                        for square in squares:
-                            mapping = {k: v for k, v in zip(first, square)}
-                            rev = {v: k for k, v in mapping.items()}
-                            if len(mapping) != len(rev) or "".join([
-                                    rev.get(x, "") for x in square]) != first:
-                                continue
+        squares = {str(i*i) for i in range(ceil(sqrt(10**(length-1))),
+                                           ceil(sqrt(10**length)))}
+        for words in anagrams[length]:
+            for first, second in combinations(words, 2):
+                chars = len(set(first))
 
-                            other = "".join([mapping[x] for x in second])
-                            if other in squares:
-                                print(first, second, square, other)
-                                answer = max(answer, int(square), int(other))
-        if answer:
-            return answer
+                for square in squares:
+                    if len(set(square)) != chars:
+                        continue
+
+                    mapping = {}
+                    for i, c in enumerate(first):
+                        if c in mapping:
+                            if c != mapping[c]:
+                                break
+                        else:
+                            mapping[c] = square[i]
+                    else:
+                        other = "".join([mapping[x] for x in second])
+                        if other in squares:
+                            max_square = max(max_square, int(square), int(other))
+        if max_square:
+            return max_square
 
 if __name__ == "__main__":
     print(main())

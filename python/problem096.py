@@ -179,7 +179,7 @@ def main():
                 solve_puzzle(grid)
 
                 s += int(grid[0][0]+grid[0][1]+grid[0][2])
-                del grid[:]
+                grid.clear()
     return s
 
 if __name__ == "__main__":

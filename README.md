@@ -101,3 +101,4 @@ Problem 95: Amicable chains
 Problem 96: Su Doku  
 Problem 97: Large non-Mersenne prime  
 Problem 98: Anagramic squares  
+Problem 99: Largest exponential  

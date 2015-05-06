@@ -20,7 +20,7 @@ def quotients(n):
             yield i
 
 def main():
-    res, max_x = 0, 0
+    res = max_x = 0
 
     for d in range(2, 1001):
         if sqrt(d).is_integer():

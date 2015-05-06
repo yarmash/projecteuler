@@ -9,7 +9,7 @@ def main():
     primes = prime_sieve(20000)
     primes_set = frozenset(primes)
 
-    t, product = 0, 0
+    t = product = 0
 
     for b in primes: # b has to be prime (0^2+0*a+b=b)
         if b > 1000:

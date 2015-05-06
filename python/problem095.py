@@ -8,7 +8,7 @@ from utils import pdsums_sieve
 def main():
     limit = 1000000
     dsums = pdsums_sieve(limit)
-    max_len, min_elem = 0, 0
+    max_len = min_elem = 0
 
     for i in range(1, limit):
         chain = [i]

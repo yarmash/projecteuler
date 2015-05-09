@@ -3,7 +3,7 @@
 """Problem 96: Su Doku"""
 
 from utils import open_data_file
-from itertools import combinations, product
+from itertools import combinations, product, chain
 from collections import defaultdict
 
 numbers = set("123456789")
@@ -15,15 +15,17 @@ for row in range(9):
     for col in range(9):
 
         # Every square has 3 units and 20 peers
-        peers[(row, col)] = (
-            [(row, c) for c in range(9) if c != col] + \
-            [(r, col) for r in range(9) if r != row] + \
-            [(r, c) for r in range(row//3*3, row//3*3+3) for c in range(col//3*3, col//3*3+3) if r != row or c != col])
+        peers[(row, col)] = set(chain(
+            [(row, c) for c in range(9) if c != col],
+            [(r, col) for r in range(9) if r != row],
+            [(r, c) for r in range(row//3*3, row//3*3+3)
+             for c in range(col//3*3, col//3*3+3) if r != row or c != col]))
 
         units[(row, col)] = (
             [(row, c) for c in range(9) if c != col],
             [(r, col) for r in range(9) if r != row],
-            [(r, c) for r in range(row//3*3, row//3*3+3) for c in range(col//3*3, col//3*3+3) if r != row or c != col])
+            [(r, c) for r in range(row//3*3, row//3*3+3)
+             for c in range(col//3*3, col//3*3+3) if r != row or c != col])
 
 
 def verify_grid(grid):
@@ -34,17 +36,16 @@ def verify_grid(grid):
 
 
 def eliminate(candidates, row, col, value):
-
     if value not in candidates[row][col]:
         return
 
     candidates[row][col].remove(value)
 
     if len(candidates[row][col]) == 1:
-        for r, c in peers[(row, col)]:
-            # no easy way to get a value from a set w/o removing it
-            for v in candidates[row][col]:
-                eliminate(candidates, r, c, v)
+        # no easy way to get a value from a set w/o removing it
+        for v in candidates[row][col]:
+            for r, c in peers[(row, col)]:
+                    eliminate(candidates, r, c, v)
 
 
 def assign(candidates, row, col, value):
@@ -55,7 +56,9 @@ def assign(candidates, row, col, value):
 
 
 def solve_puzzle(grid):
-    candidates = [[set(numbers) for j in range(9)] for i in range(9)]
+    """Solve the puzzle and return the 3-digit number found in the top left
+    corner of the solution grid"""
+    candidates = [[set(numbers) for row in range(9)] for col in range(9)]
 
     for row in range(9):
         for col in range(9):
@@ -157,30 +160,23 @@ def solve_puzzle(grid):
                         for r, c in others:
                             eliminate(candidates, r, c, num)
 
-    for row in range(9):
-        for col in range(9):
-            grid[row][col] = candidates[row][col].pop()
-
-    return grid
+    return int("".join(chain(*candidates[0][:3])))
 
 
 def main():
-    s = 0
+    nsum = 0
 
     with open_data_file("sudoku.txt") as data_file:
         grid = []
 
         for i, line in enumerate(data_file):
-            if i % 10 == 0:
-                continue
-            grid.append([x for x in line.rstrip()])
+            if i % 10:
+                grid.append(line.rstrip())
 
-            if len(grid) == 9:
-                solve_puzzle(grid)
-
-                s += int(grid[0][0]+grid[0][1]+grid[0][2])
-                grid *= 0
-    return s
+                if len(grid) == 9:
+                    nsum += solve_puzzle(grid)
+                    grid *= 0
+    return nsum
 
 if __name__ == "__main__":
     print(main())

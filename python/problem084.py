@@ -2,30 +2,32 @@
 
 """Problem 84: Monopoly odds"""
 
-from random import randint, shuffle
+from random import choice, shuffle
 
 
 class Dice(object):
     """Represents a pair of dice"""
     def __init__(self, sides=6):
         self.sides = sides
+        self.rolls = [(i, j) for i in range(1, sides + 1)
+                      for j in range(1, sides + 1)]
 
     def roll(self):
-        return [randint(1, self.sides), randint(1, self.sides)]
+        return choice(self.rolls)
 
 
 class Deck(object):
     """Represents a deck of Chance or Community Chest cards"""
-    def __init__(self):
-        cards = list(range(16))
+    def __init__(self, size=16):
+        self.size = size
+        cards = list(range(size))
         shuffle(cards)
         self.cards = cards
-        self.index = 0
+        self.index = -1
 
     def draw(self):
-        card = self.cards[self.index]
-        self.index = self.index + 1 if self.index < 15 else 0
-        return card
+        self.index = (self.index + 1) % self.size
+        return self.cards[self.index]
 
 
 def main():
@@ -40,12 +42,12 @@ def main():
         roll = dice.roll()
 
         if roll[0] == roll[1]:
-            doubles += 1
-            if doubles == 3:
+            if doubles == 2:
+                doubles = 0
                 position = 10
                 visits[10] += 1
-                doubles = 0
                 continue
+            doubles += 1
         else:
             doubles = 0
 
@@ -67,7 +69,7 @@ def main():
                 position = 39
             elif card == 5:  # "Go to R1"
                 position = 5
-            elif card == 6 or card == 7:  # "Go to next R" (there are two of these)
+            elif card == 6 or card == 7:  # "Go to next R" (there're two of these)
                 if position == 7:
                     position = 15
                 elif position == 22:
@@ -95,8 +97,8 @@ def main():
 
         visits[position] += 1
 
-    return "".join(["{0:02d}".format(i) for i in
-        sorted(range(len(visits)), key=lambda x: visits[x], reverse=True)][0:3])
+    return "{:02d}{:02d}{:02d}".format(
+        *sorted(range(len(visits)), key=visits.__getitem__, reverse=True)[:3])
 
 if __name__ == "__main__":
     print(main())

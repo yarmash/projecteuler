@@ -2,15 +2,23 @@
 
 """Problem 30: Digit fifth powers"""
 
+from itertools import combinations_with_replacement
+
+
 def main():
-    s = 0
+    digits = "0123456789"
+    powers = {d: i**5 for i, d in enumerate(digits)}
 
-    powers = { str(x) : x**5 for x in range(10) }
+    psums = {1}
 
-    for n in range(2, 6*(9**5)+1):
-        if n == sum(powers[i] for i in str(n)):
-            s += n
-    return s
+    # max possible number is 6*9^5, which has 6 digits
+    for i in range(2, 7):
+        for d in combinations_with_replacement(digits, i):
+            p = sum([powers[x] for x in d])
+
+            if p == sum([powers[x] for x in str(p)]):
+                psums.add(p)
+    return sum(psums) - 1
 
 if __name__ == "__main__":
     print(main())

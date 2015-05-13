@@ -17,7 +17,7 @@ def main():
         frequency[i % 3][code] += 1
 
     # In English, the space (32) is the most frequent character
-    key = [32 ^ max(f.keys(), key=f.get) for f in frequency]
+    key = [32 ^ max(f, key=f.get) for f in frequency]
 
     return sum([(k ^ key[i]) * v for i, f in enumerate(frequency)
                 for k, v in f.items()])

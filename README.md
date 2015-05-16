@@ -102,3 +102,4 @@ Problem 96: Su Doku
 Problem 97: Large non-Mersenne prime  
 Problem 98: Anagramic squares  
 Problem 99: Largest exponential  
+Problem 100: Arranged probability  

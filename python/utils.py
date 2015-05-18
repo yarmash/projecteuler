@@ -219,6 +219,14 @@ def isqrt(num):
     return y
 
 
+def triangular_numbers():
+    """Generate triangular numbers"""
+    n = 1
+    while True:
+        yield n*(n+1) >> 1
+        n += 1
+
+
 def is_triangular_number(num):
     """
     Check if a number is triangular.

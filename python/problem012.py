@@ -2,16 +2,8 @@
 
 """Problem 12: Highly divisible triangular number"""
 
-from utils import prime_sieve
+from utils import prime_sieve, triangular_numbers
 
-
-def triangular_numbers():
-    t = 1
-    d = 2
-    while True:
-        yield t
-        t += d
-        d += 1
 
 def main():
     primes = prime_sieve(65500)

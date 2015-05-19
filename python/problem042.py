@@ -2,15 +2,22 @@
 
 """Problem 42: Coded triangle numbers"""
 
-from utils import open_data_file, is_triangular_number
+from utils import open_data_file
+from math import sqrt
 
 
 def main():
     with open_data_file("words.txt") as data_file:
-        words = [word[1:-1] for word in data_file.read().split(",")]
+        words = data_file.read().split('","')
+    words[0] = words[0][1:]
+    words[-1] = words[-1][:-1]
 
-    return sum([is_triangular_number(sum([ord(char)-64 for char in word]))
-                for word in words])
+    char_map = {c: i for i, c in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1)}
+    values = [sum([char_map[char] for char in word]) for word in words]
+
+    triangle_numbers = set([n*(n+1)//2 for n in
+                           range(1, (-1 + int(sqrt(1 + 8*max(values))))//2 + 1)])
+    return len([v for v in values if v in triangle_numbers])
 
 if __name__ == "__main__":
     print(main())

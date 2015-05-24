@@ -103,3 +103,4 @@ Problem 97: Large non-Mersenne prime
 Problem 98: Anagramic squares  
 Problem 99: Largest exponential  
 Problem 100: Arranged probability  
+Problem 101: Optimum polynomial  

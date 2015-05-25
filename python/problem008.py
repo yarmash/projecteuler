@@ -3,6 +3,8 @@
 """Problem 8: Largest product in a series"""
 
 from functools import reduce
+from operator import mul
+
 
 def main():
     num = (
@@ -28,16 +30,11 @@ def main():
         "71636269561882670428252483600823257530420752963450"
     )
 
-    res = 0
+    series_len = 13
+    digits = [int(d) for d in num]
 
-    for i in range(len(num) - 4):
-        digits = num[i:i+5]
-        product = reduce(lambda x, y: x*int(y), digits, 1)
-
-        if product > res:
-            res = product
-
-    return res
+    return max(reduce(mul, digits[i:i+series_len])
+               for i in range(len(num) - series_len - 1))
 
 if __name__ == "__main__":
     print(main())

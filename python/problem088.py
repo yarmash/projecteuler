@@ -2,6 +2,8 @@
 
 """Problem 88: Product-sum numbers"""
 
+from math import sqrt
+
 
 def main():
     # the minimal product-sum for some k is between k and 2k
@@ -25,7 +27,7 @@ def main():
         for factor in range(max_factor, N//product+1):
             search(product*factor, sum_+factor, num_factors+1, factor)
 
-    for factor in range(2, int(N**0.5)+1):
+    for factor in range(2, int(sqrt(N)) + 1):
         search(factor, factor, 1, factor)
 
     return sum(set(min_product_sums))

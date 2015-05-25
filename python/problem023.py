@@ -2,12 +2,13 @@
 
 """Problem 23: Non-abundant sums"""
 
+from math import sqrt
 from utils import prime_sieve, sum_of_proper_divisors
 
 
 def main():
     LIMIT = 28123
-    primes = prime_sieve(int(LIMIT**.5))
+    primes = prime_sieve(int(sqrt(LIMIT)))
     a_numbers = [i for i in range(12, LIMIT+1) if sum_of_proper_divisors(i, primes) > i]
     a_numbers_set = frozenset(a_numbers)
 

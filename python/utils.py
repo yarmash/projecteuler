@@ -134,7 +134,7 @@ def pdsums_sieve(limit):
     """Return a list of proper divisors sums for numbers under limit"""
     dsums = [1]*limit
 
-    for i in range(2, int(limit**.5)):
+    for i in range(2, int(sqrt(limit))):
         dsums[i*i] += i
 
         for j in range(i+1, ceil(limit/i)):

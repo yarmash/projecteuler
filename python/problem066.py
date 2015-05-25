@@ -6,6 +6,7 @@
 # http://en.wikipedia.org/wiki/Pell%27s_equation#Fundamental_solution_via_continued_fractions
 # http://en.wikipedia.org/wiki/Continued_fraction#Pell.27s_equation
 
+from math import sqrt
 from utils import sqrt_fraction_expansion, convergent_fractions
 
 
@@ -20,7 +21,7 @@ def quotients(n):
 def main():
     lim = 1000
     res = max_x = 0
-    squares = {x*x for x in range(2, int(lim**.5)+1)}
+    squares = {x*x for x in range(2, int(sqrt(lim)) + 1)}
 
     for d in range(2, lim+1):
         if d in squares:

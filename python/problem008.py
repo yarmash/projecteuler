@@ -2,9 +2,6 @@
 
 """Problem 8: Largest product in a series"""
 
-from functools import reduce
-from operator import mul
-
 
 def main():
     num = (
@@ -27,14 +24,26 @@ def main():
         "07198403850962455444362981230987879927244284909188"
         "84580156166097919133875499200524063689912560717606"
         "05886116467109405077541002256983155200055935729725"
-        "71636269561882670428252483600823257530420752963450"
-    )
+        "71636269561882670428252483600823257530420752963450")
 
     series_len = 13
-    digits = [int(d) for d in num]
+    chunks = [chunk for chunk in num.split("0") if len(chunk) >= series_len]
+    max_product = 0
 
-    return max(reduce(mul, digits[i:i+series_len])
-               for i in range(len(num) - series_len - 1))
+    for chunk in chunks:
+        digits = [int(d) for d in chunk]
+        product = 1
+
+        for i, d in enumerate(digits):
+            product *= d
+            if i < series_len - 1:
+                continue
+            if i >= series_len:
+                product //= digits[i-series_len]
+            if product > max_product:
+                max_product = product
+
+    return max_product
 
 if __name__ == "__main__":
     print(main())

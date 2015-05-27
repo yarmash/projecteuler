@@ -307,3 +307,8 @@ def convergent_fractions(quotients):
 def triangle_exists(a, b, c):
     """Check if a triangle with three given side lengths exists"""
     return a + b > c and b + c > a and c + a > b
+
+
+def arithmetic_series(first, last, terms):
+    """Return the sum of the members of a finite arithmetic progression"""
+    return terms * (first + last) // 2

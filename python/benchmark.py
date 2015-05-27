@@ -29,7 +29,7 @@ def main():
         t = time.clock() - begin
 
         if answer == answers[i-1]:
-            print("OK ({0:.4f}s)".format(t))
+            print("OK ({0:.6f}s)".format(t))
             total_time += t
             results[i] = t
         else:

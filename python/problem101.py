@@ -2,32 +2,22 @@
 
 """Problem 101: Optimum polynomial"""
 
-from sympy import symbols, solve
 
-
+# http://en.wikipedia.org/wiki/Lagrange_polynomial
 def main():
-
-    # create some symbols for our equations
-    variables = symbols("a b c d e f g h i j k")
-
-    terms = [
-        1 - x + x**2 - x**3 + x**4 - x**5 + x**6 - x**7 + x**8 - x**9 + x**10
-        for x in range(1, 12)]
-
+    terms = [sum([(-x)**k for k in range(11)]) for x in range(1, 11)]
     fits_sum = 1
 
     for n in range(2, 11):
-        system = []
+        for i in range(1, n+1):
+            t1 = t2 = 1
+            for j in range(1, n+1):
+                if i == j:
+                    continue
+                t1 *= (n+1)-j
+                t2 *= i-j
+            fits_sum += terms[i-1] * t1 // t2
 
-        for x in range(1, n+1):
-            eq = sum([var*x**exp for var, exp in
-                      zip(variables, range(n-1, -1, -1))]) - terms[x-1]
-            system.append(eq)
-
-        solution = solve(system, variables[:n])
-
-        fits_sum += sum([solution[var]*(n+1)**exp for var, exp in
-                         zip(variables, range(n-1, -1, -1))])
     return fits_sum
 
 if __name__ == "__main__":

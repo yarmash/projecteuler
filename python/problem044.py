@@ -2,27 +2,36 @@
 
 """Problem 44: Pentagon numbers"""
 
-from utils import is_pentagonal, nth_pentagonal
+from utils import is_pentagonal
 
 
 def main():
-    diffs = []
 
-    mindiff, diff, n = 0, 1, 1
+    pentagonals = []
+    pset = set()
+    min_diff = float("inf")
+    p = diff = 1
 
-    while mindiff < diff:
-        n += 1
-        diff += 3 # the difference increases by 3
+    while True:
+        diff += 3  # the difference increases by 3
+        p += diff
 
-        diffs.append(0)
+        if not p & 1:  # both numbers must be even
+            for i, v in enumerate(reversed(pentagonals)):
+                d = p - v
+                if d > min_diff:
+                    break
 
-        for i in range(len(diffs)):
-            diffs[i] += diff
+                if d in pset and is_pentagonal(p + v):
+                    if d < min_diff:
+                        min_diff = d
+            pentagonals.append(p)
+            pset.add(p)
 
-            if n != (i+1) and is_pentagonal(diffs[i]):
-                if is_pentagonal(nth_pentagonal(i+1) + nth_pentagonal(n)):
-                    mindiff = min(mindiff, diffs[i]) if mindiff else diffs[i]
-    return mindiff
+        if diff > min_diff:
+            break
+
+    return min_diff
 
 if __name__ == "__main__":
     print(main())

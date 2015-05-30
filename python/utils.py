@@ -232,7 +232,7 @@ def is_triangular_number(num):
     Check if a number is triangular.
     An integer x is triangular if and only if 8x + 1 is a square.
     """
-    return 8*num + 1 == isqrt(8*num+1)**2
+    return is_square(8*num + 1)
 
 
 def is_pentagonal(n):
@@ -312,3 +312,11 @@ def triangle_exists(a, b, c):
 def arithmetic_series(first, last, terms):
     """Return the sum of the members of a finite arithmetic progression"""
     return terms * (first + last) // 2
+
+
+def is_square(num):
+    """Check if a number is a perfect square"""
+    if num % 10 in (2, 3, 7, 8):
+        return False
+    root = isqrt(num)
+    return num == root*root

@@ -1,45 +1,59 @@
 #!/usr/bin/python
 
 import os
-import time
-import itertools
+import sys
+from time import clock
 from importlib import import_module
 from heapq import nlargest
 
 
+def read_answers():
+    """Read the answers file"""
+    with open(os.path.join(os.path.dirname(__file__), "answers")) as afile:
+        answers = [line.rstrip() for line in afile]
+    return answers
+
+
+def run(func):
+    """Time function execution"""
+    begin = clock()
+    answer = func()
+    time = clock() - begin
+    return time, answer
+
+
 def main():
+    answers = read_answers()
+
+    if len(sys.argv) == 2:
+        problems = [int(sys.argv[1])]
+    else:
+        problems = list(range(1, len(answers)+1))
+
     total_time = 0
     results = {}
 
-    with open(os.path.join(os.path.dirname(__file__), "answers")) as f:
-        answers = [line.rstrip() for line in f]
+    for num in problems:
+        mod_name = "problem{:03d}".format(num)
+        mod = import_module(mod_name)
 
-    for i in itertools.count(1):
-        mod_name = "problem{:03d}".format(i)
-        try:
-            mod = import_module(mod_name)
-        except ImportError as exc:
-            if exc.name != mod_name:
-                raise
-            i -= 1
-            break
-        print("{:03d}".format(i), " ", end="", flush=True)
-        begin = time.clock()
-        answer = str(mod.main())
-        t = time.clock() - begin
-
-        if answer == answers[i-1]:
-            print("OK ({0:.6f}s)".format(t))
-            total_time += t
-            results[i] = t
-        else:
-            print("FAIL")
+        print("{:03d}".format(num), " ", end="", flush=True)
+        time, answer = run(mod.main)
+        if str(answer) != answers[num-1]:
+            print("FAIL ({} != {})".format(answer, answers[num-1]))
             return
-    print("Total: {} problems in {:.3f}s".format(i, total_time))
-    print("\nSlowest solutions:")
 
-    for problem in nlargest(5, results, results.get):
-        print("{:03d}  {:.2f}s".format(problem, results[problem]))
+        print("OK ({0:.6f}s)".format(time))
+        total_time += time
+        results[num] = time
+
+    if len(problems) > 1:
+        print("Total: {} problems in {:.3f}s".format(len(problems),
+                                                     total_time))
+        print("\nSlowest solutions:")
+
+        for problem in nlargest(5, results, results.get):
+            print("{:03d}  {:.2f}s".format(problem, results[problem]))
 
 if __name__ == '__main__':
     main()

@@ -3,18 +3,22 @@
 """Problem 46: Goldbach's other conjecture"""
 
 from utils import is_prime
-from math import sqrt
 
 
 def main():
-    primes = []
+    primes = {2}
     n = 3
 
     while True:
         if is_prime(n):
-            primes.append(n)
+            primes.add(n)
         else:
-            if all(not sqrt((n - p)//2).is_integer() for p in primes):
+            i = 1
+            while 2*i*i < n:
+                if n - 2*i*i in primes:
+                    break
+                i += 1
+            else:
                 return n
         n += 2
 

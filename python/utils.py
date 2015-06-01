@@ -236,8 +236,11 @@ def is_triangular_number(num):
 
 
 def is_pentagonal(n):
-    k = (sqrt(24*n+1)+1)/6
-    return k.is_integer()
+    """
+    Test whether an integer n is a pentagonal number.
+    """
+    root = is_square(24*n+1)
+    return root and root % 6 == 5
 
 
 def pythagorean_triplets(p):
@@ -315,8 +318,10 @@ def arithmetic_series(first, last, terms):
 
 
 def is_square(num):
-    """Check if a number is a perfect square"""
+    """Check if a number is a perfect square. Return isqrt or False."""
     if num % 10 in (2, 3, 7, 8):
         return False
     root = isqrt(num)
-    return num == root*root
+    if num == root*root:
+        return root
+    return False

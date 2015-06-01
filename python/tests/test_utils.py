@@ -8,18 +8,28 @@ $ python -m unittest -v tests/test_utils.py
 """
 
 import unittest
-import utils
+
+from utils import (
+    arithmetic_series,
+    is_prime,
+    is_square,
+)
 
 
 class TestUtils(unittest.TestCase):
 
+    def test_is_prime(self):
+        self.assertFalse(is_prime(1))
+        self.assertTrue(is_prime(2))
+        self.assertTrue(is_prime(15485863))
+
     def test_arithmetic_series(self):
-        self.assertEqual(utils.arithmetic_series(1, 100, 100), 5050)
-        self.assertEqual(utils.arithmetic_series(2, 100, 50), 2550)
+        self.assertEqual(arithmetic_series(1, 100, 100), 5050)
+        self.assertEqual(arithmetic_series(2, 100, 50), 2550)
 
     def test_is_square(self):
-        self.assertTrue(utils.is_square(4))
-        self.assertFalse(utils.is_square(8))
+        self.assertTrue(is_square(4))
+        self.assertFalse(is_square(8))
         x = 12345678987654321234567 ** 2
-        self.assertTrue(utils.is_square(x))
-        self.assertFalse(utils.is_square(x + 2))
+        self.assertTrue(is_square(x))
+        self.assertFalse(is_square(x + 2))

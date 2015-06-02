@@ -4,7 +4,7 @@
 
 
 def main():
-    max_perimeter = 1000000000
+    max_perimeter = 10**9
     psum = 0
     # By writing x = (3*a +- 1)/2 and y = h, we get the Pell equation:
     # x^2 - 3*y^2 = 1.

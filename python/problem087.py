@@ -6,7 +6,7 @@ from utils import prime_sieve
 
 
 def main():
-    lim = 50000000
+    lim = 50*10**6
     lim_square = int((lim - 2**3 - 2**4) ** (1/2))
     lim_cube = int((lim - 2**2 - 2**4) ** (1/3))
     lim_fourth = int((lim - 2**2 - 2**3) ** (1/4))

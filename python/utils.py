@@ -28,8 +28,7 @@ def is_prime(n):
 
     if n < 2:
         return False
-    if (n == 2 or n == 3 or n == 5 or n == 7 or n == 11 or n == 13 or
-            n == 17 or n == 19 or n == 23 or n == 29):
+    if n in {2, 3, 5, 7, 11, 13, 17, 19, 23, 29}:
         return True
     if not (n % 2 and n % 3 and n % 5 and n % 7 and n % 11 and n % 13 and
             n % 17 and n % 19 and n % 23 and n % 29):

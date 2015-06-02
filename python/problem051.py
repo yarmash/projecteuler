@@ -18,7 +18,7 @@ def main():
                 count = s.count(c)
 
                 # count has to be a multiple of 3
-                if count and count % 3 == 0 and not (c == "1" and s[-1] == "1"):
+                if count and count % 3 == 0 and not c == "1" == s[-1]:
                     cnt = 1
 
                     for i in range(int(c)+1, 10):

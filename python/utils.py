@@ -318,7 +318,7 @@ def arithmetic_series(first, last, terms):
 
 def is_square(num):
     """Check if a number is a perfect square. Return isqrt or False."""
-    if num % 10 in (2, 3, 7, 8):
+    if num % 10 in {2, 3, 7, 8}:
         return False
     root = isqrt(num)
     if num == root*root:

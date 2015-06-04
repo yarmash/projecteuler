@@ -15,49 +15,46 @@ class Card(object):
         self.value = Card.values[kind]
 
     def __repr__(self):
-        return "".join([self.kind, self.suit])
-
-    def __lt__(self, other):
-        """Make instances of the class sortable"""
-        return self.value < other.value
+        return self.kind + self.suit
 
 
 class Hand(object):
-    __slots__ = ("cards", "same_suit", "consecutive_values")
+    __slots__ = ("values", "same_suit", "consecutive_values")
 
     def __init__(self, cards):
-        cards.sort(reverse=True)
-        self.cards = cards
-
         self.same_suit = cards[0].suit == cards[1].suit == cards[2].suit == \
             cards[3].suit == cards[4].suit
 
-        self.consecutive_values = cards[0].value == cards[1].value + 1 == \
-            cards[2].value + 2 == cards[3].value + 3 == cards[4].value + 4
+        values = [card.value for card in cards]
+        values.sort(reverse=True)
+
+        self.consecutive_values = values[0] == values[1] + 1 == \
+            values[2] + 2 == values[3] + 3 == values[4] + 4
+
+        self.values = values
 
     def __lt__(self, other):
         """Make instances of the class comparable"""
         for ours, theirs in zip(self.terms(), other.terms()):
-            if ours == theirs:
-                continue
-            return ours < theirs
+            if ours != theirs:
+                return ours < theirs
 
     def terms(self):
         """Generate terms for comparison"""
 
-        cards = self.cards
+        values = self.values
 
         # save the number of occurrences for each value
         occurrences = [0]*15
-        for card in cards:
-            occurrences[card.value] += 1
+        for val in values:
+            occurrences[val] += 1
 
         # Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
         # Is a case of the straight flush.
 
         # Straight Flush: All cards are consecutive values of same suit.
         if self.consecutive_values and self.same_suit:
-            yield cards[0].value
+            yield values[0]
         else:
             yield 0
 
@@ -75,32 +72,32 @@ class Hand(object):
 
         # Flush: All cards of the same suit.
         if self.same_suit:
-            yield cards[0].value
+            yield values[0]
         else:
             yield 0
 
         # Straight: All cards are consecutive values.
         if self.consecutive_values:
-            yield cards[0].value
+            yield values[0]
         else:
             yield 0
 
         # Three of a Kind: Three cards of the same value.
         if 3 in occurrences:
             yield occurrences.index(3)
-            for card in cards:
-                if occurrences[card.value] != 3:
-                    yield card.value
+            for val in values:
+                if occurrences[val] != 3:
+                    yield val
         else:
             yield 0
 
         # Two Pairs: Two different pairs.
         if occurrences.count(2) == 2:
-            for card in cards:
-                if occurrences[card.value] == 2:
-                    yield card.value
+            for val in values:
+                if occurrences[val] == 2:
+                    yield val
                 else:
-                    unpaired = card.value
+                    unpaired = val
             yield unpaired
         else:
             yield 0
@@ -108,22 +105,25 @@ class Hand(object):
         # One Pair: Two cards of the same value.
         if 2 in occurrences:
             yield occurrences.index(2)
-            for card in cards:
-                if occurrences[card.value] != 2:
-                    yield card.value
+            for val in values:
+                if occurrences[val] != 2:
+                    yield val
         else:
             yield 0
 
         # High Card: Highest value card.
-        yield cards[0].value
+        yield values[0]
 
 
 def main():
     cnt = 0
 
+    deck = {kind+suit: Card(kind, suit) for kind in "23456789TJQKA"
+            for suit in "CDHS"}
+
     with open_data_file("poker.txt") as data_file:
         for line in data_file:
-            cards = [Card(*card) for card in line.split()]  # example: 9C JD
+            cards = [deck[card] for card in line.split()]  # example: 9C JD
 
             if Hand(cards[:5]) > Hand(cards[5:]):
                 cnt += 1

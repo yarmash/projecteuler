@@ -14,7 +14,9 @@ from utils import (
     is_pentagonal,
     is_prime,
     is_square,
+    is_triangular_number,
     nth_pentagonal,
+    nth_triangle,
 )
 
 
@@ -29,7 +31,7 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(is_pentagonal(5))
         self.assertFalse(is_pentagonal(15))
 
-        n = 10**12
+        n = 10**15
         p = nth_pentagonal(n)
         self.assertTrue(is_pentagonal(p))
         self.assertFalse(is_pentagonal(p + 2))
@@ -45,3 +47,11 @@ class TestUtils(unittest.TestCase):
         x = 12345678987654321234567 ** 2
         self.assertTrue(is_square(x))
         self.assertFalse(is_square(x + 2))
+
+    def test_is_triangular_number(self):
+        self.assertTrue(is_triangular_number(1))
+        self.assertFalse(is_triangular_number(2))
+        n = 10**15
+        t = nth_triangle(n)
+        self.assertTrue(is_triangular_number(t))
+        self.assertFalse(is_triangular_number(t + 2))

@@ -6,9 +6,7 @@ from utils import prime_sieve_lazy
 
 
 def main():
-    count = 0
-    for prime in prime_sieve_lazy():
-        count += 1
+    for count, prime in enumerate(prime_sieve_lazy(), 1):
         if count == 10001:
             return prime
 

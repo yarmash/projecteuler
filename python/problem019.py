@@ -11,23 +11,23 @@ def is_leap_year(year):
 def main():
     numdays = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
-    year, month, wday = 1901, 1, 2
-    cnt = 0
+    year, month, wday = 1901, 0, 2  # 1 Jan 1901
+    sundays = 0
 
     while year < 2001:
         if wday == 0:
-            cnt += 1
+            sundays += 1
 
-        days = 29 if month == 2 and is_leap_year(year) else numdays[month-1]
+        days = 29 if month == 1 and is_leap_year(year) else numdays[month]
         wday = (wday + days) % 7
 
-        month += 1
-
-        if month > 12:
+        if month < 11:
+            month += 1
+        else:
+            month = 0
             year += 1
-            month = 1
 
-    return cnt
+    return sundays
 
 if __name__ == "__main__":
     print(main())

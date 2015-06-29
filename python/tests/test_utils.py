@@ -11,6 +11,7 @@ import unittest
 
 from utils import (
     arithmetic_series,
+    is_pandigital,
     is_pentagonal,
     is_prime,
     is_square,
@@ -55,3 +56,20 @@ class TestUtils(unittest.TestCase):
         t = nth_triangle(n)
         self.assertTrue(is_triangular_number(t))
         self.assertFalse(is_triangular_number(t + 2))
+
+    def test_is_pandigital(self):
+        # The first pandigital number
+        self.assertTrue(is_pandigital(1023456789, start=0, end=9))
+        # The first zeroless pandigital number
+        self.assertTrue(is_pandigital(123456789, start=1, end=9))
+        # A pandigital number w/ redundant digits
+        self.assertTrue(is_pandigital(1223334444555567890, start=0, end=9))
+        # The smallest pandigital palindromic number in base 10
+        self.assertTrue(is_pandigital(1023456789876543201, start=0, end=9))
+
+        self.assertTrue(is_pandigital(12345678987654321, start=1, end=9))
+        self.assertTrue(is_pandigital(10234, start=0, end=4))
+        self.assertTrue(is_pandigital(456789, start=4, end=9))
+        self.assertFalse(is_pandigital(123456789, start=0, end=9))
+        self.assertFalse(is_pandigital(1023456789, start=1, end=9))
+        self.assertFalse(is_pandigital(102345, start=0, end=4))

@@ -161,16 +161,16 @@ def is_palindrome(n, base):
 
 def is_pandigital(n, end=9, start=1):
     """
-    Check if a number is x to y pandigital
-    The function doesn't check for redundant digits
+    Check if a number is 'start' to 'end' pandigital.
+    The function doesn't check for redundant digits.
     """
     res = 0
 
-    while n > 0:
+    while n:
         res |= (1 << n % 10)
         n //= 10
 
-    return res == (2**(end-start+1) - 1) << start
+    return res == ((1 << (end-start+1)) - 1) << start
 
 
 def is_permutation(a, b):

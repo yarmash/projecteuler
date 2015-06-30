@@ -5,19 +5,18 @@
 from utils import is_pandigital
 from itertools import permutations
 
-def main():
-    # the number can have 4 digits max since the concatenated product has the length 9
-    for i in range(4, 0, -1):
-        for p in permutations("987654321", i):
-            p = "".join(p)
-            k = int(p) << 1   # initial product (number*2)
-            c = p+str(k)      # the concatenated product
 
-            while len(c) <= 9:
-                if is_pandigital(int(c)):
-                    return c
-                k += int(p)
-                c += str(k)
+def main():
+    # The number to beat is 918273645.
+    # The starting number can't be in the form 9X or 9XX, as that would
+    # produce too few or too many digits. Thus, it must be in the form 9XXX.
+
+    for digits in permutations("987654321", 4):
+        start = "".join(digits)
+        prod = start + str(int(start)*2)
+
+        if is_pandigital(int(prod)):
+            return prod
 
 if __name__ == "__main__":
     print(main())

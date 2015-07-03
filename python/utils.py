@@ -159,18 +159,22 @@ def is_palindrome(n, base):
     return r == n
 
 
-def is_pandigital(n, end=9, start=1):
+def is_pandigital(n):
     """
-    Check if a number is 'start' to 'end' pandigital.
-    The function doesn't check for redundant digits.
+    Check if a number is (zeroless) pandigital in base 10, e.g. "923456781".
+    No *strict* checking for redundant digits is made.
     """
-    res = 0
+    # the number must be divisible by 9
+    if n % 9:
+        return False
+
+    flags = 0
 
     while n:
-        res |= (1 << n % 10)
+        flags |= (1 << n % 10)
         n //= 10
 
-    return res == ((1 << (end-start+1)) - 1) << start
+    return flags == 0b1111111110
 
 
 def is_permutation(a, b):

@@ -2,36 +2,38 @@
 
 """Problem 103: Special subset sums: optimum"""
 
-from itertools import combinations, chain
+from itertools import combinations
 
 
-def powerset(iterable):
-    "powerset([1,2,3]) --> (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
-    s = list(iterable)
-    return chain.from_iterable(combinations(s, r) for r in range(1, len(s)+1))
+def is_special_sum_set(s):
+    """
+    Check if a set (represented as a list) is a special sum set.
+    """
+    s.sort()
+
+    if any(sum(s[:i]) <= sum(s[-i+1:]) for i in range(2, (len(s) + 3)//2)):
+        return False
+
+    for i in range(2, len(s)//2+1):
+        sums = set()
+
+        for subset in combinations(s, i):
+            st_sum = sum(subset)
+            if st_sum in sums:
+                return False
+            sums.add(st_sum)
+    return True
 
 
 def main():
     candidates = []
 
     # make an educated guess about limits, based on the problem definition
-    for A in combinations(range(30, 47), 6):
-        A = (20,) + A
+    for s in combinations(range(30, 47), 6):
+        s = [20] + list(s)
 
-        for B, C in combinations(powerset(A), 2):
-            sb = sum(B)
-            sc = sum(C)
-            if sb == sc:
-                break
-
-            if len(B) > len(C):
-                if sb < sc:
-                    break
-            elif len(B) < len(C):
-                if sb > sc:
-                    break
-        else:
-            candidates.append(A)
+        if is_special_sum_set(s):
+            candidates.append(s)
 
     return "".join([str(x) for x in min(candidates, key=sum)])
 

@@ -47,8 +47,4 @@ def main():
     return "".join([str(d) for d in answer])
 
 if __name__ == "__main__":
-    assert calc_consecutive(set(range(2, 10))) == 0
-    assert calc_consecutive(set(range(1, 10))) == 9
-    assert calc_consecutive(set([1, 2, 3, 4, 6, 7, 8, 9])) == 4
-
     print(main())

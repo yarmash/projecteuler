@@ -2,31 +2,35 @@
 
 """Problem 51: Prime digit replacements"""
 
-from utils import is_prime
+from utils import prime_sieve_lazy, is_prime
 
 
 def main():
-    num = 1009 # 1st 4-digit prime
+    for prime in prime_sieve_lazy():
+        if prime < 10**4:  # rewind to the first 5-digit prime
+            continue
 
-    while True:
-        num += 2
+        s = str(prime)
 
-        if is_prime(num):
-            s = str(num)
+        # we're searching from low to high
+        for digit in "012":
+            count = s.count(digit)
 
-            for c in "012":
-                count = s.count(c)
+            # Some observaions:
+            #  * count has to be a multiple of 3, otherwise some of the new
+            #    primes will be divisible by 3.
+            #  * the rightmost digit can't be replaced (it could only be "1")
+            if count and not count % 3 and not digit == "1" == s[-1]:
+                cnt = 1
 
-                # count has to be a multiple of 3
-                if count and count % 3 == 0 and not c == "1" == s[-1]:
-                    cnt = 1
+                for i in range(int(digit)+1, 10):
+                    if i - cnt > 2:
+                        break
 
-                    for i in range(int(c)+1, 10):
-                        if 10-i < 8-cnt: break
+                    if is_prime(int(s.replace(digit, str(i), count))):
+                        cnt += 1
+                        if cnt == 8:
+                            return prime
 
-                        if is_prime(int(s.replace(c, str(i)))):
-                            cnt += 1
-                            if cnt == 8:
-                                return num
 if __name__ == '__main__':
     print(main())

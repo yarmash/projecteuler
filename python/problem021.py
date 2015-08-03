@@ -11,7 +11,7 @@ def main():
     asum = 0
 
     for i in range(2, limit):
-        if dsums[i] < limit and i != dsums[i] and i == dsums[dsums[i]]:
+        if limit > dsums[i] != i == dsums[dsums[i]]:
             asum += i + dsums[i]
 
             dsums[dsums[i]] = 0

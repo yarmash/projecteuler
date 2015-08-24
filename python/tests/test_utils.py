@@ -11,6 +11,7 @@ import unittest
 
 from utils import (
     arithmetic_series,
+    exp_by_squaring,
     is_pandigital,
     is_pentagonal,
     is_prime,
@@ -62,3 +63,7 @@ class TestUtils(unittest.TestCase):
         self.assertFalse(is_pandigital(12345678))
         self.assertFalse(is_pandigital(102345678))
         self.assertFalse(is_pandigital(1023456789))
+
+    def test_exp_by_squaring(self):
+        for num, p in ((2, 3), (10, 10), (1234, 5678)):
+            self.assertEqual(exp_by_squaring(num, p), pow(num, p))

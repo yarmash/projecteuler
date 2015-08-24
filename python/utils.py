@@ -328,3 +328,19 @@ def is_square(num):
     if num == root*root:
         return root
     return False
+
+
+def exp_by_squaring(x, n):
+    """
+    Implements the "exponentiation by squaring" algorithm (iterative version).
+    Works for powers >= 1.
+    """
+    result = 1
+
+    while n > 1:
+        if n & 1:
+            result *= x
+        x *= x
+        n //= 2
+
+    return x * result

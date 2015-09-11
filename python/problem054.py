@@ -6,8 +6,9 @@ from utils import open_data_file
 
 
 class Card(object):
-    values = {kind: val for val, kind in enumerate("23456789TJQKA", 2)}
-    __slots__ = ("kind", "value", "suit")
+    # values are powers of 2
+    values = {v: 1 << i for i, v in enumerate("23456789TJQKA")}
+    __slots__ = ("kind", "suit", "value")
 
     def __init__(self, kind, suit):
         self.kind = kind
@@ -19,19 +20,48 @@ class Card(object):
 
 
 class Hand(object):
-    __slots__ = ("values", "same_suit", "consecutive_values")
+    __slots__ = ("values", "same_suit", "consecutive_values",
+                 "quad", "trip", "pairs")
 
     def __init__(self, cards):
         self.same_suit = cards[0].suit == cards[1].suit == cards[2].suit == \
             cards[3].suit == cards[4].suit
 
-        values = [card.value for card in cards]
-        values.sort(reverse=True)
+        values = quad = trip = pairs = 0
 
-        self.consecutive_values = values[0] == values[1] + 1 == \
-            values[2] + 2 == values[3] + 3 == values[4] + 4
+        for card in cards:
+            value = card.value
+
+            if value & values:
+                if value & pairs:
+                    if value & trip:
+                        quad |= value
+                    else:
+                        trip |= value
+                else:
+                    pairs |= value
+            else:
+                values |= value
+
+        pairs ^= trip
+        trip ^= quad
 
         self.values = values
+        self.quad = quad
+        self.trip = trip
+        self.pairs = pairs
+
+        self.consecutive_values = values in {
+            0b11111,
+            0b111110,
+            0b1111100,
+            0b11111000,
+            0b111110000,
+            0b1111100000,
+            0b11111000000,
+            0b111110000000,
+            0b1111100000000,
+        }
 
     def __lt__(self, other):
         """Make instances of the class comparable"""
@@ -42,77 +72,59 @@ class Hand(object):
     def terms(self):
         """Generate terms for comparison"""
 
-        values = self.values
-
-        # save the number of occurrences for each value
-        occurrences = [0]*15
-        for val in values:
-            occurrences[val] += 1
-
         # Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-        # Is a case of the straight flush.
+        # Is a case of Straight Flush.
 
         # Straight Flush: All cards are consecutive values of same suit.
         if self.consecutive_values and self.same_suit:
-            yield values[0]
+            yield self.values
         else:
             yield 0
 
         # Four of a Kind: Four cards of the same value.
-        if 4 in occurrences:
-            yield occurrences.index(4)
-        else:
-            yield 0
+        yield self.quad
 
         # Full House: Three of a kind and a pair.
-        if 3 in occurrences and 2 in occurrences:
-            yield occurrences.index(3)
+        if self.trip and self.pairs:
+            yield self.trip
         else:
             yield 0
 
         # Flush: All cards of the same suit.
         if self.same_suit:
-            yield values[0]
+            yield self.values
         else:
             yield 0
 
         # Straight: All cards are consecutive values.
         if self.consecutive_values:
-            yield values[0]
+            yield self.values
         else:
             yield 0
 
         # Three of a Kind: Three cards of the same value.
-        if 3 in occurrences:
-            yield occurrences.index(3)
-            for val in values:
-                if occurrences[val] != 3:
-                    yield val
+        if self.trip:
+            yield self.trip
+            yield self.trip ^ self.values
         else:
             yield 0
 
         # Two Pairs: Two different pairs.
-        if occurrences.count(2) == 2:
-            for val in values:
-                if occurrences[val] == 2:
-                    yield val
-                else:
-                    unpaired = val
-            yield unpaired
+        if self.pairs and (self.pairs & (self.pairs-1)):
+            yield self.pairs
+            yield self.pairs ^ self.values
         else:
             yield 0
 
         # One Pair: Two cards of the same value.
-        if 2 in occurrences:
-            yield occurrences.index(2)
-            for val in values:
-                if occurrences[val] != 2:
-                    yield val
+        if self.pairs:
+            yield self.pairs
+            yield self.pairs ^ self.values
         else:
             yield 0
 
         # High Card: Highest value card.
-        yield values[0]
+        yield self.values
 
 
 def main():

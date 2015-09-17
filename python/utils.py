@@ -215,11 +215,11 @@ def isqrt(num):
     using Newton's method.
     """
     x = num
-    y = (num + 1) >> 1
-    while abs(y - x) > 1:
+    y = (x + 1) >> 1
+    while x > y:
         x = y
         y = (x + num // x) >> 1
-    return y
+    return x
 
 
 def triangular_numbers():

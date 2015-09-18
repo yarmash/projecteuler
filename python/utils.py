@@ -211,14 +211,14 @@ def nth_octagonal(n):
 
 def isqrt(num):
     """
-    Calculate the integer square root of a positive integer
-    using Newton's method.
+    Calculate the integer square root of a positive integer using
+    Newton's (Babylonian) method.
     """
-    x = num
-    y = (x + 1) >> 1
+    x = 1 << ceil(num.bit_length()/2)
+    y = (x + num//x) >> 1
     while x > y:
         x = y
-        y = (x + num // x) >> 1
+        y = (x + num//x) >> 1
     return x
 
 

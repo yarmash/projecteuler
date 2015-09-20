@@ -10,34 +10,24 @@ def main():
     with open_data_file("matrix.txt") as data_file:
         matrix = [[int(x) for x in line.split(",")] for line in data_file]
 
-    size = len(matrix)
-
+    size = 80
+    last = size - 1
     distances = [[float("inf")]*size for i in range(size)]
-
-    heap = []
-    heappush(heap, (matrix[0][0], 0, 0))  # distance, row, col
+    heap = [(matrix[0][0], 0, 0)]
 
     # Dijkstra's algorithm, simplified
     while heap:
         distance, row, col = heappop(heap)
-        neighbors = []
 
-        if row > 0:
-            neighbors.append((distance+matrix[row-1][col], row-1, col)),  # up
-        if col < size-1:
-            neighbors.append((distance+matrix[row][col+1], row, col+1)),  # right
-        if row < size-1:
-            neighbors.append((distance+matrix[row+1][col], row+1, col)),  # down
-        if col > 0:
-            neighbors.append((distance+matrix[row][col-1], row, col-1)),  # left
+        # try to go up, right, down and left, if possible
+        for r, c in ((row-1, col), (row, col+1), (row+1, col), (row, col-1)):
+            if 0 <= r <= last >= c >= 0:
+                new_distance = distance + matrix[r][c]
+                if new_distance < distances[r][c]:
+                    heappush(heap, (new_distance, r, c))
+                    distances[r][c] = new_distance
 
-        for node in neighbors:
-            if node[0] < distances[node[1]][node[2]]:
-                heappush(heap, node)
-                distances[node[1]][node[2]] = node[0]
-
-        if row == col == size-1:
-            return distance
+    return distances[last][last]
 
 if __name__ == "__main__":
     print(main())

@@ -1,7 +1,7 @@
 """Helper functions for Project Euler problems"""
 
 import os
-from math import ceil, factorial, sqrt
+from math import factorial, sqrt
 from functools import reduce
 
 
@@ -136,7 +136,7 @@ def pdsums_sieve(limit):
     for i in range(2, int(sqrt(limit))):
         dsums[i*i] += i
 
-        for j in range(i+1, ceil(limit/i)):
+        for j in range(i+1, -(-limit // i)):  # ceil
             dsums[i*j] += i + j
     dsums[0] = dsums[1] = 0
     return dsums
@@ -214,7 +214,7 @@ def isqrt(num):
     Calculate the integer square root of a positive integer using
     Newton's (Babylonian) method.
     """
-    x = 1 << ceil(num.bit_length()/2)
+    x = 1 << -(-num.bit_length() >> 1)  # ceil
     y = (x + num//x) >> 1
     while x > y:
         x = y

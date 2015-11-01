@@ -2,7 +2,7 @@
 
 """Problem 91: Right triangles with integer coordinates"""
 
-from utils import gcd
+from math import gcd
 
 
 def main():

@@ -2,7 +2,7 @@
 
 """Problem 5: Smallest multiple"""
 
-from utils import gcd
+from math import gcd
 
 
 def main():

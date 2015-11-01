@@ -1,7 +1,7 @@
 """Helper functions for Project Euler problems"""
 
 import os
-from math import factorial, sqrt
+from math import gcd, factorial, sqrt
 from functools import reduce
 
 
@@ -140,13 +140,6 @@ def pdsums_sieve(limit):
             dsums[i*j] += i + j
     dsums[0] = dsums[1] = 0
     return dsums
-
-
-def gcd(a, b):
-    """Returns the Greatest Common Divisor of a and b (Euclidean algorithm)"""
-    while b:
-        a, b = b, a % b
-    return a
 
 
 def is_palindrome(n, base):

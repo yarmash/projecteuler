@@ -2,7 +2,7 @@
 
 """Problem 33: Digit cancelling fractions"""
 
-from utils import gcd
+from math import gcd
 from functools import reduce
 
 

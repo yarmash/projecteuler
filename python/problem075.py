@@ -2,7 +2,7 @@
 
 """Problem 75: Singular integer right triangles"""
 
-from utils import gcd
+from math import gcd
 from math import sqrt
 
 def main():

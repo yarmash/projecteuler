@@ -2,13 +2,14 @@
 
 """Problem 60: Prime pair sets"""
 
-from utils import prime_sieve, memoize, is_prime
+from utils import prime_sieve, is_prime
+from functools import lru_cache
 
 
 def main():
     primes = prime_sieve(8500)
 
-    @memoize
+    @lru_cache(maxsize=None)
     def check(p1, p2):
         return is_prime(int(str(p1)+str(p2))) and is_prime(int(str(p2)+str(p1)))
 

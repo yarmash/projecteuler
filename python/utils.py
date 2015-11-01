@@ -11,18 +11,6 @@ def open_data_file(filename):
         os.path.join(os.path.dirname(__file__), "..", "data", filename))
 
 
-def memoize(func):
-    """A simple memoizing decorator"""
-    cache = {}
-
-    def wrapper(*args, cache=cache):
-        if args not in cache:
-            cache[args] = func(*args)
-        return cache[args]
-
-    return wrapper
-
-
 def is_prime(n):
     """Determine whether a number is prime using trial division"""
 

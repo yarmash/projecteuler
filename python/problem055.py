@@ -2,10 +2,10 @@
 
 """Problem 55: Lychrel numbers"""
 
-from utils import memoize
+from functools import lru_cache
 
 
-@memoize
+@lru_cache(maxsize=None)
 def reverse(num):
     r = 0
     while num > 0:

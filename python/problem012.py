@@ -2,11 +2,12 @@
 
 """Problem 12: Highly divisible triangular number"""
 
-from utils import memoize, prime_sieve
+from utils import prime_sieve
 from itertools import count
+from functools import lru_cache
 
 
-@memoize
+@lru_cache(maxsize=None)
 def num_of_divisors(num, primes=prime_sieve(1000)):
     """Returns the number of divisors of an integer"""
     cnt = 1

@@ -2,12 +2,12 @@
 
 """Problem 92: Square digit chains"""
 
-from utils import memoize
+from functools import lru_cache
 
 
 def main():
 
-    @memoize
+    @lru_cache(maxsize=None)
     def sum_squares(num):
         """Sums the squares of the digits in a number"""
         if num == 89 or num == 1:

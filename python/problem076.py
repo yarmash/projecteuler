@@ -2,12 +2,12 @@
 
 """Problem 76: Counting summations"""
 
-from utils import memoize
+from functools import lru_cache
 
 
 def main():
 
-    @memoize
+    @lru_cache(maxsize=None)
     def count(k, n):
         """Returns the number of summations of n using numbers >= k"""
         if k == n:

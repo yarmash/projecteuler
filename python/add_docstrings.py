@@ -22,10 +22,9 @@ for num in count(1):
     print(docstring[3:-4])
 
     with open(filename, "r+") as f:
-        contents = f.readlines()
+        lines = f.readlines()
 
-        if contents[2] != docstring:
-            contents[2:2] = [docstring, "\n"]
+        if lines[2] != docstring:
+            lines[2:2] = [docstring, "\n"]
             f.seek(0)
-            f.truncate()
-            f.write("".join(contents))
+            f.writelines(lines)

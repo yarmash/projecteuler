@@ -89,10 +89,7 @@ def search(candidates):
 
 def first(seq):
     """Return the first element of seq that is true"""
-    for el in seq:
-        if el:
-            return el
-    return False
+    return next(filter(None, seq), False)
 
 
 def solve_puzzle(grid):

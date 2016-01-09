@@ -2,6 +2,7 @@
 
 """Problem 65: Convergents of e"""
 
+from itertools import repeat
 from utils import convergent_fractions
 
 
@@ -19,7 +20,7 @@ def main():
 
     convergents = convergent_fractions(quotients())
 
-    for _ in range(100):
+    for _ in repeat(None, 100):
         num = next(convergents)[0]
 
     return sum(map(int, str(num)))

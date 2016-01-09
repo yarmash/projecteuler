@@ -2,6 +2,7 @@
 
 """Problem 35: Circular primes"""
 
+from itertools import repeat
 from utils import prime_sieve
 
 
@@ -19,7 +20,7 @@ def rotations(n):
         1 if n > 10 else \
         0
 
-    for _ in range(k+1):
+    for _ in repeat(None, k+1):
         n = 10**k * (n % 10) + n // 10
         yield n
 

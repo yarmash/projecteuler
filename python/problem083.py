@@ -2,8 +2,9 @@
 
 """Problem 83: Path sum: four ways"""
 
-from utils import open_data_file
 from heapq import heappush, heappop
+from itertools import repeat
+from utils import open_data_file
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
 
     size = 80
     last = size - 1
-    distances = [[float("inf")]*size for i in range(size)]
+    distances = [[float("inf")]*size for _ in repeat(None, size)]
     heap = [(matrix[0][0], 0, 0)]
 
     # Dijkstra's algorithm, simplified

@@ -2,6 +2,7 @@
 
 """Problem 81: Path sum: two ways"""
 
+from itertools import repeat
 from utils import open_data_file
 
 
@@ -9,7 +10,7 @@ def main():
     with open_data_file("matrix.txt") as data_file:
         matrix = [[int(x) for x in line.split(",")] for line in data_file]
 
-    sums = [[0]*80 for i in range(80)]
+    sums = [[0]*80 for _ in repeat(None, 80)]
     sums[0][0] = matrix[0][0]
 
     for i in range(1, 80):

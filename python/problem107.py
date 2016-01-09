@@ -3,6 +3,7 @@
 """Problem 107: Minimal network"""
 
 from heapq import heappush, heappop
+from itertools import repeat
 from utils import open_data_file
 
 
@@ -29,7 +30,7 @@ class Graph:
     def __init__(self, vertices):
         """Create an empty graph"""
 
-        self.vertices = [[] for i in range(vertices)]
+        self.vertices = [[] for _ in repeat(None, vertices)]
 
     def insert_edge(self, u, v, w):
         """Insert and return a new Edge from u to v with weight w"""

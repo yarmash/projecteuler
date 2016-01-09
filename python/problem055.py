@@ -3,6 +3,7 @@
 """Problem 55: Lychrel numbers"""
 
 from functools import lru_cache
+from itertools import repeat
 
 
 @lru_cache(maxsize=None)
@@ -18,7 +19,7 @@ def main():
     cnt = 0
 
     for i in range(1, 10000):
-        for _ in range(1, 50):
+        for _ in repeat(None, 49):
             i += reverse(i)
 
             if i == reverse(i):

@@ -11,7 +11,7 @@ def main():
         codes = [int(code) for code in data_file.read().split(",")]
 
     # code frequency for each character of the key
-    frequency = [defaultdict(int) for i in range(3)]
+    frequency = [defaultdict(int) for _ in range(3)]
 
     for i, code in enumerate(codes):
         frequency[i % 3][code] += 1

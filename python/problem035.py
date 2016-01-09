@@ -6,16 +6,23 @@ from utils import prime_sieve
 
 
 def rotations(n):
-    k = 5 if 100000 < n else \
-        4 if 10000 < n else \
-        3 if 1000 < n else \
-        2 if 100 < n else \
-        1 if 10 < n else \
+    """
+    Generate rotations of a number (including the number itself).
+    May produce duplicates.
+    """
+
+    # this is faster than using math.log10()
+    k = 5 if n > 100000 else \
+        4 if n > 10000 else \
+        3 if n > 1000 else \
+        2 if n > 100 else \
+        1 if n > 10 else \
         0
 
     for _ in range(k+1):
-        n = 10**k*(n % 10) + n//10
+        n = 10**k * (n % 10) + n // 10
         yield n
+
 
 def main():
     primes = prime_sieve(1000000)
@@ -25,7 +32,7 @@ def main():
 
     for p in primes:
         for r in rotations(p):
-            if not r in primes_set:
+            if r not in primes_set:
                 break
         else:
             cnt += 1

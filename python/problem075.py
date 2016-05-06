@@ -13,7 +13,7 @@ def main():
         for n in range(2 if m&1 else 1, m, 2):
             if gcd(m, n) == 1:
 
-                p = m*(m+n)<<1 # a + b + c
+                p = 2*m*(m+n)  # a + b + c
 
                 if p <= limit:
                     for i in range(p, limit, p):

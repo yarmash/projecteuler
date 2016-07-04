@@ -30,7 +30,7 @@ def main():
 
     # make an educated guess about limits, based on the problem definition
     for s in combinations(range(30, 47), 6):
-        s = [20] + list(s)
+        s = [20, *s]
 
         if is_special_sum_set(s):
             candidates.append(s)

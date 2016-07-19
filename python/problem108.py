@@ -9,18 +9,18 @@ from utils import prime_factors, prime_sieve
 # d(x) is the number of positive divisors of x.
 
 
-def num_of_divisors(n, primes=prime_sieve(1000000)):
+def num_of_solutions(n, primes=prime_sieve(10000)):
     factors = prime_factors(n, primes)
-    num = 1
+    d = 1
 
     for prime, exponent in factors:
-        num *= exponent + 1
-    return num
+        d *= exponent*2 + 1
+    return (d + 1) // 2
 
 
 def main():
     for n in count(1):
-        solutions = (num_of_divisors(n*n)+1)//2
+        solutions = num_of_solutions(n)
         if solutions > 1000:
             return n
 

@@ -109,4 +109,5 @@ Problem 103: [Special subset sums: optimum](https://projecteuler.net/problem=103
 Problem 104: [Pandigital Fibonacci ends](https://projecteuler.net/problem=104)  
 Problem 105: [Special subset sums: testing](https://projecteuler.net/problem=105)  
 Problem 106: [Special subset sums: meta-testing](https://projecteuler.net/problem=106)  
-Problem 107: [Minimal network](https://projecteuler.net/problem=107)
+Problem 107: [Minimal network](https://projecteuler.net/problem=107)  
+Problem 108: [Diophantine reciprocals I](https://projecteuler.net/problem=108)  

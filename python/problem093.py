@@ -2,6 +2,7 @@
 
 """Problem 93: Arithmetic expressions"""
 
+from functools import reduce
 from itertools import product, combinations, permutations
 from operator import add, sub, mul, truediv
 
@@ -44,7 +45,9 @@ def main():
         if cons > max_consecutive:
             max_consecutive = cons
             answer = digits
-    return "".join([str(d) for d in answer])
+
+    return reduce(lambda x, y: x*10 + y, answer)
+
 
 if __name__ == "__main__":
     print(main())

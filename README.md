@@ -113,3 +113,4 @@ My solutions to the problems from [projecteuler.net](https://projecteuler.net) (
 108. [Diophantine reciprocals I](https://projecteuler.net/problem=108)  
 109. [Darts](https://projecteuler.net/problem=109)  
 110. [Diophantine reciprocals II](https://projecteuler.net/problem=110)  
+111. [Primes with runs](https://projecteuler.net/problem=111)  

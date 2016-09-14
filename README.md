@@ -115,3 +115,4 @@ My solutions to the problems from [projecteuler.net](https://projecteuler.net) (
 110. [Diophantine reciprocals II](https://projecteuler.net/problem=110)  
 111. [Primes with runs](https://projecteuler.net/problem=111)  
 112. [Bouncy numbers](https://projecteuler.net/problem=112)  
+113. [Non-bouncy numbers](https://projecteuler.net/problem=113)  

@@ -2,8 +2,10 @@
 
 """Problem 42: Coded triangle numbers"""
 
-from utils import open_data_file
 from math import sqrt
+import string
+
+from utils import open_data_file
 
 
 def main():
@@ -12,7 +14,7 @@ def main():
     words[0] = words[0][1:]
     words[-1] = words[-1][:-1]
 
-    char_map = {c: i for i, c in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1)}
+    char_map = {c: i for i, c in enumerate(string.ascii_uppercase, 1)}
     values = [sum([char_map[char] for char in word]) for word in words]
 
     triangle_numbers = set([n*(n+1)//2 for n in

@@ -2,6 +2,8 @@
 
 """Problem 22: Names scores"""
 
+import string
+
 from utils import open_data_file
 
 
@@ -12,7 +14,7 @@ def main():
     names[-1] = names[-1][:-1]
     names.sort()
 
-    values = {c: i for i, c in enumerate("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1)}
+    values = {c: i for i, c in enumerate(string.ascii_uppercase, 1)}
 
     return sum([sum([values[c] for c in name]) * pos
                 for pos, name in enumerate(names, 1)])

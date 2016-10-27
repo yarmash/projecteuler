@@ -3,6 +3,7 @@
 """Problem 84: Monopoly odds"""
 
 from random import choice, shuffle
+from heapq import nlargest
 
 
 class Dice(object):
@@ -97,8 +98,8 @@ def main():
 
         visits[position] += 1
 
-    return "{:02d}{:02d}{:02d}".format(
-        *sorted(range(len(visits)), key=visits.__getitem__, reverse=True)[:3])
+    return "{:02d}{:02d}{:02d}".format(*nlargest(3, range(len(visits)),
+                                                 key=visits.__getitem__))
 
 if __name__ == "__main__":
     print(main())

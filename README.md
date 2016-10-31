@@ -117,3 +117,4 @@ My solutions to the problems from [projecteuler.net](https://projecteuler.net) (
 112. [Bouncy numbers](https://projecteuler.net/problem=112)  
 113. [Non-bouncy numbers](https://projecteuler.net/problem=113)  
 114. [Counting block combinations I](https://projecteuler.net/problem=114)  
+115. [Counting block combinations II](https://projecteuler.net/problem=115)  

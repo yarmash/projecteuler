@@ -5,23 +5,28 @@
 from functools import lru_cache
 
 
+@lru_cache(maxsize=None)
+def count(length, minlen):
+    """
+    Return the number of ways a row of `length` units in length can be filled.
+
+    :param int length: The row length.
+    :param int minlen: The minimum length of a red block.
+    """
+    if length < minlen:
+        return 1
+
+    # Consider these cases:
+    # * A red block of the max length
+    # * A black square at the beginning
+    # * A red block followed by a black square at the beginning
+    return (1 + count(length-1, minlen) +
+            sum([count(length-m-1, minlen) for m in range(minlen, length)]))
+
+
 def main():
-    length = 50
-
-    @lru_cache(maxsize=None)
-    def count(length):
-        if length < 3:
-            return 1
-
-        # Consider these cases:
-        # * a red block of the max length
-        # * a black square at the beginning
-        # * a red block followed by a black square at the beginning
-        return 1 + count(length-1) + sum([count(length-n-1)
-                                          for n in range(3, length)])
-
-    return count(length)
-
+    length, minlen = 50, 3
+    return count(length, minlen)
 
 if __name__ == "__main__":
     print(main())

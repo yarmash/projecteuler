@@ -3,35 +3,55 @@
 """Add docstrings to Python modules"""
 
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from itertools import count
-import requests
 from bs4 import BeautifulSoup
+import requests
+
+
+def fetch_url(url):
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.text
+
+
+def get_docstring(html):
+    soup = BeautifulSoup(html, "html.parser")
+    problem_number = soup.body.find("h3").text
+    problem_title = soup.body.find("h2").text
+    return '"""{}: {}"""\n'.format(problem_number, problem_title)
+
+
+def update_file(filename, docstring):
+    with open(filename, "r+") as f:
+        lines = f.readlines()
+
+        if lines[2] != docstring:
+            print(docstring[3:-4])
+            lines[2:2] = [docstring, "\n"]
+            f.seek(0)
+            f.writelines(lines)
 
 
 def main():
-    for num in count(1):
-        filename = "problem{:03d}.py".format(num)
+    with ThreadPoolExecutor() as executor:
+        futures = {}
 
-        if not os.path.exists(filename):
-            break
+        for num in count(1):
+            filename = "problem{:03d}.py".format(num)
+            url = "https://projecteuler.net/problem={}".format(num)
 
-        url = "https://projecteuler.net/problem="+str(num)
-        r = requests.get(url)
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
-        problem_number = soup.body.find("h3").text
-        problem_title = soup.body.find("h2").text
+            if not os.path.exists(filename):
+                break
 
-        docstring = '"""{}: {}"""\n'.format(problem_number, problem_title)
-        print(docstring[3:-4])
+            futures[executor.submit(fetch_url, url)] = filename
 
-        with open(filename, "r+") as f:
-            lines = f.readlines()
+        for future in as_completed(futures):
+            html = future.result()
+            filename = futures[future]
+            docstring = get_docstring(html)
+            update_file(filename, docstring)
 
-            if lines[2] != docstring:
-                lines[2:2] = [docstring, "\n"]
-                f.seek(0)
-                f.writelines(lines)
 
 if __name__ == "__main__":
     main()

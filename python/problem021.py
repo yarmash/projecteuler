@@ -6,7 +6,7 @@ from utils import pdsums_sieve
 
 
 def main():
-    limit = 10000
+    limit = 10_000
     dsums = pdsums_sieve(limit)
     asum = 0
 

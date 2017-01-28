@@ -5,7 +5,7 @@
 
 def main():
 
-    lim = 1000000
+    lim = 1_000_000
 
     cache = [False]*lim
     cache[2] = 2

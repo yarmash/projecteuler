@@ -11,7 +11,7 @@ def main():
     minlen = 50
 
     for length in itertools.count(minlen):
-        if count(length, minlen) > 1000000:
+        if count(length, minlen) > 1_000_000:
             return length
 
 

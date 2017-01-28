@@ -4,7 +4,7 @@
 
 
 def main():
-    limit = 4000000
+    limit = 4_000_000
     a, b, c, Σ = 1, 1, 2, 0
 
     # every third Fibonacci number is even

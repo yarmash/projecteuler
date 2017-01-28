@@ -19,7 +19,7 @@ def read_answers():
 
 def run(num):
     """Run the solution and measure the execution time"""
-    mod_name = "problem{:03d}".format(num)
+    mod_name = f"problem{num:03d}"
     mod = import_module(mod_name)
 
     begin = clock()
@@ -43,23 +43,22 @@ def main():
     with ProcessPoolExecutor() as executor:
         for num, (answer, time) in zip(problems, executor.map(run, problems,
                                                               chunksize=2)):
-            print("{:03d} ".format(num), end="")
+            print(f"{num:03d} ", end="")
 
             if str(answer) != answers[num-1]:
-                print("FAIL ({} != {})".format(answer, answers[num-1]))
+                print(f"FAIL ({answer} != {answers[num-1]})")
                 return
 
-            print("OK ({0:.6f}s)".format(time))
+            print(f"OK ({time:.6f}s)")
             total_time += time
             times[num] = time
 
     if len(problems) > 1:
-        print("\nTotal {} problems solved.\n".format(len(problems)))
+        print(f"\nTotal {len(problems)} problems solved.\n")
         print("Slowest solutions:")
 
         for problem in nlargest(5, times, times.get):
-            print("{:03d}  {:.2f}s {:6.2%}".format(problem, times[problem],
-                                                   times[problem]/total_time))
+            print(f"{problem:03d}  {times[problem]:.2f}s {times[problem]/total_time:6.2%}")
 
 
 if __name__ == '__main__':

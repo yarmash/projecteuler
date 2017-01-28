@@ -19,7 +19,7 @@ def get_docstring(html):
     soup = BeautifulSoup(html, "html.parser")
     problem_number = soup.body.find("h3").text
     problem_title = soup.body.find("h2").text
-    return '"""{}: {}"""\n'.format(problem_number, problem_title)
+    return f'"""{problem_number}: {problem_title}"""\n'
 
 
 def update_file(filename, docstring):
@@ -38,8 +38,8 @@ def main():
         futures = {}
 
         for num in count(1):
-            filename = "problem{:03d}.py".format(num)
-            url = "https://projecteuler.net/problem={}".format(num)
+            filename = f"problem{num:03d}.py"
+            url = f"https://projecteuler.net/problem={num}"
 
             if not os.path.exists(filename):
                 break

@@ -17,7 +17,7 @@ class Edge:
         self.weight = weight
 
     def __repr__(self):
-        return "{{{}, {}}} → {}".format(self.origin, self.dest, self.weight)
+        return f"{{{self.origin}, {self.dest}}} → {self.weight}"
 
     def opposite(self, v):
         """Return the vertex that is opposite v on this edge"""

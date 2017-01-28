@@ -82,5 +82,4 @@ class TestUtils(unittest.TestCase):
             (2147483648, 46340), (4294967295, 65535))
 
         for num, root in data:
-            self.assertEqual(isqrt(num), root,
-                             "isqrt({}) != {}".format(num, root))
+            self.assertEqual(isqrt(num), root, f"isqrt({num}) != {root}")

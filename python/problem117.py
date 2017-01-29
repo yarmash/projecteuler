@@ -2,21 +2,17 @@
 
 """Problem 117: Red, green, and blue tiles"""
 
-from functools import lru_cache
-
-
-@lru_cache(maxsize=None)
-def count(row_len):
-    if row_len < 0:
-        return 0
-    if row_len < 2:
-        return 1
-    return sum([count(row_len - tile_len) for tile_len in (1, 2, 3, 4)])
+from itertools import repeat
 
 
 def main():
     row_len = 50
-    return count(row_len)
+    a, b, c, d = 1, 2, 4, 8
+
+    for _ in repeat(None, row_len - 4):
+        a, b, c, d = b, c, d, a + b + c + d
+
+    return d  # this is also the 54th tetranacci number
 
 
 if __name__ == "__main__":

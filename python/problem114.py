@@ -2,31 +2,22 @@
 
 """Problem 114: Counting block combinations I"""
 
-from functools import lru_cache
-
-
-@lru_cache(maxsize=None)
-def count(length, minlen):
-    """
-    Return the number of ways a row of `length` units in length can be filled.
-
-    :param int length: The row length.
-    :param int minlen: The minimum length of a red block.
-    """
-    if length < minlen:
-        return 1
-
-    # Consider these cases:
-    # * A red block of the max length
-    # * A black square at the beginning
-    # * A red block followed by a black square at the beginning
-    return (1 + count(length-1, minlen) +
-            sum([count(length-m-1, minlen) for m in range(minlen, length)]))
-
 
 def main():
-    length, minlen = 50, 3
-    return count(length, minlen)
+    row_len, tile_len = 50, 3
+
+    ways = [0]*row_len
+    ways[:tile_len+1] = [1, 1, 2, 4]
+
+    # use the recurrent relation: f(n) = f(n-1) + f(n-4) + f(n-5) +..+ f(1) + 2
+    for i in range(4, row_len):
+        count = ways[i-1] + 2
+        for j in range(i-tile_len):
+            count += ways[j]
+        ways[i] = count
+
+    return ways[-1]
+
 
 if __name__ == "__main__":
     print(main())

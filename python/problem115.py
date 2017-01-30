@@ -2,17 +2,24 @@
 
 """Problem 115: Counting block combinations II"""
 
-import itertools
-
-from problem114 import count
-
 
 def main():
-    minlen = 50
+    tile_len = 50
 
-    for length in itertools.count(minlen):
-        if count(length, minlen) > 1_000_000:
-            return length
+    ways = [0]*(tile_len + 1)
+    ways[:tile_len+1] = [1]*(tile_len-1) + [2, 4]
+
+    i = tile_len + 1
+    while True:
+        count = ways[i-1] + 2
+        for j in range(i-tile_len):
+            count += ways[j]
+
+        if count > 1_000_000:
+            return i + 1
+
+        ways.append(count)
+        i += 1
 
 
 if __name__ == "__main__":

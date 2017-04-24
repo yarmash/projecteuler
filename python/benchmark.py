@@ -12,7 +12,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 def read_answers():
     """Read the answers file"""
-    filename = os.path.join(os.path.dirname(__file__), "answers")
+    filename = os.path.join(os.path.dirname(__file__), "..", "answers")
     with open(filename) as f:
         return [line.rstrip() for line in f]
 

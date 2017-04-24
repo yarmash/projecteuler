@@ -17,7 +17,7 @@ def fetch_url(url):
 
 def get_docstring(html):
     soup = BeautifulSoup(html, "html.parser")
-    problem_number = soup.body.find("h3").text
+    problem_number = soup.body.find("h3").contents[0].strip()
     problem_title = soup.body.find("h2").text
     return f'"""{problem_number}: {problem_title}"""\n'
 

@@ -47,7 +47,7 @@ def main():
 
             if str(answer) != answers[num-1]:
                 print(f"FAIL ({answer} != {answers[num-1]})")
-                return
+                return 1
 
             print(f"OK ({time:.6f}s)")
             total_time += time
@@ -59,7 +59,8 @@ def main():
 
         for problem in nlargest(5, times, times.get):
             print(f"{problem:03d}  {times[problem]:.2f}s {times[problem]/total_time:6.2%}")
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

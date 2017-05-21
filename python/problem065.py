@@ -9,13 +9,11 @@ from utils import convergent_fractions
 def main():
     # e = [2; 1,2,1, 1,4,1, 1,6,1, ...]
     def quotients():
-        yield 2
-
         k = 2
+        yield k
+
         while True:
-            yield 1
-            yield k
-            yield 1
+            yield from [1, k, 1]
             k += 2
 
     convergents = convergent_fractions(quotients())

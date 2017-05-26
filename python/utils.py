@@ -1,14 +1,15 @@
 """Helper functions for Project Euler problems"""
 
-import os
+from pathlib import Path
 from math import gcd, factorial, sqrt
 from functools import reduce
 
 
-def open_data_file(filename):
-    """Open a data file by name and return a file object"""
-    return open(
-        os.path.join(os.path.dirname(__file__), "..", "data", filename))
+def get_path(*args) -> Path:
+    """Construct a path from components, relative to the project root."""
+
+    # A module's __file__ attribute contains an absolute path by default
+    return Path(__file__).parents[1].joinpath(*args)
 
 
 def is_prime(n):

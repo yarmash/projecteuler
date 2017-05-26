@@ -2,7 +2,7 @@
 
 """Problem 54: Poker hands"""
 
-from utils import open_data_file
+from utils import get_path
 
 
 class Card(object):
@@ -133,7 +133,7 @@ def main():
     deck = {kind+suit: Card(kind, suit) for kind in "23456789TJQKA"
             for suit in "CDHS"}
 
-    with open_data_file("poker.txt") as data_file:
+    with get_path("data", "poker.txt").open() as data_file:
         for line in data_file:
             cards = [deck[card] for card in line.split()]  # example: 9C JD
 
@@ -141,6 +141,7 @@ def main():
                 cnt += 1
 
     return cnt
+
 
 if __name__ == "__main__":
     print(main())

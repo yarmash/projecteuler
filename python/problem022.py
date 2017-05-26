@@ -4,11 +4,11 @@
 
 import string
 
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
-    with open_data_file("names.txt") as data_file:
+    with get_path("data", "names.txt").open() as data_file:
         names = data_file.read().split('","')
     names[0] = names[0][1:]
     names[-1] = names[-1][:-1]
@@ -18,6 +18,7 @@ def main():
 
     return sum([sum([values[c] for c in name]) * pos
                 for pos, name in enumerate(names, 1)])
+
 
 if __name__ == "__main__":
     print(main())

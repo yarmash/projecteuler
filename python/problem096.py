@@ -3,7 +3,8 @@
 """Problem 96: Su Doku"""
 
 from itertools import chain
-from utils import open_data_file
+
+from utils import get_path
 
 
 numbers = set("123456789")
@@ -109,7 +110,7 @@ def solve_puzzle(grid):
 def main():
     nsum = 0
 
-    with open_data_file("sudoku.txt") as data_file:
+    with get_path("data", "sudoku.txt").open() as data_file:
         grid = []
 
         for i, line in enumerate(data_file):
@@ -120,6 +121,7 @@ def main():
                     nsum += solve_puzzle(grid)
                     grid *= 0
     return nsum
+
 
 if __name__ == "__main__":
     print(main())

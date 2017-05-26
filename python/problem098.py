@@ -5,11 +5,12 @@
 from math import ceil, sqrt
 from collections import defaultdict
 from itertools import combinations
-from utils import open_data_file
+
+from utils import get_path
 
 
 def main():
-    with open_data_file("words.txt") as data_file:
+    with get_path("data", "words.txt").open() as data_file:
         words = data_file.read().split('","')
     words[0] = words[0][1:]
     words[-1] = words[-1][:-1]
@@ -51,6 +52,7 @@ def main():
                             max_square = max(max_square, int(square), int(other))
         if max_square:
             return max_square
+
 
 if __name__ == "__main__":
     print(main())

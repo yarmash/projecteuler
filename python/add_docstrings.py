@@ -2,11 +2,12 @@
 
 """Add docstrings to Python modules"""
 
-import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from itertools import count
 from bs4 import BeautifulSoup
 import requests
+
+from utils import get_path
 
 
 def fetch_url(url):
@@ -22,8 +23,8 @@ def get_docstring(html):
     return f'"""{problem_number}: {problem_title}"""\n'
 
 
-def update_file(filename, docstring):
-    with open(filename, "r+") as f:
+def update_file(path, docstring):
+    with path.open("r+") as f:
         lines = f.readlines()
 
         if lines[2] != docstring:
@@ -39,18 +40,19 @@ def main():
 
         for num in count(1):
             filename = f"problem{num:03d}.py"
+            path = get_path("python", filename)
             url = f"https://projecteuler.net/problem={num}"
 
-            if not os.path.exists(filename):
+            if not path.exists():
                 break
 
-            futures[executor.submit(fetch_url, url)] = filename
+            futures[executor.submit(fetch_url, url)] = path
 
         for future in as_completed(futures):
             html = future.result()
-            filename = futures[future]
+            path = futures[future]
             docstring = get_docstring(html)
-            update_file(filename, docstring)
+            update_file(path, docstring)
 
 
 if __name__ == "__main__":

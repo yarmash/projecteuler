@@ -2,11 +2,11 @@
 
 """Problem 82: Path sum: three ways"""
 
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
-    with open_data_file("matrix.txt") as data_file:
+    with get_path("data", "matrix.txt").open() as data_file:
         matrix = [[int(x) for x in line.split(",")] for line in data_file]
 
     size = len(matrix)
@@ -25,6 +25,7 @@ def main():
         best = column
 
     return min(best)
+
 
 if __name__ == "__main__":
     print(main())

@@ -2,18 +2,19 @@
 
 """Verify and benchmark solutions"""
 
-import os
 import sys
 from time import clock
 from importlib import import_module
 from heapq import nlargest
 from concurrent.futures import ProcessPoolExecutor
 
+from utils import get_path
+
 
 def read_answers():
     """Read the answers file"""
-    filename = os.path.join(os.path.dirname(__file__), "..", "answers")
-    with open(filename) as f:
+
+    with get_path("answers").open() as f:
         return [line.rstrip() for line in f]
 
 

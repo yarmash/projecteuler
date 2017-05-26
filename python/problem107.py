@@ -4,7 +4,8 @@
 
 from heapq import heappush, heappop
 from itertools import repeat
-from utils import open_data_file
+
+from utils import get_path
 
 
 class Edge:
@@ -52,7 +53,7 @@ def main():
 
     graph = Graph(size)
 
-    with open_data_file("network.txt") as data_file:
+    with get_path("data", "network.txt").open() as data_file:
         for u, line in enumerate(data_file):
             for v, w in enumerate(line.rstrip().split(",")):
                 if v > u and w != "-":

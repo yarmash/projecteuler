@@ -2,7 +2,7 @@
 
 """Problem 89: Roman numerals"""
 
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
     # You can assume that all the Roman numerals in the file contain no more
     # than four consecutive identical units.
 
-    with open_data_file("roman.txt") as data_file:
+    with get_path("data", "roman.txt").open() as data_file:
         for line in data_file:
             if "VIIII" in line:
                 chars_saved += 3  # VIIII => IX
@@ -30,6 +30,7 @@ def main():
                 chars_saved += 2  # CCCC => CD
 
     return chars_saved
+
 
 if __name__ == "__main__":
     print(main())

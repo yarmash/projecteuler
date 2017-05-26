@@ -3,11 +3,11 @@
 """Problem 81: Path sum: two ways"""
 
 from itertools import repeat
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
-    with open_data_file("matrix.txt") as data_file:
+    with get_path("data", "matrix.txt").open() as data_file:
         matrix = [[int(x) for x in line.split(",")] for line in data_file]
 
     sums = [[0]*80 for _ in repeat(None, 80)]

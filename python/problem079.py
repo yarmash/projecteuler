@@ -2,11 +2,11 @@
 
 """Problem 79: Passcode derivation"""
 
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
-    with open_data_file("keylog.txt") as data_file:
+    with get_path("data", "keylog.txt").open() as data_file:
         keys = [line.rstrip() for line in data_file]
 
     # dict storing numbers that appear before a given number

@@ -5,11 +5,11 @@
 from math import sqrt
 import string
 
-from utils import open_data_file
+from utils import get_path
 
 
 def main():
-    with open_data_file("words.txt") as data_file:
+    with get_path("data", "words.txt").open() as data_file:
         words = data_file.read().split('","')
     words[0] = words[0][1:]
     words[-1] = words[-1][:-1]
@@ -20,6 +20,7 @@ def main():
     triangle_numbers = set([n*(n+1)//2 for n in
                            range(1, (-1 + int(sqrt(1 + 8*max(values))))//2 + 1)])
     return len([v for v in values if v in triangle_numbers])
+
 
 if __name__ == "__main__":
     print(main())

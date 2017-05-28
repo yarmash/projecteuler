@@ -20,6 +20,7 @@ from utils import (
     isqrt,
     nth_pentagonal,
     nth_triangle,
+    sum_digits,
 )
 
 
@@ -83,3 +84,9 @@ class TestUtils(unittest.TestCase):
 
         for num, root in data:
             self.assertEqual(isqrt(num), root, f"isqrt({num}) != {root}")
+
+    def test_sum_digits(self):
+        self.assertEqual(sum_digits(0), 0)
+        self.assertEqual(sum_digits(1), 1)
+        self.assertEqual(sum_digits(1000), 1)
+        self.assertEqual(sum_digits(1234567890), 45)

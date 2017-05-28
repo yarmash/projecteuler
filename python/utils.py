@@ -12,6 +12,14 @@ def get_path(*args) -> Path:
     return Path(__file__).parents[1].joinpath(*args)
 
 
+def sum_digits(num: int) -> int:
+    """Sum the digits of a number."""
+    s = 0
+    while num:
+        s, num = s + num % 10, num // 10
+    return s
+
+
 def is_prime(n):
     """Determine whether a number is prime using trial division"""
 

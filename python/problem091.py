@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """Problem 91: Right triangles with integer coordinates"""
 

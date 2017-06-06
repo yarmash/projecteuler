@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """Problem 61: Cyclical figurate numbers"""
 

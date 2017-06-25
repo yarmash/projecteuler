@@ -2,25 +2,18 @@
 
 """Problem 45: Triangular, pentagonal, and hexagonal"""
 
-from utils import is_pentagonal
+from utils import hexagonal_numbers, is_pentagonal
 
-
-def hexagonal_numbers():
-    h = 1
-    d = 5
-    while True:
-        yield h
-        h += d
-        d += 4
 
 def main():
     cnt = 0
 
-    for h in hexagonal_numbers():
-        if is_pentagonal(h): # Every hexagonal number is a triangular number
+    for num in hexagonal_numbers():
+        if is_pentagonal(num):  # Every hexagonal number is a triangular number
             cnt += 1
             if cnt == 3:
-                return h
+                return num
+
 
 if __name__ == "__main__":
     print(main())

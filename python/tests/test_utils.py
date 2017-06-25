@@ -13,6 +13,7 @@ from itertools import islice
 from utils import (
     arithmetic_series,
     exp_by_squaring,
+    hexagonal_numbers,
     is_pandigital,
     is_pentagonal,
     is_prime,
@@ -58,6 +59,11 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(list(islice(triangular_numbers(), 20)),
                          [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105,
                           120, 136, 153, 171, 190, 210])
+
+    def test_hexagonal_numbers(self):
+        self.assertEqual(list(islice(hexagonal_numbers(), 20)),
+                         [1, 6, 15, 28, 45, 66, 91, 120, 153, 190, 231, 276,
+                          325, 378, 435, 496, 561, 630, 703, 780])
 
     def test_is_triangular_number(self):
         self.assertTrue(is_triangular_number(1))

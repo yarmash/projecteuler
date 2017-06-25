@@ -218,6 +218,11 @@ def triangular_numbers():
     return itertools.accumulate(itertools.count(1))
 
 
+def hexagonal_numbers():
+    """Generate hexagonal numbers"""
+    return itertools.accumulate(itertools.count(1, 4))
+
+
 def is_triangular_number(num):
     """
     Check if a number is triangular.

@@ -115,6 +115,15 @@ def prime_factors(n, primes=None):
     return factors
 
 
+def num_of_divisors(num: int, primes: list=None) -> int:
+    """
+    Returns the number of divisors of an integer.
+    `primes`, if provided, should be a list of primes at least up to sqrt(n).
+    """
+
+    return reduce(lambda x, y: x*(y[1]+1), prime_factors(num, primes), 1)
+
+
 def sum_of_divisors(n, primes=None):
     if n == 1:
         return 1

@@ -22,6 +22,7 @@ from utils import (
     isqrt,
     nth_pentagonal,
     nth_triangle,
+    num_of_divisors,
     pentagonal_numbers,
     sum_digits,
     triangular_numbers,
@@ -109,3 +110,7 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(sum_digits(1), 1)
         self.assertEqual(sum_digits(1000), 1)
         self.assertEqual(sum_digits(1234567890), 45)
+
+    def test_num_of_divisors(self):
+        self.assertEquals([num_of_divisors(x) for x in range(1, 17)],
+                          [1, 2, 2, 3, 2, 4, 2, 4, 3, 4, 2, 6, 2, 4, 4, 5])

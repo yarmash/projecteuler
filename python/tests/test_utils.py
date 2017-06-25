@@ -8,6 +8,7 @@ $ python -m unittest -v tests/test_utils.py
 """
 
 import unittest
+from itertools import islice
 
 from utils import (
     arithmetic_series,
@@ -21,6 +22,7 @@ from utils import (
     nth_pentagonal,
     nth_triangle,
     sum_digits,
+    triangular_numbers,
 )
 
 
@@ -51,6 +53,11 @@ class TestUtils(unittest.TestCase):
         x = 12345678987654321234567 ** 2
         self.assertTrue(is_square(x))
         self.assertFalse(is_square(x + 2))
+
+    def test_triangular_numbers(self):
+        self.assertEqual(list(islice(triangular_numbers(), 20)),
+                         [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105,
+                          120, 136, 153, 171, 190, 210])
 
     def test_is_triangular_number(self):
         self.assertTrue(is_triangular_number(1))

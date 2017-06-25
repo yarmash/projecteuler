@@ -1,5 +1,6 @@
 """Helper functions for Project Euler problems"""
 
+import itertools
 from pathlib import Path
 from math import gcd, factorial, sqrt
 from functools import reduce
@@ -214,10 +215,7 @@ def isqrt(num):
 
 def triangular_numbers():
     """Generate triangular numbers"""
-    n = 1
-    while True:
-        yield n*(n+1) >> 1
-        n += 1
+    return itertools.accumulate(itertools.count(1))
 
 
 def is_triangular_number(num):

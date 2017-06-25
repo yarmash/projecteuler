@@ -22,6 +22,7 @@ from utils import (
     isqrt,
     nth_pentagonal,
     nth_triangle,
+    pentagonal_numbers,
     sum_digits,
     triangular_numbers,
 )
@@ -59,6 +60,11 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(list(islice(triangular_numbers(), 20)),
                          [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105,
                           120, 136, 153, 171, 190, 210])
+
+    def test_pentagonal_numbers(self):
+        self.assertEqual(list(islice(pentagonal_numbers(), 20)),
+                         [1, 5, 12, 22, 35, 51, 70, 92, 117, 145, 176, 210,
+                          247, 287, 330, 376, 425, 477, 532, 590])
 
     def test_hexagonal_numbers(self):
         self.assertEqual(list(islice(hexagonal_numbers(), 20)),

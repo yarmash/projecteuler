@@ -218,6 +218,11 @@ def triangular_numbers():
     return itertools.accumulate(itertools.count(1))
 
 
+def pentagonal_numbers():
+    """Generate pentagonal numbers"""
+    return itertools.accumulate(itertools.count(1, 3))
+
+
 def hexagonal_numbers():
     """Generate hexagonal numbers"""
     return itertools.accumulate(itertools.count(1, 4))

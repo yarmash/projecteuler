@@ -2,21 +2,32 @@
 
 """Problem 49: Prime permutations"""
 
-from utils import is_permutation, prime_sieve
+from utils import prime_sieve
 
 
 def main():
-    primes = [ x for x in prime_sieve(10000) if x > 1000 and x != 1487 and x != 4817 and x != 8147 ]
+    primes = [p for p in prime_sieve(10000)
+              if p > 1000 and p not in {1487, 4817, 8147}]
     primes_set = frozenset(primes)
 
-    for i in range(len(primes)-1, 1, -1):
-        for j in range(i-1):
-            c = primes[i]
-            a = primes[j]
-            b = (c + a) >> 1
+    def anagram_hash(num, primes=primes):
+        """
+        Calculate a unique signature or perfect hash by multiplying prime
+        numbers corresponding to each digit in a number.
+        """
+        sig = 1
+        while num:
+            sig *= primes[num % 10]
+            num //= 10
+        return sig
 
-            if b in primes_set and is_permutation(a, b) and is_permutation(b, c):
-                return str(a)+str(b)+str(c)
+    for p1 in primes:
+        p2 = p1 + 3330
+        p3 = p1 + 6660
+        if (p2 in primes_set and p3 in primes_set and
+                anagram_hash(p1) == anagram_hash(p2) == anagram_hash(p3)):
+            return f"{p1}{p2}{p3}"
+
 
 if __name__ == "__main__":
     print(main())

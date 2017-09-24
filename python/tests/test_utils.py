@@ -14,6 +14,7 @@ from utils import (
     arithmetic_series,
     exp_by_squaring,
     hexagonal_numbers,
+    is_palindrome,
     is_pandigital,
     is_pentagonal,
     is_prime,
@@ -114,3 +115,12 @@ class TestUtils(unittest.TestCase):
     def test_num_of_divisors(self):
         self.assertEquals([num_of_divisors(x) for x in range(1, 17)],
                           [1, 2, 2, 3, 2, 4, 2, 4, 3, 4, 2, 6, 2, 4, 4, 5])
+
+    def test_is_palindrome(self):
+        self.assertTrue(is_palindrome(1))
+        self.assertFalse(is_palindrome(10))
+        self.assertTrue(is_palindrome(101))
+        self.assertFalse(is_palindrome(int("10", base=2), base=2))
+        self.assertTrue(is_palindrome(int("101", base=2), base=2))
+        self.assertFalse(is_palindrome(int("123", base=4), base=4))
+        self.assertTrue(is_palindrome(int("12321", base=4), base=4))

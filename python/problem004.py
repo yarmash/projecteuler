@@ -13,7 +13,7 @@ def main():
             k = x*y
             if k <= n:
                 break
-            if is_palindrome(k, 10):
+            if is_palindrome(k):
                 n = k
     return n
 

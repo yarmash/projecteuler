@@ -149,14 +149,14 @@ def pdsums_sieve(limit):
     return dsums
 
 
-def is_palindrome(n, base):
-    """Checks if a number is palindromic in the given base"""
-    r = 0
-    t = n
-    while t > 0:
-        r = r * base + t % base
-        t //= base
-    return r == n
+def is_palindrome(number, base=10):
+    """Checks if a number is palindromic in the given base."""
+    forward = number
+    reverse = 0
+    while number:
+        reverse = reverse * base + number % base
+        number //= base
+    return forward == reverse
 
 
 def is_pandigital(n):

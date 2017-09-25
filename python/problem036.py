@@ -18,7 +18,7 @@ def palindromes(oddlength, lim=1000000):
     i = 1
     p = mk_palindrome(i, oddlength)
     while p < lim:
-        if is_palindrome(p, 10):
+        if is_palindrome(p, base=10):
             yield p
         i += 1
         p = mk_palindrome(i, oddlength)

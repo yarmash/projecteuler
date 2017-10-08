@@ -1,13 +1,26 @@
 #!/usr/bin/env python
 
-"""Add docstrings to Python modules"""
+"""Add docstrings to solutions."""
 
+import sys
+import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from itertools import count
 from bs4 import BeautifulSoup
 import requests
 
 from utils import get_path
+
+
+def parse_args(args=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Add docstrings to solutions")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("-n", "--number", type=int, metavar="NUM",
+                       help="The problem number")
+    group.add_argument("-a", "--all", action="store_true",
+                       help="Process all files")
+
+    return parser.parse_args(args)
 
 
 def fetch_url(url):
@@ -35,17 +48,23 @@ def update_file(path, docstring):
 
 
 def main():
+    args = parse_args()
+
+    if args.number:
+        path = get_path("python", f"problem{args.number:03d}.py")
+        if not path.exists():
+            print(f"Module not found: {path}")
+            return 1
+        paths = [path]
+    else:
+        paths = sorted(get_path("python").glob("problem???.py"))
+
     with ThreadPoolExecutor() as executor:
         futures = {}
 
-        for num in count(1):
-            filename = f"problem{num:03d}.py"
-            path = get_path("python", filename)
+        for path in paths:
+            num = path.stem[-3:]  # extract the problem number
             url = f"https://projecteuler.net/problem={num}"
-
-            if not path.exists():
-                break
-
             futures[executor.submit(fetch_url, url)] = path
 
         for future in as_completed(futures):
@@ -56,4 +75,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

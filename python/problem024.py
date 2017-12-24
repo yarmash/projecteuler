@@ -4,6 +4,7 @@
 
 from math import factorial
 
+
 def main():
     def nthPerm(s, n):
         if len(s) < 2:

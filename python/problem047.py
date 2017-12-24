@@ -4,6 +4,7 @@
 
 from math import sqrt
 
+
 def main():
     lim = 1000000
     sieve = [0]*lim

@@ -2,11 +2,10 @@
 
 """Problem 12: Highly divisible triangular number"""
 
-from itertools import count
 from functools import lru_cache, partial
+from itertools import count
 
-from utils import prime_sieve, num_of_divisors
-
+from utils import num_of_divisors, prime_sieve
 
 num_of_divisors = lru_cache(maxsize=None)(partial(num_of_divisors,
                                                   primes=prime_sieve(1000)))

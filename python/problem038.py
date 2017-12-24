@@ -2,8 +2,9 @@
 
 """Problem 38: Pandigital multiples"""
 
-from utils import is_pandigital
 from itertools import permutations
+
+from utils import is_pandigital
 
 
 def main():

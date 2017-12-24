@@ -2,8 +2,9 @@
 
 """Problem 58: Spiral primes"""
 
-from utils import prime_sieve
 from math import sqrt
+
+from utils import prime_sieve
 
 primes = prime_sieve(20000)
 primes_set = set(primes)

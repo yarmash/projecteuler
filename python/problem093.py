@@ -3,8 +3,8 @@
 """Problem 93: Arithmetic expressions"""
 
 from functools import reduce
-from itertools import product, combinations, permutations
-from operator import add, sub, mul, truediv
+from itertools import combinations, permutations, product
+from operator import add, mul, sub, truediv
 
 
 def calc_consecutive(targets):

@@ -2,8 +2,8 @@
 
 """Problem 105: Special subset sums: testing"""
 
-from utils import get_path
 from problem103 import is_special_sum_set
+from utils import get_path
 
 
 def main():

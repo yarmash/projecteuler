@@ -4,6 +4,7 @@
 
 from utils import pythagorean_triplets
 
+
 def main():
     s = p = 0
 

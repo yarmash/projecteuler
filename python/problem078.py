@@ -2,8 +2,8 @@
 
 """Problem 78: Coin partitions"""
 
-from math import sqrt, floor, ceil
 from itertools import count
+from math import ceil, floor, sqrt
 
 
 # http://mathworld.wolfram.com/PartitionFunctionP.html

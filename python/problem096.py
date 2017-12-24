@@ -6,7 +6,6 @@ from itertools import chain
 
 from utils import get_path
 
-
 numbers = set("123456789")
 squares = [(row, col) for row in range(9) for col in range(9)]
 peers = {}

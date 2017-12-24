@@ -2,10 +2,9 @@
 
 """Problem 67: Maximum path sum II"""
 
-from utils import get_path
-
 # This is a more difficult version of Problem 18.
 import problem018
+from utils import get_path
 
 
 def main():

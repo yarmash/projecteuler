@@ -10,7 +10,7 @@ $ python -m unittest -v tests/test_utils.py
 import unittest
 from itertools import islice
 
-from utils import (
+from utils import (  # isort:skip
     arithmetic_series,
     exp_by_squaring,
     hexagonal_numbers,

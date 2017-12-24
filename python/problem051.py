@@ -2,7 +2,7 @@
 
 """Problem 51: Prime digit replacements"""
 
-from utils import prime_sieve_lazy, is_prime
+from utils import is_prime, prime_sieve_lazy
 
 
 def main():

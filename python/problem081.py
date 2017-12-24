@@ -3,6 +3,7 @@
 """Problem 81: Path sum: two ways"""
 
 from itertools import repeat
+
 from utils import get_path
 
 

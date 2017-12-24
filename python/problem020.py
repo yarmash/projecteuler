@@ -4,6 +4,7 @@
 
 from math import factorial
 
+
 def main():
     return sum(int(d) for d in str(factorial(100)))
 

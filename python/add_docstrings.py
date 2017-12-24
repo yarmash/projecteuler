@@ -2,11 +2,12 @@
 
 """Add docstrings to solutions."""
 
-import sys
 import argparse
+import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from bs4 import BeautifulSoup
+
 import requests
+from bs4 import BeautifulSoup
 
 from utils import get_path
 

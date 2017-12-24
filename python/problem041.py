@@ -3,6 +3,7 @@
 """Problem 41: Pandigital prime"""
 
 from itertools import permutations
+
 from utils import is_prime
 
 

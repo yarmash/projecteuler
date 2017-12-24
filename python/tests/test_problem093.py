@@ -1,4 +1,5 @@
 import unittest
+
 from problem093 import calc_consecutive
 
 

@@ -2,8 +2,8 @@
 
 """Problem 86: Cuboid route"""
 
-from math import sqrt
 from itertools import count
+from math import sqrt
 
 
 def main():

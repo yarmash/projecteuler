@@ -1,9 +1,9 @@
 """Helper functions for Project Euler problems"""
 
 import itertools
-from pathlib import Path
-from math import gcd, factorial, sqrt
 from functools import reduce
+from math import factorial, gcd, sqrt
+from pathlib import Path
 
 
 def get_path(*args) -> Path:

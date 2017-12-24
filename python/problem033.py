@@ -2,8 +2,8 @@
 
 """Problem 33: Digit cancelling fractions"""
 
-from math import gcd
 from functools import reduce
+from math import gcd
 
 
 def main():

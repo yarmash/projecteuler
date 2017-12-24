@@ -2,9 +2,10 @@
 
 """Problem 61: Cyclical figurate numbers"""
 
-from utils import nth_triangle, nth_square, nth_pentagonal, nth_hexagonal, \
-    nth_heptagonal, nth_octagonal
 from operator import itemgetter
+
+from utils import (nth_heptagonal, nth_hexagonal, nth_octagonal,
+                   nth_pentagonal, nth_square, nth_triangle)
 
 
 def is_cyclic(m, n):

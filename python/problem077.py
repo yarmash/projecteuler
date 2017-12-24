@@ -2,8 +2,9 @@
 
 """Problem 77: Prime summations"""
 
-from utils import prime_sieve_lazy
 from itertools import count
+
+from utils import prime_sieve_lazy
 
 
 def main():

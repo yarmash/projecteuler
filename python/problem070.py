@@ -2,9 +2,10 @@
 
 """Problem 70: Totient permutation"""
 
-from utils import prime_sieve, is_permutation
 from bisect import bisect_left
-from heapq import heappush, heappop
+from heapq import heappop, heappush
+
+from utils import is_permutation, prime_sieve
 
 
 def main():

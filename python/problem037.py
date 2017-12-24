@@ -2,8 +2,9 @@
 
 """Problem 37: Truncatable primes"""
 
-from utils import prime_sieve_lazy, is_prime
 from math import log10
+
+from utils import is_prime, prime_sieve_lazy
 
 
 def is_truncatable(p): # check if the prime is right-/left-truncatable

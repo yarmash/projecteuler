@@ -4,6 +4,7 @@
 
 from operator import itemgetter
 
+
 def main():
     numbers = set(range(1, 11))
     sides = [0, 1, 2, 3, 2, 4, 5, 4, 6, 7, 6, 8, 9, 8, 1]

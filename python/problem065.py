@@ -3,6 +3,7 @@
 """Problem 65: Convergents of e"""
 
 from itertools import repeat
+
 from utils import convergent_fractions
 
 

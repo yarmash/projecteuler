@@ -7,7 +7,8 @@
 # http://en.wikipedia.org/wiki/Continued_fraction#Pell.27s_equation
 
 from math import sqrt
-from utils import sqrt_fraction_expansion, convergent_fractions
+
+from utils import convergent_fractions, sqrt_fraction_expansion
 
 
 def quotients(n):

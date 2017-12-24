@@ -2,8 +2,8 @@
 
 """Problem 75: Singular integer right triangles"""
 
-from math import gcd
-from math import sqrt
+from math import gcd, sqrt
+
 
 def main():
     limit = 1500000

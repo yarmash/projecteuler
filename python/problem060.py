@@ -2,8 +2,9 @@
 
 """Problem 60: Prime pair sets"""
 
-from utils import prime_sieve, is_prime
 from functools import lru_cache
+
+from utils import is_prime, prime_sieve
 
 
 def main():

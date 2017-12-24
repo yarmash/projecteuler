@@ -3,6 +3,7 @@
 """Problem 35: Circular primes"""
 
 from itertools import repeat
+
 from utils import prime_sieve
 
 

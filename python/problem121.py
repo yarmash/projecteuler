@@ -2,10 +2,10 @@
 
 """Problem 121: Disc game prize fund"""
 
-from itertools import chain, combinations
-from operator import mul
 from functools import reduce
+from itertools import chain, combinations
 from math import factorial
+from operator import mul
 
 
 def main():

@@ -2,8 +2,9 @@
 
 """Problem 83: Path sum: four ways"""
 
-from heapq import heappush, heappop
+from heapq import heappop, heappush
 from itertools import repeat
+
 from utils import get_path
 
 

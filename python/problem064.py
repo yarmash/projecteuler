@@ -3,6 +3,7 @@
 """Problem 64: Odd period square roots"""
 
 from math import sqrt
+
 from utils import sqrt_fraction_expansion as sfe
 
 

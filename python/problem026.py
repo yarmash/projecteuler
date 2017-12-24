@@ -2,7 +2,7 @@
 
 """Problem 26: Reciprocal cycles"""
 
-from utils import prime_factors, is_prime
+from utils import is_prime, prime_factors
 
 
 def is_primitive_root(k, n):

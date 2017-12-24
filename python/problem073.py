@@ -3,6 +3,7 @@
 """Problem 73: Counting fractions in a range"""
 
 import sys
+
 sys.setrecursionlimit(10000)
 
 def main():

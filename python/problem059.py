@@ -3,6 +3,7 @@
 """Problem 59: XOR decryption"""
 
 from collections import defaultdict
+
 from utils import get_path
 
 

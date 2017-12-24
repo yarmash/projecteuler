@@ -3,6 +3,7 @@
 """Problem 104: Pandigital Fibonacci ends"""
 
 from math import log10, sqrt
+
 from utils import is_pandigital
 
 

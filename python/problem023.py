@@ -3,6 +3,7 @@
 """Problem 23: Non-abundant sums"""
 
 from math import sqrt
+
 from utils import prime_sieve, sum_of_proper_divisors
 
 

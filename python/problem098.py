@@ -2,9 +2,9 @@
 
 """Problem 98: Anagramic squares"""
 
-from math import ceil, sqrt
 from collections import defaultdict
 from itertools import combinations
+from math import ceil, sqrt
 
 from utils import get_path
 

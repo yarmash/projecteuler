@@ -2,8 +2,8 @@
 
 """Problem 84: Monopoly odds"""
 
-from random import choice, shuffle
 from heapq import nlargest
+from random import choice, shuffle
 
 
 class Dice(object):

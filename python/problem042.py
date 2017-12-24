@@ -2,8 +2,8 @@
 
 """Problem 42: Coded triangle numbers"""
 
-from math import sqrt
 import string
+from math import sqrt
 
 from utils import get_path
 

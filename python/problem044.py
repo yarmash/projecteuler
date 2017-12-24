@@ -3,6 +3,7 @@
 """Problem 44: Pentagon numbers"""
 
 from itertools import count
+
 from utils import is_pentagonal
 
 

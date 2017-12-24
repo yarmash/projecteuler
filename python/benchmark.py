@@ -3,10 +3,10 @@
 """Verify and benchmark solutions"""
 
 import sys
-from time import clock
-from importlib import import_module
-from heapq import nlargest
 from concurrent.futures import ProcessPoolExecutor
+from heapq import nlargest
+from importlib import import_module
+from time import clock
 
 from utils import get_path
 

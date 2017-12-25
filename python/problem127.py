@@ -2,28 +2,24 @@
 
 """Problem 127: abc-hits"""
 
-from functools import lru_cache, reduce
 from math import gcd
-from operator import itemgetter, mul
-
-from utils import prime_factors, prime_sieve
 
 
 def main():
     lim = 120000
-    primes = prime_sieve(int(lim**.5))
 
-    @lru_cache(maxsize=None)
-    def rad(n, primes=primes):
-        return reduce(mul, frozenset(
-            map(itemgetter(0), prime_factors(n, primes))), 1)
+    rads = [1]*(lim+1)
 
+    for i in range(2, lim+1):
+        if rads[i] == 1:
+            for j in range(i, lim+1, i):
+                rads[j] *= i
     s = 0
 
     for a in range(1, lim):
         for b in range(a+1, lim-a):
             c = a + b
-            if gcd(a, b) == 1 and rad(a)*rad(b)*rad(c) < c:
+            if rads[a]*rads[b]*rads[c] < c and gcd(a, b) == 1:
                 s += c
     return s
 

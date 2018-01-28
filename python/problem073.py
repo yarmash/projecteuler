@@ -2,18 +2,31 @@
 
 """Problem 73: Counting fractions in a range"""
 
-import sys
-
-sys.setrecursionlimit(10000)
 
 def main():
-    def count(n, left, right):
-        med = left + right
-        if med > n:
-            return 0
-        return 1 + count(n, left, med) + count(n, med, right)
+    limit = 12000
+    count = 0
+    top = 0
+    stack = [0]*(limit//2+1)
+    left = 3
+    right = 2
 
-    return count(12000, 3, 2)
+    while True:
+        med = left + right
+        if med > limit:
+            if top > 0:
+                left = right
+                top -= 1
+                right = stack[top]
+            else:
+                break
+        else:
+            count += 1
+            stack[top] = right
+            top += 1
+            right = med
+
+    return count
 
 
 if __name__ == "__main__":

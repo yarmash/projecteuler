@@ -33,10 +33,10 @@ def run(num):
 def main():
     answers = read_answers()
 
-    if len(sys.argv) == 2:
-        problems = [int(sys.argv[1])]
-    else:
+    if len(sys.argv) == 1:
         problems = list(range(1, len(answers)+1))
+    else:
+        problems = [int(x) for x in sys.argv[1:]]
 
     total_time = 0
     times = {}
@@ -54,7 +54,7 @@ def main():
             total_time += time
             times[num] = time
 
-    if len(problems) > 1:
+    if len(sys.argv) == 1:
         print(f"\nTotal {len(problems)} problems solved.\n")
         print("Slowest solutions:")
 

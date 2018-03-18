@@ -2,9 +2,10 @@
 
 """Problem 31: Coin sums"""
 
+
 def main():
 
-    coins = [1, 2, 5, 10, 20, 50, 100, 200]
+    coins = (1, 2, 5, 10, 20, 50, 100, 200)
     amount = 200
 
     ways = [0]*(amount+1)
@@ -14,6 +15,7 @@ def main():
         for i in range(coin, amount+1):
             ways[i] += ways[i-coin]
     return ways[amount]
+
 
 if __name__ == "__main__":
     print(main())

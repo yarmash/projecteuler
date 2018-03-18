@@ -17,7 +17,7 @@ def num(f):
 
 def main(lim=1000,
          # the number of primes to be considered is ceil(log3(lim*2))
-         primes=[2, 3, 5, 7, 11, 13, 17]):
+         primes=(2, 3, 5, 7, 11, 13, 17)):
 
     min_n = float("inf")
     lim = lim*2 - 1

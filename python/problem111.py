@@ -10,7 +10,7 @@ from utils import is_prime
 
 def main():
     D = 10
-    digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    digits = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
     total = 0
 
     for d in digits:
@@ -33,6 +33,7 @@ def main():
                 total += S
                 break
     return total
+
 
 if __name__ == "__main__":
     print(main())

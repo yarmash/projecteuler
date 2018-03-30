@@ -10,7 +10,7 @@ def main():
         keys = [line.rstrip() for line in data_file]
 
     # dict storing numbers that appear before a given number
-    preceding = {c: set() for c in {x for key in keys for x in key}}
+    preceding = {c: set() for c in set().union(*keys)}
 
     for key in keys:
         preceding[key[1]].add(key[0])

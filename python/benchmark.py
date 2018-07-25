@@ -6,7 +6,7 @@ import sys
 from concurrent.futures import ProcessPoolExecutor
 from heapq import nlargest
 from importlib import import_module
-from time import clock
+from time import process_time
 
 from utils import get_path
 
@@ -23,9 +23,9 @@ def run(num):
     mod_name = f"problem{num:03d}"
     mod = import_module(mod_name)
 
-    begin = clock()
+    begin = process_time()
     answer = mod.main()
-    time = clock() - begin
+    time = process_time() - begin
 
     return answer, time
 

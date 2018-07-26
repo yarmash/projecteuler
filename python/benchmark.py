@@ -36,7 +36,9 @@ def main():
     if len(sys.argv) == 1:
         problems = list(range(1, len(answers)+1))
     else:
-        problems = [int(x) for x in sys.argv[1:]]
+        # a parameter can be an actual number or a filename
+        problems = [int(arg) if arg.isdigit() else int(''.join(filter(str.isdigit, arg)))
+                    for arg in sys.argv[1:]]
 
     total_time = 0
     times = {}

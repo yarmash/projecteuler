@@ -3,28 +3,23 @@
 """Problem 129: Repunit divisibility"""
 
 from itertools import count
-from math import gcd
+from math import log10, ceil
 
 
 def main():
-    lim = 10
+    lim = 1_000_000
 
-    def R(k):  # R(6) = 111111
-        return (10**k-1)//9
+    for n in count(lim if lim & 1 else lim + 1, 2):  # A(n) <= n
+        if n % 5:
+            k = ceil(log10(n*3))
+            r = (10**k-1)//9
 
-    for n in count(3):
-        if not gcd(n, 10) == 1:
-            continue
+            while r:
+                r = (r*10 + 1) % n
+                k += 1
 
-        for k in count(2):
-            r = R(k)
-
-            print(n, k, r)
-
-            if not r % n:
-                if k > lim:
-                    return n
-                break
+            if k > lim:
+                return n
 
 if __name__ == "__main__":
     print(main())

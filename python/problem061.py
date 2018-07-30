@@ -11,14 +11,15 @@ from utils import (nth_heptagonal, nth_hexagonal, nth_octagonal,
 def is_cyclic(m, n):
     return m % 100 == n // 100
 
+
 def main():
-    numbers = [ # the ranges can be figured out using the respective formulas
-        [ nth_triangle(i)   for i in range(45, 141) ], # 4-digit triangle numbers
-        [ nth_square(i)     for i in range(31, 100) ], # 4-digit square numbers
-        [ nth_pentagonal(i) for i in range(25, 82) ],
-        [ nth_hexagonal(i)  for i in range(22, 71) ],
-        [ nth_heptagonal(i) for i in range(20, 64) ],
-        [ nth_octagonal(i)  for i in range(18, 59) ]
+    numbers = [  # the ranges can be figured out using the respective formulas
+        [nth_triangle(i) for i in range(45, 141)],  # 4-digit triangle numbers
+        [nth_square(i) for i in range(31, 100)],  # 4-digit square numbers
+        [nth_pentagonal(i) for i in range(25, 82)],
+        [nth_hexagonal(i) for i in range(22, 71)],
+        [nth_heptagonal(i) for i in range(20, 64)],
+        [nth_octagonal(i) for i in range(18, 59)]
     ]
 
     def get_number(n):
@@ -26,7 +27,6 @@ def main():
 
     types = set(range(6))
     typegetter = itemgetter(0)
-
 
     def search(n):
         if len(n) == 6:
@@ -41,11 +41,13 @@ def main():
             for k in range(len(numbers[u])):
                 if is_cyclic(this_num, numbers[u][k]):
                     s = search(n+[(u, k)])
-                    if s: return s
+                    if s:
+                        return s
 
-    for i in range(len(numbers[5])): # start from the octagonal numbers
+    for i in range(len(numbers[5])):  # start from the octagonal numbers
         s = search([(5, i)])
-        if s: return sum(map(get_number, s))
+        if s:
+            return sum(map(get_number, s))
 
 
 if __name__ == "__main__":

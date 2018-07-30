@@ -2,14 +2,15 @@
 
 """Problem 72: Counting fractions"""
 
+
 # http://en.wikipedia.org/wiki/Farey_sequence
 def main():
-    lim = 1000000
+    lim = 1_000_000
 
     phis = list(range(lim+1))
 
     for i in range(2, lim+1):
-        if phis[i] == i: # i is a prime
+        if phis[i] == i:  # i is a prime
             for j in range(i, lim+1, i):
                 phis[j] -= phis[j]//i
 

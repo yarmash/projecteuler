@@ -2,6 +2,7 @@
 
 """Problem 118: Pandigital prime sets"""
 
+from functools import lru_cache
 from itertools import permutations
 
 from utils import prime_sieve
@@ -9,9 +10,9 @@ from utils import prime_sieve
 
 def main():
     primes = prime_sieve(100_000)
-    primes_set = frozenset(primes)
 
-    def is_prime(n, primes=primes, primes_set=primes_set):
+    @lru_cache(maxsize=None)
+    def is_prime(n, primes=primes, primes_set=frozenset(primes)):
         if n < 100_000:
             return n in primes_set
 

@@ -4,7 +4,7 @@
 
 # This is a more difficult version of Problem 108
 
-import problem108
+import p108
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
     # the number of primes to be considered is ceil(log3(lim*2))
     primes = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47)
 
-    return problem108.main(lim, primes)
+    return p108.main(lim, primes)
 
 
 if __name__ == "__main__":

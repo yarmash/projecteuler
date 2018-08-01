@@ -1,6 +1,6 @@
 import unittest
 
-from problem103 import is_special_sum_set
+from p103 import is_special_sum_set
 
 
 class TestProblem103(unittest.TestCase):

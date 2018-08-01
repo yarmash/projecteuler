@@ -1,6 +1,6 @@
 import unittest
 
-from problem035 import rotations
+from p035 import rotations
 
 
 class TestProblem035(unittest.TestCase):

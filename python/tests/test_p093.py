@@ -1,6 +1,6 @@
 import unittest
 
-from problem093 import calc_consecutive
+from p093 import calc_consecutive
 
 
 class TestProblem093(unittest.TestCase):

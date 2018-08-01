@@ -20,7 +20,7 @@ def read_answers():
 
 def run(num):
     """Run the solution and measure the execution time"""
-    mod_name = f"problem{num:03d}"
+    mod_name = f"p{num:03d}"
     mod = import_module(mod_name)
 
     begin = process_time()

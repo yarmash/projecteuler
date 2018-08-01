@@ -1,6 +1,6 @@
 import unittest
 
-from problem041 import is_pandigital
+from p041 import is_pandigital
 
 
 class TestProblem041(unittest.TestCase):

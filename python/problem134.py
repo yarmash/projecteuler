@@ -26,13 +26,11 @@ def main():
     for p1, p2 in pairwise(primes):
         if p1 > lim:
             break
-
         d = 10**(ceil(log10(p1)))
+        dinv = pow(d, p2 - 2, p2)
+        k = ((p2 - p1) * dinv) % p2
+        res += p1 + d * k
 
-        for k in count():
-            if (p1 + d*k) % p2 == 0:
-                res += p1 + d*k
-                break
     return res
 
 

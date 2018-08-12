@@ -2,6 +2,7 @@
 
 """Problem 62: Cubic permutations"""
 
+
 def main(N=5):
     num, bound = 1, 10
     cubes = {}
@@ -9,11 +10,11 @@ def main(N=5):
 
     while True:
         cube = num**3
-        key = "".join(sorted(str(cube)))
+        key = ''.join(sorted(str(cube)))
 
-        if cube > bound: # safe to return a candidate
-            if candidates and [ c for c in candidates if len(cubes[c]) == N ]:
-                return min(map(min, [ cubes[c] for c in candidates ]))
+        if cube > bound:  # safe to return a candidate
+            if any(len(cubes[c]) == N for c in candidates):
+                return min(map(min, [cubes[c] for c in candidates]))
             bound *= 10
 
         if key in cubes:
@@ -26,5 +27,5 @@ def main(N=5):
         num += 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     print(main())

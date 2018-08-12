@@ -6,9 +6,10 @@ import argparse
 import asyncio
 import sys
 
-from bs4 import BeautifulSoup
 import aiohttp
 import async_timeout
+from bs4 import BeautifulSoup
+
 from utils import get_path
 
 

@@ -3,7 +3,7 @@
 """Problem 129: Repunit divisibility"""
 
 from itertools import count
-from math import log10, ceil
+from math import ceil, log10
 
 
 def main():

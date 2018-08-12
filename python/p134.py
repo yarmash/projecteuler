@@ -2,8 +2,8 @@
 
 """Problem 134: Prime pair connection"""
 
-from itertools import tee, count
-from math import log10, ceil
+from itertools import count, tee
+from math import ceil, log10
 
 from utils import prime_sieve_lazy
 

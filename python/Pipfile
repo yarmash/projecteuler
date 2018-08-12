@@ -10,6 +10,7 @@ name = "pypi"
 aiohttp = "*"
 "flake8" = "*"
 nose = "*"
+isort = "*"
 
 [requires]
 python_version = "3.7"

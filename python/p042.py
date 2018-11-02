@@ -9,8 +9,7 @@ from utils import get_path
 
 
 def main():
-    with get_path("data", "words.txt").open() as data_file:
-        words = data_file.read().split('","')
+    words = get_path('data', 'words.txt').read_text().split('","')
     words[0] = words[0][1:]
     words[-1] = words[-1][:-1]
 
@@ -22,5 +21,5 @@ def main():
     return len([v for v in values if v in triangle_numbers])
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     print(main())

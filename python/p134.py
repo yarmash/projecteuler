@@ -2,7 +2,7 @@
 
 """Problem 134: Prime pair connection"""
 
-from itertools import count, tee
+from itertools import tee
 from math import ceil, log10
 
 from utils import prime_sieve_lazy

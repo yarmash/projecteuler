@@ -35,7 +35,8 @@ def main():
         if is_special_sum_set(s):
             candidates.append(s)
 
-    return "".join([str(x) for x in min(candidates, key=sum)])
+    return ''.join(map(str, min(candidates, key=sum)))
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     print(main())

@@ -5,9 +5,7 @@
 
 def main():
     tile_len = 50
-
-    ways = [0]*(tile_len + 1)
-    ways[:tile_len+1] = [1]*(tile_len-1) + [2, 4]
+    ways = [1]*(tile_len-1) + [2, 4]
 
     i = tile_len + 1
     while True:
@@ -22,5 +20,5 @@ def main():
         i += 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     print(main())

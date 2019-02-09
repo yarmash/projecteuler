@@ -8,7 +8,7 @@ from operator import itemgetter
 def main():
     numbers = frozenset(range(1, 11))
     sides = [0, 1, 2, 3, 2, 4, 5, 4, 6, 7, 6, 8, 9, 8, 1]
-    rotations = [itemgetter(*sides[i:] + sides[:i]) for i in range(0, len(sides), 3)]
+    rotations = [itemgetter(*sides[i:], *sides[:i]) for i in range(0, len(sides), 3)]
     solutions = []
     search = [[10]]
 
@@ -28,7 +28,7 @@ def main():
                 node == 8 and ring[4] + ring[5] != ring[7] + c or
                 node == 9 and ring[6] + ring[7] != ring[1] + c):
                 continue
-            search.append(ring + [c])
+            search.append([*ring, c])
 
     return "".join(map(str, max(solutions)))
 

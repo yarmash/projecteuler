@@ -22,7 +22,7 @@ def main():
 
             if cache.get(y, lim) >= len(chain):
                 cache[y] = len(chain)
-                queue.append(chain + [y])
+                queue.append([*chain, y])
     return sum(cache.values())
 
 

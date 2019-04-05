@@ -2,7 +2,7 @@
 
 """Problem 96: Su Doku"""
 
-from itertools import chain
+from itertools import chain, repeat
 
 from utils import get_path
 
@@ -95,7 +95,7 @@ def first(seq):
 def solve_puzzle(grid):
     """Solve the puzzle and return the 3-digit number found in the top left
     corner of the solution grid"""
-    candidates = [[numbers.copy() for col in range(9)] for row in range(9)]
+    candidates = [[numbers.copy() for _ in repeat(None, 9)] for _ in repeat(None, 9)]
 
     for row, col in squares:
         if grid[row][col] != "0":

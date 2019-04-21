@@ -31,7 +31,7 @@ def main():
     max_product = 0
 
     for chunk in chunks:
-        digits = [int(d) for d in chunk]
+        digits = list(map(int, chunk))
         product = 1
 
         for i, d in enumerate(digits):
@@ -44,6 +44,7 @@ def main():
                 max_product = product
 
     return max_product
+
 
 if __name__ == "__main__":
     print(main())

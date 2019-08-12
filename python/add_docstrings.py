@@ -78,7 +78,7 @@ def main():
                 return 1
             paths.append(path_obj)
     else:
-        paths = sorted(get_path("python").glob("problem???.py"))
+        paths = sorted(get_path("python").glob("p???.py"))
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(add_docstrings(paths))

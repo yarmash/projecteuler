@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""Problem 131: Prime cube partnership"""
+
 from itertools import count
 
 from utils import is_prime

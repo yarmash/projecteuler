@@ -28,17 +28,18 @@ class Edge:
 class Graph:
     """Representation of a simple undirected graph using an adjacency list"""
 
-    def __init__(self, vertices):
+    def __init__(self, num_vertices):
         """Create an empty graph"""
 
-        self.vertices = [[] for _ in repeat(None, vertices)]
+        self.vertices = [[] for _ in repeat(None, num_vertices)]
 
     def insert_edge(self, u, v, w):
-        """Insert and return a new Edge from u to v with weight w"""
+        """Insert a new edge from u to v with weight w"""
 
-        e = Edge(u, v, w)
-        self.vertices[u].append(e)
-        self.vertices[v].append(e)
+        edge = Edge(u, v, w)
+
+        self.vertices[u].append(edge)
+        self.vertices[v].append(edge)
 
     def incident_edges(self, v):
         """Return all edges incident to vertex v in the graph"""
@@ -48,10 +49,9 @@ class Graph:
 
 
 def main():
-    size = 40
+    N = 40
     total = spanning = 0
-
-    graph = Graph(size)
+    graph = Graph(N)
 
     with get_path("data", "network.txt").open() as data_file:
         for u, line in enumerate(data_file):
@@ -62,11 +62,11 @@ def main():
                     graph.insert_edge(u, v, w)
 
     # Implement the Prim–Jarník algorithm
-    D = [float("inf")] * size
+    D = [float("inf")] * N
     root = 0  # can be any vertex of the graph
 
     heap = [(0, root)]
-    seen = [False] * size
+    seen = [False] * N
 
     while heap:
         w, u = heappop(heap)

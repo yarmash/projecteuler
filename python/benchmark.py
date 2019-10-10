@@ -34,7 +34,7 @@ def main():
     answers = read_answers()
 
     if len(sys.argv) == 1:
-        problems = list(range(1, len(answers)+1))
+        problems = range(1, len(answers)+1)
     else:
         # a parameter can be an actual number or a filename
         problems = [int(arg) if arg.isdigit() else int(''.join(filter(str.isdigit, arg)))

@@ -6,7 +6,7 @@ from heapq import nlargest
 from random import choice, shuffle
 
 
-class Dice(object):
+class Dice:
     """Represents a pair of dice"""
     def __init__(self, sides=6):
         self.sides = sides
@@ -17,7 +17,7 @@ class Dice(object):
         return choice(self.rolls)
 
 
-class Deck(object):
+class Deck:
     """Represents a deck of Chance or Community Chest cards"""
     def __init__(self, size=16):
         self.size = size
@@ -39,7 +39,7 @@ def main():
     visits = [0]*40
     doubles = 0  # consecutive doubles
 
-    for i in range(1000000):
+    for _ in range(1_000_000):
         roll = dice.roll()
 
         if roll[0] == roll[1]:
@@ -98,8 +98,9 @@ def main():
 
         visits[position] += 1
 
-    return "{:02d}{:02d}{:02d}".format(*nlargest(3, range(len(visits)),
+    return '{:02d}{:02d}{:02d}'.format(*nlargest(3, range(len(visits)),
                                                  key=visits.__getitem__))
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     print(main())

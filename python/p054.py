@@ -5,7 +5,7 @@
 from utils import get_path
 
 
-class Card(object):
+class Card:
     # values are powers of 2
     values = {v: 1 << i for i, v in enumerate("23456789TJQKA")}
     __slots__ = ("kind", "suit", "value")
@@ -19,7 +19,7 @@ class Card(object):
         return self.kind + self.suit
 
 
-class Hand(object):
+class Hand:
     __slots__ = ("values", "same_suit", "consecutive_values",
                  "quad", "trip", "pairs")
 

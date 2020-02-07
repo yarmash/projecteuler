@@ -113,8 +113,8 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(sum_digits(1234567890), 45)
 
     def test_num_of_divisors(self):
-        self.assertEquals([num_of_divisors(x) for x in range(1, 17)],
-                          [1, 2, 2, 3, 2, 4, 2, 4, 3, 4, 2, 6, 2, 4, 4, 5])
+        self.assertEqual([num_of_divisors(x) for x in range(1, 17)],
+                         [1, 2, 2, 3, 2, 4, 2, 4, 3, 4, 2, 6, 2, 4, 4, 5])
 
     def test_is_palindrome(self):
         self.assertTrue(is_palindrome(1))

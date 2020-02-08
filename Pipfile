@@ -10,8 +10,8 @@ name = "pypi"
 aiohttp = "*"
 pylint = "*"
 "flake8" = "*"
-nose = "*"
 isort = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.8"

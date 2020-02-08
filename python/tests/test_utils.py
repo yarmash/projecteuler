@@ -1,11 +1,4 @@
-"""
-This module contains tests for utils.
-
-To run the tests execute:
-$ nosetests -v tests/test_utils.py
-or
-$ python -m unittest -v tests/test_utils.py
-"""
+"""This module contains tests for the utils module."""
 
 import unittest
 from itertools import islice

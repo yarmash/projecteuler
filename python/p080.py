@@ -2,7 +2,9 @@
 
 """Problem 80: Square root digital expansion"""
 
-from utils import isqrt, sum_digits
+from math import isqrt
+
+from utils import sum_digits
 
 
 def main():

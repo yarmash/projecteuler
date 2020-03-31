@@ -2,7 +2,7 @@
 
 import itertools
 from functools import reduce
-from math import factorial, gcd, sqrt
+from math import factorial, gcd, isqrt, sqrt
 from pathlib import Path
 
 
@@ -207,19 +207,6 @@ def nth_heptagonal(n):
 
 def nth_octagonal(n):
     return n*(3*n - 2)
-
-
-def isqrt(num):
-    """
-    Calculate the integer square root of a positive integer using
-    Newton's (Babylonian) method.
-    """
-    x = 1 << -(-num.bit_length() >> 1)  # ceil
-    y = (x + num//x) >> 1
-    while x > y:
-        x = y
-        y = (x + num//x) >> 1
-    return x
 
 
 def triangular_numbers():

@@ -2,12 +2,13 @@
 
 """Problem 15: Lattice paths"""
 
-from utils import n_choose_k
+from math import comb
 
 
 def main():
     size = 20
-    return n_choose_k(size+size, size)
+    return comb(size+size, size)
 
-if __name__ == "__main__":
+
+if __name__ == '__main__':
     print(main())

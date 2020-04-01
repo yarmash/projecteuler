@@ -2,7 +2,7 @@
 
 import itertools
 from functools import reduce
-from math import factorial, gcd, isqrt, sqrt
+from math import gcd, isqrt, sqrt
 from pathlib import Path
 
 
@@ -264,11 +264,6 @@ def pythagorean_triplets(p):
                     c = d*(m*m + n*n)
                     yield (a, b, c)
                 k += 2
-
-
-def n_choose_k(n, k):
-    """Returns the number of k-combinations of a set of n elements"""
-    return factorial(n) // (factorial(k) * factorial(n - k))
 
 
 def sqrt_fraction_expansion(num):

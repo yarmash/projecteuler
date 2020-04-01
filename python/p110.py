@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """Problem 110: Diophantine reciprocals II"""
 

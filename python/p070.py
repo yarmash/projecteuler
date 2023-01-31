@@ -23,7 +23,7 @@ def main():
             if primes[low_idx]*primes[high_idx] <= lim:
                 yield high_idx
 
-    class Number(object):
+    class Number:
         """Number which is the product of two primes"""
 
         def __init__(self, low_idx, gen):
@@ -52,6 +52,7 @@ def main():
             heappush(queue, Number(number.low_idx, number.gen))
         except StopIteration:
             pass
+
 
 if __name__ == "__main__":
     print(main())

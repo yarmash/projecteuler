@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 1: Multiples of 3 and 5"""
+"""Problem 1: Multiples of 3 or 5"""
 
 from utils import arithmetic_series
 

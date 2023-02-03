@@ -59,7 +59,7 @@ async def fetch_all():
 def main():
     """The script's entry point."""
 
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
     nfiles = loop.run_until_complete(fetch_all())
     print(f"{nfiles} file(s) saved")
 

@@ -80,7 +80,7 @@ def main():
     else:
         paths = sorted(get_path("python").glob("p???.py"))
 
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
     loop.run_until_complete(add_docstrings(paths))
     return 0
 

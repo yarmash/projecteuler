@@ -14,8 +14,7 @@ from utils import get_path
 
 
 def parse_args(args=None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Add docstrings to solutions")
+    parser = argparse.ArgumentParser(description="Add docstrings to solutions")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("path", nargs="*", default=[],
                        help="A path (or paths) to the module file")
@@ -33,6 +32,7 @@ def get_docstring(html) -> str:
 
 
 def update_file(path, docstring):
+    # Working with files synchronously as async would require a thread pool
     with path.open("r+") as f:
         lines = f.readlines()
 
@@ -80,8 +80,7 @@ def main():
     else:
         paths = sorted(get_path("python").glob("p???.py"))
 
-    loop = asyncio.new_event_loop()
-    loop.run_until_complete(add_docstrings(paths))
+    asyncio.run(add_docstrings(paths))
     return 0
 
 

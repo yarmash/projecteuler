@@ -20,6 +20,7 @@ async def fetch_one(session, num):
                     data = await response.read()
                     filename = f'{num:03}_overview.pdf'
 
+                    # Working with files synchronously as async would require a thread pool
                     with get_path('doc', filename).open('wb') as pdf_file:
                         pdf_file.write(data)
                     return num
@@ -59,8 +60,7 @@ async def fetch_all():
 def main():
     """The script's entry point."""
 
-    loop = asyncio.new_event_loop()
-    nfiles = loop.run_until_complete(fetch_all())
+    nfiles = asyncio.run(fetch_all())
     print(f"{nfiles} file(s) saved")
 
 

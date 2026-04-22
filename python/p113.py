@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 113: Non-bouncy numbers"""
+"""Problem 113: Non-bouncy Numbers"""
 
 from math import comb
 

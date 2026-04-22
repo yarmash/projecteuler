@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 16: Power digit sum"""
+"""Problem 16: Power Digit Sum"""
 
 
 def main():

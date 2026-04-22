@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 94: Almost equilateral triangles"""
+"""Problem 94: Almost Equilateral Triangles"""
 
 
 def main():

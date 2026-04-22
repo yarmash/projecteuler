@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 134: Prime pair connection"""
+"""Problem 134: Prime Pair Connection"""
 
 from itertools import tee
 from math import ceil, log10

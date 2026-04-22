@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 59: XOR decryption"""
+"""Problem 59: XOR Decryption"""
 
 from collections import defaultdict
 

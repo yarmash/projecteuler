@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 92: Square digit chains"""
+"""Problem 92: Square Digit Chains"""
 
 from functools import lru_cache
 

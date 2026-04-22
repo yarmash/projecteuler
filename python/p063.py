@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 63: Powerful digit counts"""
+"""Problem 63: Powerful Digit Counts"""
 
 def main():
     cnt = 0

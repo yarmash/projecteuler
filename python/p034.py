@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 34: Digit factorials"""
+"""Problem 34: Digit Factorials"""
 
 def main():
     factorials = [

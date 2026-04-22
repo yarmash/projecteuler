@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 40: Champernowne's constant"""
+"""Problem 40: Champernowne's Constant"""
 
 def main():
     index = 0

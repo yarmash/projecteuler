@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 55: Lychrel numbers"""
+"""Problem 55: Lychrel Numbers"""
 
 from functools import lru_cache
 from itertools import repeat

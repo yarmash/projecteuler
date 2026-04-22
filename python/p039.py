@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 39: Integer right triangles"""
+"""Problem 39: Integer Right Triangles"""
 
 from utils import pythagorean_triplets
 

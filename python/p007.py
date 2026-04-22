@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 7: 10001st prime"""
+"""Problem 7: 10 001st Prime"""
 
 from utils import prime_sieve_lazy
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 81: Path sum: two ways"""
+"""Problem 81: Path Sum: Two Ways"""
 
 from itertools import repeat
 

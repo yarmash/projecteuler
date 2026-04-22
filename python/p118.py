@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 118: Pandigital prime sets"""
+"""Problem 118: Pandigital Prime Sets"""
 
 from functools import lru_cache
 from itertools import permutations

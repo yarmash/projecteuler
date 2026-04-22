@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 102: Triangle containment"""
+"""Problem 102: Triangle Containment"""
 
 from utils import get_path
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 120: Square remainders"""
+"""Problem 120: Square Remainders"""
 
 
 def main():

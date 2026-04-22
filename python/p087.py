@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 87: Prime power triples"""
+"""Problem 87: Prime Power Triples"""
 
 from utils import prime_sieve
 

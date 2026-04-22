@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 25: 1000-digit Fibonacci number"""
+"""Problem 25: 1000-digit Fibonacci Number"""
 
 def main():
     a, b, cnt = 1, 2, 3

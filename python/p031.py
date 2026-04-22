@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 31: Coin sums"""
+"""Problem 31: Coin Sums"""
 
 
 def main():

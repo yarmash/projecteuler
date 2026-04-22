@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 119: Digit power sum"""
+"""Problem 119: Digit Power Sum"""
 
 from itertools import count
 

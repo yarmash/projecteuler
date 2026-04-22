@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 3: Largest prime factor"""
+"""Problem 3: Largest Prime Factor"""
 
 from math import sqrt
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 90: Cube digit pairs"""
+"""Problem 90: Cube Digit Pairs"""
 
 from itertools import combinations
 

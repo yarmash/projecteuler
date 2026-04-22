@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 22: Names scores"""
+"""Problem 22: Names Scores"""
 
 import string
 

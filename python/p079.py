@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 79: Passcode derivation"""
+"""Problem 79: Passcode Derivation"""
 
 from utils import get_path
 

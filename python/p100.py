@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 100: Arranged probability"""
+"""Problem 100: Arranged Probability"""
 
 
 def main():

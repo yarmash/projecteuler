@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 105: Special subset sums: testing"""
+"""Problem 105: Special Subset Sums: Testing"""
 
 from p103 import is_special_sum_set
 from utils import get_path

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 80: Square root digital expansion"""
+"""Problem 80: Square Root Digital Expansion"""
 
 from math import isqrt
 

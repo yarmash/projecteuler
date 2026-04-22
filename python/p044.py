@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 44: Pentagon numbers"""
+"""Problem 44: Pentagon Numbers"""
 
 from itertools import count
 

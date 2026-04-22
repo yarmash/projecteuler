@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 125: Palindromic sums"""
+"""Problem 125: Palindromic Sums"""
 
 from utils import is_palindrome
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 30: Digit fifth powers"""
+"""Problem 30: Digit Fifth Powers"""
 
 from itertools import combinations_with_replacement
 

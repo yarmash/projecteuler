@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 2: Even Fibonacci numbers"""
+"""Problem 2: Even Fibonacci Numbers"""
 
 
 def main():

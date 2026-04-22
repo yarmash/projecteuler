@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 43: Sub-string divisibility"""
+"""Problem 43: Sub-string Divisibility"""
 
 
 def main():

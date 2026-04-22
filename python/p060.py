@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 60: Prime pair sets"""
+"""Problem 60: Prime Pair Sets"""
 
 from functools import lru_cache
 

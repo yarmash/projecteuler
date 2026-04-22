@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 47: Distinct primes factors"""
+"""Problem 47: Distinct Primes Factors"""
 
 from math import sqrt
 

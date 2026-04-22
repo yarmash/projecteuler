@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 101: Optimum polynomial"""
+"""Problem 101: Optimum Polynomial"""
 
 
 # http://en.wikipedia.org/wiki/Lagrange_polynomial

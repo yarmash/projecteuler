@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 15: Lattice paths"""
+"""Problem 15: Lattice Paths"""
 
 from math import comb
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 130: Composites with prime repunit property"""
+"""Problem 130: Composites with Prime Repunit Property"""
 
 from itertools import count
 

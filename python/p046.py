@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 46: Goldbach's other conjecture"""
+"""Problem 46: Goldbach's Other Conjecture"""
 
 from utils import is_prime
 

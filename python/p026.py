@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 26: Reciprocal cycles"""
+"""Problem 26: Reciprocal Cycles"""
 
 from utils import is_prime, prime_factors
 

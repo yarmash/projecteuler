@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 70: Totient permutation"""
+"""Problem 70: Totient Permutation"""
 
 from bisect import bisect_left
 from heapq import heappop, heappush

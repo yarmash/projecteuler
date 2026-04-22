@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 10: Summation of primes"""
+"""Problem 10: Summation of Primes"""
 
 from utils import prime_sieve
 

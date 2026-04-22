@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 69: Totient maximum"""
+"""Problem 69: Totient Maximum"""
 
 from utils import prime_sieve_lazy
 

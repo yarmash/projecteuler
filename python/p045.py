@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 45: Triangular, pentagonal, and hexagonal"""
+"""Problem 45: Triangular, Pentagonal, and Hexagonal"""
 
 from utils import hexagonal_numbers, is_pentagonal
 

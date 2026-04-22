@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 21: Amicable numbers"""
+"""Problem 21: Amicable Numbers"""
 
 from utils import pdsums_sieve
 

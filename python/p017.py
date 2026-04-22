@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 17: Number letter counts"""
+"""Problem 17: Number Letter Counts"""
 
 
 def main():

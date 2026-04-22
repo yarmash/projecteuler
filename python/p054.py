@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 54: Poker hands"""
+"""Problem 54: Poker Hands"""
 
 from utils import get_path
 

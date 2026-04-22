@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 14: Longest Collatz sequence"""
+"""Problem 14: Longest Collatz Sequence"""
 
 
 def main():

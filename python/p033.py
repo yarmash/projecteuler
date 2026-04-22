@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 33: Digit cancelling fractions"""
+"""Problem 33: Digit Cancelling Fractions"""
 
 from functools import reduce
 from math import gcd

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 85: Counting rectangles"""
+"""Problem 85: Counting Rectangles"""
 
 def main():
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 27: Quadratic primes"""
+"""Problem 27: Quadratic Primes"""
 
 from utils import prime_sieve
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 38: Pandigital multiples"""
+"""Problem 38: Pandigital Multiples"""
 
 from itertools import permutations
 

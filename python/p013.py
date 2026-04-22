@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 13: Large sum"""
+"""Problem 13: Large Sum"""
 
 
 def main():

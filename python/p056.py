@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 56: Powerful digit sum"""
+"""Problem 56: Powerful Digit Sum"""
 
 def main():
     res = 0

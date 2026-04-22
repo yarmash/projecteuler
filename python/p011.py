@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 11: Largest product in a grid"""
+"""Problem 11: Largest Product in a Grid"""
 
 
 def main():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 95: Amicable chains"""
+"""Problem 95: Amicable Chains"""
 
 from utils import pdsums_sieve
 

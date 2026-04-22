@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 24: Lexicographic permutations"""
+"""Problem 24: Lexicographic Permutations"""
 
 from math import factorial
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 110: Diophantine reciprocals II"""
+"""Problem 110: Diophantine Reciprocals II"""
 
 # This is a more difficult version of Problem 108
 

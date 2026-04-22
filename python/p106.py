@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 106: Special subset sums: meta-testing"""
+"""Problem 106: Special Subset Sums: Meta-testing"""
 
 from math import comb
 

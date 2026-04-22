@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 128: Hexagonal tile differences"""
+"""Problem 128: Hexagonal Tile Differences"""
 
 from functools import lru_cache
 from itertools import count

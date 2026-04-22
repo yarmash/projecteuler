@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 18: Maximum path sum I"""
+"""Problem 18: Maximum Path Sum I"""
 
 
 def main(triangle=[[75],

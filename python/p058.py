@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 58: Spiral primes"""
+"""Problem 58: Spiral Primes"""
 
 from math import sqrt
 

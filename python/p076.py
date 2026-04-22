@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 76: Counting summations"""
+"""Problem 76: Counting Summations"""
 
 from functools import lru_cache
 

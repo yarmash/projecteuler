@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 74: Digit factorial chains"""
+"""Problem 74: Digit Factorial Chains"""
 
 from itertools import combinations_with_replacement
 

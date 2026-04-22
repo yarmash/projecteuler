@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 29: Distinct powers"""
+"""Problem 29: Distinct Powers"""
 
 def main():
     return len({a**b for a in range(2, 101) for b in range(2, 101)})

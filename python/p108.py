@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 108: Diophantine reciprocals I"""
+"""Problem 108: Diophantine Reciprocals I"""
 
 from functools import reduce
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 131: Prime cube partnership"""
+"""Problem 131: Prime Cube Partnership"""
 
 from itertools import count
 

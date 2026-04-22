@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 35: Circular primes"""
+"""Problem 35: Circular Primes"""
 
 from itertools import repeat
 

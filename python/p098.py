@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 98: Anagramic squares"""
+"""Problem 98: Anagramic Squares"""
 
 from collections import defaultdict
 from itertools import combinations

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 28: Number spiral diagonals"""
+"""Problem 28: Number Spiral Diagonals"""
 
 
 def main():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 112: Bouncy numbers"""
+"""Problem 112: Bouncy Numbers"""
 
 from itertools import count
 

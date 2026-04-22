@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 51: Prime digit replacements"""
+"""Problem 51: Prime Digit Replacements"""
 
 from utils import is_prime, prime_sieve_lazy
 

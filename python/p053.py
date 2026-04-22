@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 53: Combinatoric selections"""
+"""Problem 53: Combinatoric Selections"""
 
 def main():
     cnt = 0

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 129: Repunit divisibility"""
+"""Problem 129: Repunit Divisibility"""
 
 from itertools import count
 from math import ceil, log10

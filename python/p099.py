@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 99: Largest exponential"""
+"""Problem 99: Largest Exponential"""
 
 from math import log2
 

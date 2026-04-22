@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 37: Truncatable primes"""
+"""Problem 37: Truncatable Primes"""
 
 from math import log10
 

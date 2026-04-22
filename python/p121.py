@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 121: Disc game prize fund"""
+"""Problem 121: Disc Game Prize Fund"""
 
 from itertools import chain, combinations
 from math import factorial, prod

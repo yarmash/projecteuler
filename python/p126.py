@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 126: Cuboid layers"""
+"""Problem 126: Cuboid Layers"""
 
 
 def main():

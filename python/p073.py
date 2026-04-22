@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 73: Counting fractions in a range"""
+"""Problem 73: Counting Fractions in a Range"""
 
 
 def main():

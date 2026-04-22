@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 42: Coded triangle numbers"""
+"""Problem 42: Coded Triangle Numbers"""
 
 import string
 from math import sqrt

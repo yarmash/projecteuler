@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 4: Largest palindrome product"""
+"""Problem 4: Largest Palindrome Product"""
 
 from utils import is_palindrome
 

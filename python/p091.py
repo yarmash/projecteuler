@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 91: Right triangles with integer coordinates"""
+"""Problem 91: Right Triangles with Integer Coordinates"""
 
 from math import gcd
 

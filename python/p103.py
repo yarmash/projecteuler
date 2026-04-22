@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 103: Special subset sums: optimum"""
+"""Problem 103: Special Subset Sums: Optimum"""
 
 from itertools import combinations
 

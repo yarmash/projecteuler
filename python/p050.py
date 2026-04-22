@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 50: Consecutive prime sum"""
+"""Problem 50: Consecutive Prime Sum"""
 
 from utils import prime_sieve
 

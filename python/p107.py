@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 107: Minimal network"""
+"""Problem 107: Minimal Network"""
 
 from heapq import heappop, heappush
 from itertools import repeat

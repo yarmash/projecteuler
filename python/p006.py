@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 6: Sum square difference"""
+"""Problem 6: Sum Square Difference"""
 
 
 def main():

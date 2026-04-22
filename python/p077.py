@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 77: Prime summations"""
+"""Problem 77: Prime Summations"""
 
 from itertools import count
 

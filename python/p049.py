@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 49: Prime permutations"""
+"""Problem 49: Prime Permutations"""
 
 from utils import prime_sieve
 

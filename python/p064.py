@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 64: Odd period square roots"""
+"""Problem 64: Odd Period Square Roots"""
 
 from math import sqrt
 

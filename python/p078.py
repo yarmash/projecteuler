@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 78: Coin partitions"""
+"""Problem 78: Coin Partitions"""
 
 from itertools import count
 from math import ceil, floor, sqrt

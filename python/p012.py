@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 12: Highly divisible triangular number"""
+"""Problem 12: Highly Divisible Triangular Number"""
 
 from functools import lru_cache, partial
 from itertools import count

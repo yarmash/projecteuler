@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 61: Cyclical figurate numbers"""
+"""Problem 61: Cyclical Figurate Numbers"""
 
 from operator import itemgetter
 

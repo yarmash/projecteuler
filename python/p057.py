@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 57: Square root convergents"""
+"""Problem 57: Square Root Convergents"""
 
 from itertools import repeat
 from math import log10

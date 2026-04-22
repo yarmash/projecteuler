@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 52: Permuted multiples"""
+"""Problem 52: Permuted Multiples"""
 
 def main():
     e = 1

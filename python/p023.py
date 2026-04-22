@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 23: Non-abundant sums"""
+"""Problem 23: Non-Abundant Sums"""
 
 from math import sqrt
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Add docstrings to solutions."""
+"""Add or update docstrings in Python solutions"""
 
 import argparse
 import asyncio
@@ -14,7 +14,7 @@ from utils import get_path
 
 
 def parse_args(args=None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Add docstrings to solutions")
+    parser = argparse.ArgumentParser(description="Add or update docstrings in Python solutions")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("path", nargs="*", default=[],
                        help="A path (or paths) to the module file")
@@ -38,9 +38,13 @@ def update_file(path, docstring):
 
         if lines[2] != docstring:
             print(docstring[3:-4])
-            lines[2:2] = [docstring, "\n"]
+            if lines[2].startswith('"""'):  # replace the existing docstring
+                lines[2] = docstring
+            else:
+                lines[2:2] = [docstring, "\n"]
             f.seek(0)
             f.writelines(lines)
+            f.truncate()
 
 
 async def fetch_url(session, url):

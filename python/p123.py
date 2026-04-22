@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 123: Prime square remainders"""
+"""Problem 123: Prime Square Remainders"""
 
 from itertools import islice
 

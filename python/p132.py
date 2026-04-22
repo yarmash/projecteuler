@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 132: Large repunit factors"""
+"""Problem 132: Large Repunit Factors"""
 
 from utils import prime_sieve_lazy
 

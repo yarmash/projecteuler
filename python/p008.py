@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 8: Largest product in a series"""
+"""Problem 8: Largest Product in a Series"""
 
 
 def main():

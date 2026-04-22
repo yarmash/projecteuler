@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 97: Large non-Mersenne prime"""
+"""Problem 97: Large Non-Mersenne Prime"""
 
 
 def main():

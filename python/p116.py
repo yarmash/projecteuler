@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 116: Red, green or blue tiles"""
+"""Problem 116: Red, Green or Blue Tiles"""
 
 from itertools import repeat
 

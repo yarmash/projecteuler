@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 9: Special Pythagorean triplet"""
+"""Problem 9: Special Pythagorean Triplet"""
 
 from utils import pythagorean_triplets
 

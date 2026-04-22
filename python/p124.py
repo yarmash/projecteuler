@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 124: Ordered radicals"""
+"""Problem 124: Ordered Radicals"""
 
 
 def main():

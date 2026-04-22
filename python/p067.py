@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 67: Maximum path sum II"""
+"""Problem 67: Maximum Path Sum II"""
 
 # This is a more difficult version of Problem 18.
 import p018

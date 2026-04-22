@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 20: Factorial digit sum"""
+"""Problem 20: Factorial Digit Sum"""
 
 from math import factorial
 

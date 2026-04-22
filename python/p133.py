@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 133: Repunit nonfactors"""
+"""Problem 133: Repunit Nonfactors"""
 
 
 from utils import prime_sieve

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 122: Efficient exponentiation"""
+"""Problem 122: Efficient Exponentiation"""
 
 from collections import deque
 

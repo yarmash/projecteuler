@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 5: Smallest multiple"""
+"""Problem 5: Smallest Multiple"""
 
 from math import gcd
 

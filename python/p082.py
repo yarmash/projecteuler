@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 82: Path sum: three ways"""
+"""Problem 82: Path Sum: Three Ways"""
 
 from utils import get_path
 

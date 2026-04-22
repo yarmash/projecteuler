@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 36: Double-base palindromes"""
+"""Problem 36: Double-base Palindromes"""
 
 from utils import is_palindrome
 

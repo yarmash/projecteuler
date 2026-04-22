@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 111: Primes with runs"""
+"""Problem 111: Primes with Runs"""
 
 from functools import reduce
 from itertools import combinations, product

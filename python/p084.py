@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 84: Monopoly odds"""
+"""Problem 84: Monopoly Odds"""
 
 from heapq import nlargest
 from random import choice, shuffle

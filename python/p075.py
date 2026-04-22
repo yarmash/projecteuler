@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 75: Singular integer right triangles"""
+"""Problem 75: Singular Integer Right Triangles"""
 
 from math import gcd, sqrt
 

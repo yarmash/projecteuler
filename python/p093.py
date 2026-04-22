@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 93: Arithmetic expressions"""
+"""Problem 93: Arithmetic Expressions"""
 
 from functools import reduce
 from itertools import combinations, permutations, product

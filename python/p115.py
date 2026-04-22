@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 115: Counting block combinations II"""
+"""Problem 115: Counting Block Combinations II"""
 
 
 def main():

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 104: Pandigital Fibonacci ends"""
+"""Problem 104: Pandigital Fibonacci Ends"""
 
 from math import log10, sqrt
 

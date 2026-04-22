@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 86: Cuboid route"""
+"""Problem 86: Cuboid Route"""
 
 from itertools import count
 

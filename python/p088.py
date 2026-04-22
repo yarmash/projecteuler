@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 88: Product-sum numbers"""
+"""Problem 88: Product-sum Numbers"""
 
 from math import sqrt
 

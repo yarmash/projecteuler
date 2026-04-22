@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 72: Counting fractions"""
+"""Problem 72: Counting Fractions"""
 
 
 # http://en.wikipedia.org/wiki/Farey_sequence

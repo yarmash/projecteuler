@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 83: Path sum: four ways"""
+"""Problem 83: Path Sum: Four Ways"""
 
 from heapq import heappop, heappush
 from itertools import repeat

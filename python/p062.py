@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 62: Cubic permutations"""
+"""Problem 62: Cubic Permutations"""
 
 
 def main(N=5):

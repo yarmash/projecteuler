@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Problem 89: Roman numerals"""
+"""Problem 89: Roman Numerals"""
 
 from utils import get_path
 

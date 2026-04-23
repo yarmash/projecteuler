@@ -5,16 +5,13 @@
 
 def main():
     limit = 4_000_000
-    a, b, c, Σ = 1, 1, 2, 0
+    curr_even, prev_even, Σ = 2, 0, 0
 
-    # every third Fibonacci number is even
-    while c <= limit:
-        Σ += c
-        a = b + c
-        b = c + a
-        c = a + b
-
+    while curr_even <= limit:
+        Σ += curr_even
+        prev_even, curr_even = curr_even, 4 * curr_even + prev_even
     return Σ
+
 
 if __name__ == "__main__":
     print(main())

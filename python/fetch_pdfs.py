@@ -3,7 +3,6 @@
 import asyncio
 
 import aiohttp
-import async_timeout
 
 from utils import get_path
 
@@ -13,7 +12,7 @@ async def fetch_one(session, num):
 
     url = f'https://projecteuler.net/overview={num:03}'
 
-    async with async_timeout.timeout(10):
+    async with asyncio.timeout(10):
         async with session.get(url) as response:
             if response.status == 200:
                 if response.headers['Content-Type'] == 'application/pdf':

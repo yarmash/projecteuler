@@ -7,7 +7,6 @@ import asyncio
 import sys
 
 import aiohttp
-import async_timeout
 from bs4 import BeautifulSoup
 
 from utils import get_path
@@ -48,7 +47,7 @@ def update_file(path, docstring):
 
 
 async def fetch_url(session, url):
-    async with async_timeout.timeout(10):
+    async with asyncio.timeout(10):
         async with session.get(url) as response:
             return url, await response.text()
 

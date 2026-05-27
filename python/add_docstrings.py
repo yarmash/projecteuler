@@ -49,6 +49,7 @@ def update_file(path, docstring):
 async def fetch_url(session, url):
     async with asyncio.timeout(10):
         async with session.get(url) as response:
+            response.raise_for_status()
             return url, await response.text()
 
 

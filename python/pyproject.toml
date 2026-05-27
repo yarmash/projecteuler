@@ -1,0 +1,18 @@
+[project]
+name = "projecteuler-python"
+version = "0.1.0"
+requires-python = ">=3.14.5"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "aiohttp",
+    "beautifulsoup4",
+    "flake8",
+    "isort",
+    "pylint",
+    "pytest",
+]
+
+[tool.uv]
+package = false

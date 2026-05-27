@@ -1,10 +1,10 @@
 ## Running tests
 
-To run the tests execute (from the root directory):
+To run the tests execute (from the `python` directory):
 ```
-$ pytest
+$ uv run pytest
 ```
 or
 ```
-$ python -m unittest -v tests/*.py
+$ uv run python -m unittest -v tests/*.py
 ```

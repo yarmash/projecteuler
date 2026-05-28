@@ -2,14 +2,12 @@
 
 """Problem 5: Smallest Multiple"""
 
-from math import gcd
+from math import lcm
 
 
 def main():
-    multiple = 1
-    for i in range(2, 21):
-        multiple *= i // gcd(i, multiple)
-    return multiple
+    return lcm(*range(1, 21))
+
 
 if __name__ == "__main__":
     print(main())

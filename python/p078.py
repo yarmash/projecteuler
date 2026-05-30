@@ -3,31 +3,38 @@
 """Problem 78: Coin Partitions"""
 
 from itertools import count
-from math import ceil, floor, sqrt
+
+MOD = 1_000_000
 
 
-# http://mathworld.wolfram.com/PartitionFunctionP.html
+# Euler's pentagonal-number recurrence for the partition function:
+# https://en.wikipedia.org/wiki/Partition_function_(number_theory)#Recurrence_relations
 def main():
-    # The first few values of the partition function (starting with p(0)=1)
-    partitions = [1, 1, 2, 3, 5, 7, 11, 15, 22, 30, 42]
+    partitions = [1]
 
-    for n in count(len(partitions)):
-        lower_bound = ceil(-(sqrt(24*n+1)+1)/6)
-        upper_bound = floor((sqrt(24*n+1)-1)/6)
+    for n in count(1):
+        total = 0
 
-        sum_ = 0
+        for k in count(1):
+            sign = 1 if k % 2 else -1
 
-        sign = -1 if lower_bound & 1 else 1
+            p1 = k * (3*k - 1) // 2
+            if p1 > n:
+                break
+            total += sign * partitions[n - p1]
 
-        for k in range(lower_bound, upper_bound+1):
-            if k:
-                sum_ -= sign * partitions[n - (k*(3*k+1) >> 1)]
-            sign = -sign
+            p2 = k * (3*k + 1) // 2
+            if p2 <= n:
+                total += sign * partitions[n - p2]
 
-        if not sum_ % 1000000:
+        # Only divisibility by MOD matters, so keep every partition value modulo MOD
+        total %= MOD
+
+        if not total:
             return n
 
-        partitions.append(sum_)
+        partitions.append(total)
+
 
 if __name__ == "__main__":
     print(main())

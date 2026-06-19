@@ -26,22 +26,23 @@ def main():
         "05886116467109405077541002256983155200055935729725"
         "71636269561882670428252483600823257530420752963450")
 
-    series_len = 13
-    chunks = [chunk for chunk in num.split("0") if len(chunk) >= series_len]
+    window_size = 13
     max_product = 0
 
-    for chunk in chunks:
-        digits = list(map(int, chunk))
+    for chunk in num.split("0"):
+        if len(chunk) < window_size:
+            continue
+        digits = [int(digit) for digit in chunk]
         product = 1
 
         for i, d in enumerate(digits):
             product *= d
-            if i < series_len - 1:
-                continue
-            if i >= series_len:
-                product //= digits[i-series_len]
-            if product > max_product:
-                max_product = product
+
+            if i >= window_size - 1:
+                if i >= window_size:
+                    product //= digits[i - window_size]
+                if product > max_product:
+                    max_product = product
 
     return max_product
 

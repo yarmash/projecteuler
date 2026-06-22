@@ -2,17 +2,10 @@
 
 """Problem 134: Prime Pair Connection"""
 
-from itertools import tee
+from itertools import pairwise
 from math import ceil, log10
 
 from utils import prime_sieve_lazy
-
-
-def pairwise(iterable):
-    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
-    a, b = tee(iterable)
-    next(b, None)
-    return zip(a, b)
 
 
 def main():

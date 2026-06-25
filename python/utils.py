@@ -1,8 +1,7 @@
 """Helper functions for Project Euler problems"""
 
 import itertools
-from functools import reduce
-from math import gcd, isqrt, sqrt
+from math import gcd, isqrt, prod, sqrt
 from pathlib import Path
 
 
@@ -120,14 +119,14 @@ def num_of_divisors(num: int, primes: list=None) -> int:
     `primes`, if provided, should be a list of primes at least up to sqrt(n).
     """
 
-    return reduce(lambda x, y: x*(y[1]+1), prime_factors(num, primes), 1)
+    return prod(p[1] + 1 for p in prime_factors(num, primes))
 
 
 def sum_of_divisors(n, primes=None):
     if n == 1:
         return 1
     # http://mathschallenge.net/index.php?section=faq&ref=number/sum_of_divisors
-    return reduce(lambda x,y: x * (y[0]**(y[1]+1)-1)//(y[0]-1), prime_factors(n, primes), 1)
+    return prod((p[0]**(p[1]+1) - 1)//(p[0] - 1) for p in prime_factors(n, primes))
 
 
 def sum_of_proper_divisors(n, primes=None):

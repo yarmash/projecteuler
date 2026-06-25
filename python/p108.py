@@ -2,17 +2,17 @@
 
 """Problem 108: Diophantine Reciprocals I"""
 
-from functools import reduce
+from math import prod
 
 
-def num_of_divisors(f):
+def num_of_divisors(factors):
     """Get the number of divisors of n^2 from prime factors of n"""
-    return reduce(lambda x, y: x*(2*y[1]+1), f, 1)
+    return prod(2*f[1] + 1 for f in factors)
 
 
-def num(f):
+def num(factors):
     """Get the number from its prime factors"""
-    return reduce(lambda x, y: x*(y[0]**y[1]), f, 1)
+    return prod(f[0]**f[1] for f in factors)
 
 
 def main(lim=1000,

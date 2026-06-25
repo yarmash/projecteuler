@@ -209,27 +209,9 @@ def nth_octagonal(n):
     return n*(3*n - 2)
 
 
-def triangular_numbers():
-    """Generate triangular numbers"""
-    return itertools.accumulate(itertools.count(1))
-
-
-def pentagonal_numbers():
-    """Generate pentagonal numbers"""
-    return itertools.accumulate(itertools.count(1, 3))
-
-
 def hexagonal_numbers():
     """Generate hexagonal numbers"""
     return itertools.accumulate(itertools.count(1, 4))
-
-
-def is_triangular_number(num):
-    """
-    Check if a number is triangular.
-    An integer x is triangular if and only if 8x + 1 is a square.
-    """
-    return is_square(8*num + 1)
 
 
 def is_pentagonal(n):
@@ -299,11 +281,6 @@ def convergent_fractions(quotients):
         prev_num, num, prev_den, den = num, prev_num + num*q, den, prev_den + den*q
 
 
-def triangle_exists(a, b, c):
-    """Check if a triangle with three given side lengths exists"""
-    return a + b > c and b + c > a and c + a > b
-
-
 def arithmetic_series(first, last, terms):
     """Return the sum of the members of a finite arithmetic progression"""
     return terms * (first + last) // 2
@@ -317,19 +294,3 @@ def is_square(num):
     if num == root*root:
         return root
     return False
-
-
-def exp_by_squaring(x, n):
-    """
-    Implements the "exponentiation by squaring" algorithm (iterative version).
-    Works for powers >= 1.
-    """
-    result = 1
-
-    while n > 1:
-        if n & 1:
-            result *= x
-        x *= x
-        n //= 2
-
-    return x * result

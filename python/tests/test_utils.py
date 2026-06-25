@@ -5,20 +5,15 @@ from itertools import islice
 
 from utils import (  # isort:skip
     arithmetic_series,
-    exp_by_squaring,
     hexagonal_numbers,
     is_palindrome,
     is_pandigital,
     is_pentagonal,
     is_prime,
     is_square,
-    is_triangular_number,
     nth_pentagonal,
-    nth_triangle,
     num_of_divisors,
-    pentagonal_numbers,
     sum_digits,
-    triangular_numbers,
 )
 
 
@@ -50,38 +45,16 @@ class TestUtils(unittest.TestCase):
         self.assertTrue(is_square(x))
         self.assertFalse(is_square(x + 2))
 
-    def test_triangular_numbers(self):
-        self.assertEqual(list(islice(triangular_numbers(), 20)),
-                         [1, 3, 6, 10, 15, 21, 28, 36, 45, 55, 66, 78, 91, 105,
-                          120, 136, 153, 171, 190, 210])
-
-    def test_pentagonal_numbers(self):
-        self.assertEqual(list(islice(pentagonal_numbers(), 20)),
-                         [1, 5, 12, 22, 35, 51, 70, 92, 117, 145, 176, 210,
-                          247, 287, 330, 376, 425, 477, 532, 590])
-
     def test_hexagonal_numbers(self):
         self.assertEqual(list(islice(hexagonal_numbers(), 20)),
                          [1, 6, 15, 28, 45, 66, 91, 120, 153, 190, 231, 276,
                           325, 378, 435, 496, 561, 630, 703, 780])
-
-    def test_is_triangular_number(self):
-        self.assertTrue(is_triangular_number(1))
-        self.assertFalse(is_triangular_number(2))
-        n = 10**15
-        t = nth_triangle(n)
-        self.assertTrue(is_triangular_number(t))
-        self.assertFalse(is_triangular_number(t + 2))
 
     def test_is_pandigital(self):
         self.assertTrue(is_pandigital(923456781))
         self.assertFalse(is_pandigital(12345678))
         self.assertFalse(is_pandigital(102345678))
         self.assertFalse(is_pandigital(1023456789))
-
-    def test_exp_by_squaring(self):
-        for num, p in ((2, 3), (10, 10), (1234, 5678)):
-            self.assertEqual(exp_by_squaring(num, p), pow(num, p))
 
     def test_sum_digits(self):
         self.assertEqual(sum_digits(0), 0)

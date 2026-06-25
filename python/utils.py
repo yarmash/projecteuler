@@ -54,17 +54,16 @@ def prime_sieve(n):
         return []
 
     bound = (n-1) // 2  # last index of the sieve
-    sieve = [True]*(bound+1)
+    sieve = bytearray(b"\x01") * (bound+1)
+    sieve[0] = 0
 
-    for i in range(1, int(sqrt(n)//2)+1):
+    for i in range(1, (isqrt(n)-1)//2 + 1):
         if sieve[i]:  # 2*i+1 is a prime, mark multiples
-            for j in range(2*i*(i+1), bound+1, 2*i+1):
-                sieve[j] = False
-    primes = [2]
-    for i in range(1, bound+1):
-        if sieve[i]:
-            primes.append(2*i+1)
-    return primes
+            start = 2*i*(i+1)
+            step = 2*i+1
+            sieve[start::step] = b"\x00" * ((bound - start)//step + 1)
+
+    return [2] + [2*i+1 for i in range(1, bound+1) if sieve[i]]
 
 
 def prime_sieve_lazy():

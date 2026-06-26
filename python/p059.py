@@ -2,20 +2,17 @@
 
 """Problem 59: XOR Decryption"""
 
-from collections import defaultdict
+from collections import Counter
 
 from utils import get_path
 
 
 def main():
-    with get_path("data", "cipher1.txt").open() as data_file:
+    with get_path("data", "0059_cipher.txt").open() as data_file:
         codes = [int(code) for code in data_file.read().split(",")]
 
     # code frequency for each character of the key
-    frequency = [defaultdict(int) for _ in range(3)]
-
-    for i, code in enumerate(codes):
-        frequency[i % 3][code] += 1
+    frequency = [Counter(codes[i::3]) for i in range(3)]
 
     # In English, the space (32) is the most frequent character
     key = [32 ^ max(f, key=f.get) for f in frequency]

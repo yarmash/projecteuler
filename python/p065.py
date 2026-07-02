@@ -4,7 +4,7 @@
 
 from itertools import repeat
 
-from utils import convergent_fractions
+from utils import convergent_fractions, sum_digits
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     for _ in repeat(None, 100):
         num = next(convergents)[0]
 
-    return sum(map(int, str(num)))
+    return sum_digits(num)
 
 
 if __name__ == "__main__":

@@ -14,10 +14,7 @@ def get_path(*args) -> Path:
 
 def sum_digits(num: int) -> int:
     """Sum the digits of a number."""
-    s = 0
-    while num:
-        s, num = s + num % 10, num // 10
-    return s
+    return sum(map(int, str(num)))
 
 
 def is_prime(n):

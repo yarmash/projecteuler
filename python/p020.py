@@ -4,9 +4,12 @@
 
 from math import factorial
 
+from utils import sum_digits
+
 
 def main():
-    return sum(int(d) for d in str(factorial(100)))
+    return sum_digits(factorial(100))
+
 
 if __name__ == "__main__":
     print(main())

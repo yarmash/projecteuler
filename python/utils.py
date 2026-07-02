@@ -60,9 +60,9 @@ def prime_sieve(n):
         if sieve[i]:  # 2*i+1 is a prime, mark multiples
             start = 2*i*(i+1)
             step = 2*i+1
-            sieve[start::step] = b"\x00" * ((bound - start)//step + 1)
+            sieve[start::step] = bytes((bound - start)//step + 1)
 
-    return [2] + [2*i+1 for i in range(1, bound+1) if sieve[i]]
+    return [2, *itertools.compress(range(1, 2*bound + 2, 2), sieve)]
 
 
 def prime_sieve_lazy():

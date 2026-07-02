@@ -6,14 +6,7 @@ from utils import sum_digits
 
 
 def main():
-    res = 0
-
-    for a in range(90, 100):
-        for b in range(90, 100):
-            dsum = sum_digits(a**b)
-            if dsum > res:
-                res = dsum
-    return res
+    return max(sum_digits(a**b) for a in range(100) for b in range(100))
 
 
 if __name__ == "__main__":

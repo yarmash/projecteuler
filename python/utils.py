@@ -110,7 +110,7 @@ def prime_factors(n, primes=None):
     return factors
 
 
-def num_of_divisors(num: int, primes: list=None) -> int:
+def num_of_divisors(num: int, primes: list[int] | None = None) -> int:
     """
     Returns the number of divisors of an integer.
     `primes`, if provided, should be a list of primes at least up to sqrt(n).

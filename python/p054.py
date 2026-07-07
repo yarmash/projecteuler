@@ -6,9 +6,10 @@ from utils import get_path
 
 
 class Card:
+    __slots__ = ("kind", "suit", "value")
+
     # values are powers of 2
     values = {v: 1 << i for i, v in enumerate("23456789TJQKA")}
-    __slots__ = ("kind", "suit", "value")
 
     def __init__(self, kind, suit):
         self.kind = kind
@@ -20,8 +21,11 @@ class Card:
 
 
 class Hand:
-    __slots__ = ("values", "same_suit", "consecutive_values",
-                 "quad", "trip", "pairs")
+    __slots__ = ("values", "same_suit", "straight", "quad", "trip", "pairs")
+
+    # bitmasks of consecutive values, mapped to the straight's rank;
+    # in the wheel (A-2-3-4-5) the ace plays low, so it ranks lowest
+    straights = {0b1000000001111: 1, **{0b11111 << i: i + 2 for i in range(9)}}
 
     def __init__(self, cards):
         self.same_suit = cards[0].suit == cards[1].suit == cards[2].suit == \
@@ -51,17 +55,8 @@ class Hand:
         self.trip = trip
         self.pairs = pairs
 
-        self.consecutive_values = values in {
-            0b11111,
-            0b111110,
-            0b1111100,
-            0b11111000,
-            0b111110000,
-            0b1111100000,
-            0b11111000000,
-            0b111110000000,
-            0b1111100000000,
-        }
+        # 0 if not a straight, otherwise the straight's rank
+        self.straight = Hand.straights.get(values, 0)
 
     def __lt__(self, other):
         """Make instances of the class comparable"""
@@ -76,8 +71,8 @@ class Hand:
         # Is a case of Straight Flush.
 
         # Straight Flush: All cards are consecutive values of same suit.
-        if self.consecutive_values and self.same_suit:
-            yield self.values
+        if self.straight and self.same_suit:
+            yield self.straight
         else:
             yield 0
 
@@ -97,10 +92,7 @@ class Hand:
             yield 0
 
         # Straight: All cards are consecutive values.
-        if self.consecutive_values:
-            yield self.values
-        else:
-            yield 0
+        yield self.straight
 
         # Three of a Kind: Three cards of the same value.
         if self.trip:

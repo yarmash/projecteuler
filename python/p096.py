@@ -2,7 +2,7 @@
 
 """Problem 96: Su Doku"""
 
-from itertools import chain, repeat
+from itertools import repeat
 
 from utils import get_path
 
@@ -13,17 +13,12 @@ units = {}
 
 for row, col in squares:
     # Every square has 3 units and 20 peers
-    peers[(row, col)] = set(chain(
-        [(row, c) for c in range(9) if c != col],
-        [(r, col) for r in range(9) if r != row],
-        [(r, c) for r in range(row//3*3, row//3*3+3)
-         for c in range(col//3*3, col//3*3+3) if r != row or c != col]))
-
     units[(row, col)] = (
         [(row, c) for c in range(9)],
         [(r, col) for r in range(9)],
         [(r, c) for r in range(row//3*3, row//3*3+3)
          for c in range(col//3*3, col//3*3+3)])
+    peers[(row, col)] = {*unit for unit in units[(row, col)]} - {(row, col)}
 
 
 def eliminate(candidates, val, row, col):
@@ -103,7 +98,7 @@ def solve_puzzle(grid):
 
     candidates = search(candidates)
 
-    return int("".join(chain(*candidates[0][:3])))
+    return int("".join(*cell for cell in candidates[0][:3]))
 
 
 def main():

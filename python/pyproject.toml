@@ -8,11 +8,17 @@ dependencies = []
 dev = [
     "aiohttp",
     "beautifulsoup4",
-    "flake8",
-    "isort",
     "pylint",
     "pytest",
+    "ruff",
 ]
 
 [tool.uv]
 package = false
+
+[tool.pylint."messages control"]
+disable = [
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "missing-module-docstring",
+]

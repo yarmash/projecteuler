@@ -2,7 +2,7 @@
 
 import itertools
 from math import gcd, isqrt, prod, sqrt
-from pathlib import Path
+lazy from pathlib import Path
 
 
 def get_path(*args) -> Path:

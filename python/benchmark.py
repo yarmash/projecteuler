@@ -6,7 +6,7 @@ import sys
 from concurrent.futures import ProcessPoolExecutor
 from heapq import nlargest
 from importlib import import_module
-from time import process_time
+from time import perf_counter, process_time
 
 from utils import get_path
 
@@ -43,6 +43,7 @@ def main():
     total_time = 0
     times = {}
 
+    start = perf_counter()
     with ProcessPoolExecutor() as executor:
         for num, (answer, time) in zip(problems, executor.map(run, problems,
                                                               chunksize=2)):
@@ -55,9 +56,10 @@ def main():
             print(f"OK ({time:.6f}s)")
             total_time += time
             times[num] = time
+    wall_time = perf_counter() - start
 
     if len(sys.argv) == 1:
-        print(f"\nTotal {len(problems)} problems solved.\n")
+        print(f"\nTotal {len(problems)} problems solved (time: {total_time:.2f}s CPU, {wall_time:.2f}s wall)\n")
         print("Slowest solutions:")
 
         for problem in nlargest(5, times, times.get):

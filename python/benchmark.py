@@ -45,8 +45,7 @@ def main():
 
     start = perf_counter()
     with ProcessPoolExecutor() as executor:
-        for num, (answer, time) in zip(problems, executor.map(run, problems,
-                                                              chunksize=2)):
+        for num, (answer, time) in zip(problems, executor.map(run, problems)):
             print(f"{num:03d} ", end="")
 
             if str(answer) != answers[num-1]:
